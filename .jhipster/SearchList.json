@@ -1,0 +1,34 @@
+{
+    "relationships": [
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "type",
+            "fieldType": "MainEntity",
+            "fieldValues": "APPLICANT, HIRING_CONTACT, COMPANY, JOB_ORDER",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "query",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20180527205518",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "searchList",
+    "pagination": "pagination",
+    "enableEntityAudit": true
+}

@@ -1,0 +1,28 @@
+{
+    "relationships": [
+    ],
+    "fields": [
+        {
+            "fieldName": "priority",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "startDate",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "comment",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180527205518",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "activity",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
+}

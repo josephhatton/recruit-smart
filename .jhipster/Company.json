@@ -1,0 +1,89 @@
+{
+    "relationships": [
+        {
+            "relationshipName": "companyComment",
+            "otherEntityName": "companyComment",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "company"
+        },
+        {
+            "relationshipName": "address",
+            "otherEntityName": "address",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "company"
+        },
+		{
+            "relationshipName": "jobOrder",
+            "otherEntityName": "jobOrder",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "company"
+        },
+        {
+            "relationshipName": "hiringContact",
+            "otherEntityName": "hiringContact",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "company"
+        },
+        {
+            "relationshipName": "companyInternalComment",
+            "otherEntityName": "companyInternalComment",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "company"
+        },
+        {
+            "relationshipName": "activity",
+            "otherEntityName": "activity",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "company"
+        },
+        {
+            "relationshipName": "skill",
+            "otherEntityName": "skill",
+            "relationshipType": "many-to-many",
+            "otherEntityField": "name",
+            "ownerSide": true
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "website",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "industry",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "revenue",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "employee",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "isDeleted",
+             "fieldType": "Boolean"
+        },
+        {
+          "fieldName": "companyType",
+          "fieldType": "CompanyType",
+          "fieldValues": "CLIENT,POSPECT,VENDOR"
+        },
+        {
+          "fieldName": "companyStatus",
+          "fieldType": "CompanyStatus",
+          "fieldValues": "NO_CONTRACT,MSA,SA,SOW"
+        }
+    ],
+    "changelogDate": "20180527205518",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "company",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination"
+}

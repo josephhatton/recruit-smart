@@ -1,0 +1,86 @@
+{
+    "relationships": [
+        {
+            "relationshipName": "jobOrderComment",
+            "otherEntityName": "jobOrderComment",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "jobOrder"
+        },
+        {
+            "relationshipName": "address",
+            "otherEntityName": "address",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "jobOrder"
+        },
+        {
+            "relationshipName": "skill",
+            "otherEntityName": "skill",
+            "relationshipType": "many-to-many",
+            "otherEntityField": "name",
+            "ownerSide": true
+        },
+        {
+            "relationshipName": "company",
+            "otherEntityName": "company",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipName": "jobOrderInternalComment",
+            "otherEntityName": "jobOrderInternalComment",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "jobOrder"
+        },
+        {
+            "relationshipName": "hiringContact",
+            "otherEntityName": "hiringContact",
+            "relationshipType": "many-to-many",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipName": "activity",
+            "otherEntityName": "activity",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "jobOrder"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "title",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "duration",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "salary",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "hourly",
+            "fieldType": "String"
+        },
+        {
+          "fieldName": "jobType",
+          "fieldType": "JobType",
+          "fieldValues": "DIRECT_HIRE,CONTRACT_TO_HIRE,CONTRACT"
+        },
+        {
+          "fieldName": "jobStatus",
+          "fieldType": "JobStatus",
+          "fieldValues": "OPEN,FILLED_BY_US,ON_HOLD,FILLED_BY_COMPETITION,CANCELLED"
+        }
+    ],
+    "changelogDate": "20180527205518",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "jobOrder",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination"
+}

@@ -1,0 +1,154 @@
+{
+    "relationships": [
+        {
+            "relationshipName": "address",
+            "otherEntityName": "address",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "applicant"
+        },
+        {
+            "relationshipName": "applicantStatus",
+            "otherEntityName": "applicantStatus",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "applicantComment",
+            "otherEntityName": "applicantComment",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "applicant"
+        },
+        {
+            "relationshipName": "skill",
+            "otherEntityName": "skill",
+            "relationshipType": "one-to-many",
+            "otherEntityField": "name",
+            "ownerSide": true
+        },
+        {
+            "relationshipName": "workHistory",
+            "otherEntityName": "workHistory",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "applicant"
+        },
+        {
+            "relationshipName": "applicantInternalComment",
+            "otherEntityName": "applicantInternalComment",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "applicant"
+        },
+        {
+            "relationshipName": "workStatus",
+            "otherEntityName": "workStatus",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "activity",
+            "otherEntityName": "activity",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "applicant"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "firstName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "middleName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "lastName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "title",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "email1",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "homePhone",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "cellPhone",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "isDeleted",
+             "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "workPhone",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "email2",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "referralSource",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "workStatusNote",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "currentSalary",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "desiredSalary",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "minSalary",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "currentTotalComp",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "currentHourlyRate",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "desiredHourlyRate",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "minHourlyRate",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "compensationComment",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "resume",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text"
+        },
+        {
+            "fieldName": "pto",
+             "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "health",
+             "fieldType": "Boolean"
+        }
+    ],
+    "changelogDate": "20180527205518",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "applicant",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination"
+}

@@ -1,0 +1,111 @@
+<div ng-cloak>
+    <div class="row">
+        <div class="col-md-2">
+            <span class="img-responsive img-rounded"></span>
+        </div>
+        <div class="col-md-8">
+            <h1>Welcome,  Recruit Smart!</h1>
+
+            <div ng-switch="vm.isAuthenticated()">
+                <div class="alert alert-warning" ng-switch-when="false">
+                    If you want to <a class="alert-link" href="" ng-click="vm.login()">sign in</a>, you can try the default accounts:<br/>- Administrator (login="admin" and password="admin") <br/>- User (login="user" and password="user").
+                </div>
+                <div class="alert alert-warning" ng-switch-when="false">
+                    You don't have an account yet? <a class="alert-link" ui-sref="register">Register a new account</a>
+                </div>
+
+                <div class="alert alert-success" ng-switch-when="true">
+                    <h3>Hello, {{vm.account.firstName}} {{vm.account.lastName}}!</h3>
+                </div>
+                <div ng-switch-when="true">
+                    <div class="dashboard">
+                        <div class="table-responsive well">
+                            <div class="crescendo-well">
+                                <h2>
+                                    <span>Dashboard</span>
+                                    <span class="pull-right">
+                <button uib-popover-template="dynamicPopover.templateUrl"
+                        popover-title="{{dynamicPopover.title}}"
+                        popover-placement="bottom"
+                        popover-trigger="outsideClick" type="button"
+                        class="btn btn-sm btn-primary">Total assigned Jobs:
+                  <span class="badge text-danger">{{ vm.account.jobOrders.length }}</span></button></span>
+                                </h2>
+
+                                <script type="text/ng-template" id="myPopoverTemplate.html">
+                                    <div class="form-group">
+                                        <div ng-repeat="job in vm.account.jobOrders"><a
+                                            ui-sref="job-order-detail({id:job.id})">{{ job.title }} at {{
+                                            job.company.name }}</a></div>
+                                    </div>
+                                </script>
+                            </div>
+
+                            <table class="dashboardHome table table-striped table-hover">
+                                <thead>
+                                <th><h5>Current Week</h5></th>
+                                <th></th>
+                                <th></th>
+                                <th><h5>Current Month</h5></th>
+                                <th></th>
+                                <th></th>
+                                <th><h5>Year To Date</h5></th>
+                                </thead>
+                                <tbody>
+
+                                <tr class="success">
+                                    <td>Jobs Assigned</td>
+                                    <td>{{ vm.jobsAssignedCW }}</td>
+                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                    <td>Jobs Assigned</td>
+                                    <td>{{ vm.jobsAssignedCM }}</td>
+                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                    <td>Jobs Assigned</td>
+                                    <td>{{ vm.jobsAssignedCY }}</td>
+
+                                </tr>
+
+                                <tr class="active">
+                                    <td>Submitted</td>
+                                    <td>{{ vm.submittedCW }}</td>
+                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                    <td>Submitted</td>
+                                    <td>{{ vm.submittedCM }}</td>
+                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                    <td>Submitted</td>
+                                    <td>{{ vm.submittedCY }}</td>
+                                </tr>
+                                <tr class="success">
+                                    <td>Interviews</td>
+                                    <td>{{ vm.interviewsCW }}</td>
+                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                    <td>Interviews</td>
+                                    <td>{{ vm.interviewsCM }}</td>
+                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                    <td>Interviews</td>
+                                    <td>{{ vm.interviewsCY }}</td>
+                                </tr>
+                                <tr class="active">
+                                    <td>Hires</td>
+                                    <td>{{ vm.hiresCW }}</td>
+                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                    <td>Hires</td>
+                                    <td>{{ vm.hiresCM }}</td>
+                                    <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                    <td>Hires</td>
+                                    <td>{{ vm.hiresCY }}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>

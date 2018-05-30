@@ -1,0 +1,63 @@
+
+<div>
+    <h2><span>Job Order</span> {{vm.jobOrder.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Title</span></dt>
+        <dd>
+            <span>{{vm.jobOrder.title}}</span>
+        </dd>
+        <dt><span>Duration</span></dt>
+        <dd>
+            <span>{{vm.jobOrder.duration}}</span>
+        </dd>
+        <dt><span>Description</span></dt>
+        <dd>
+            <span>{{vm.jobOrder.description}}</span>
+        </dd>
+        <dt><span>Salary</span></dt>
+        <dd>
+            <span>{{vm.jobOrder.salary}}</span>
+        </dd>
+        <dt><span>Hourly</span></dt>
+        <dd>
+            <span>{{vm.jobOrder.hourly}}</span>
+        </dd>
+        <dt><span>Job Type</span></dt>
+        <dd>
+            <span>{{vm.jobOrder.jobType}}</span>
+        </dd>
+        <dt><span>Job Status</span></dt>
+        <dd>
+            <span>{{vm.jobOrder.jobStatus}}</span>
+        </dd>
+        <dt><span>Skill</span></dt>
+        <dd>
+            <span ng-repeat="skill in vm.jobOrder.skills">
+                <a ui-sref="skill-detail({id: skill.id})">{{skill.name}}</a>{{$last ? '' : ', '}}
+            </span>
+        </dd>
+        <dt><span>Company</span></dt>
+        <dd>
+            <a ui-sref="company-detail({id:vm.jobOrder.company.id})">{{vm.jobOrder.company.name}}</a>
+        </dd>
+        <dt><span>Hiring Contact</span></dt>
+        <dd>
+            <span ng-repeat="hiringContact in vm.jobOrder.hiringContacts">
+                <a ui-sref="hiring-contact-detail({id: hiringContact.id})">{{hiringContact.id}}</a>{{$last ? '' : ', '}}
+            </span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="job-order-detail.edit({id:vm.jobOrder.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,67 @@
+
+<div>
+    <h2><span>Hiring Contact</span> {{vm.hiringContact.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>First Name</span></dt>
+        <dd>
+            <span>{{vm.hiringContact.firstName}}</span>
+        </dd>
+        <dt><span>Last Name</span></dt>
+        <dd>
+            <span>{{vm.hiringContact.lastName}}</span>
+        </dd>
+        <dt><span>Phone 1</span></dt>
+        <dd>
+            <span>{{vm.hiringContact.phone1}}</span>
+        </dd>
+        <dt><span>Phone 2</span></dt>
+        <dd>
+            <span>{{vm.hiringContact.phone2}}</span>
+        </dd>
+        <dt><span>Email 1</span></dt>
+        <dd>
+            <span>{{vm.hiringContact.email1}}</span>
+        </dd>
+        <dt><span>Job Title</span></dt>
+        <dd>
+            <span>{{vm.hiringContact.jobTitle}}</span>
+        </dd>
+        <dt><span>Referral Source</span></dt>
+        <dd>
+            <span>{{vm.hiringContact.referralSource}}</span>
+        </dd>
+        <dt><span>Contact Type</span></dt>
+        <dd>
+            <span>{{vm.hiringContact.contactType}}</span>
+        </dd>
+        <dt><span>Email 2</span></dt>
+        <dd>
+            <span>{{vm.hiringContact.email2}}</span>
+        </dd>
+        <dt><span>Middle Name</span></dt>
+        <dd>
+            <span>{{vm.hiringContact.middleName}}</span>
+        </dd>
+        <dt><span>Last Modified By</span></dt>
+        <dd>
+            <span>{{vm.hiringContact.lastModifiedBy}}</span>
+        </dd>
+        <dt><span>Company</span></dt>
+        <dd>
+            <a ui-sref="company-detail({id:vm.hiringContact.company.id})">{{vm.hiringContact.company.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="hiring-contact-detail.edit({id:vm.hiringContact.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,67 @@
+
+<div>
+    <h2><span>Work History</span> {{vm.workHistory.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Company</span></dt>
+        <dd>
+            <span>{{vm.workHistory.company}}</span>
+        </dd>
+        <dt><span>Title</span></dt>
+        <dd>
+            <span>{{vm.workHistory.title}}</span>
+        </dd>
+        <dt><span>Start Date</span></dt>
+        <dd>
+            <span>{{vm.workHistory.startDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>End Date</span></dt>
+        <dd>
+            <span>{{vm.workHistory.endDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Starting Compensation</span></dt>
+        <dd>
+            <span>{{vm.workHistory.startingCompensation}}</span>
+        </dd>
+        <dt><span>Ending Compensation</span></dt>
+        <dd>
+            <span>{{vm.workHistory.endingCompensation}}</span>
+        </dd>
+        <dt><span>Compensation Type</span></dt>
+        <dd>
+            <span>{{vm.workHistory.compensationType}}</span>
+        </dd>
+        <dt><span>Supervisor</span></dt>
+        <dd>
+            <span>{{vm.workHistory.supervisor}}</span>
+        </dd>
+        <dt><span>Supervisor Title</span></dt>
+        <dd>
+            <span>{{vm.workHistory.supervisorTitle}}</span>
+        </dd>
+        <dt><span>Supervisor Phone</span></dt>
+        <dd>
+            <span>{{vm.workHistory.supervisorPhone}}</span>
+        </dd>
+        <dt><span>Duties</span></dt>
+        <dd>
+            <span>{{vm.workHistory.duties}}</span>
+        </dd>
+        <dt><span>Reason For Leaving</span></dt>
+        <dd>
+            <span>{{vm.workHistory.reasonForLeaving}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="work-history-detail.edit({id:vm.workHistory.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,18 @@
+package com.recruitsmart.cucumber.stepdefs;
+
+import com.recruitsmart.RecruitsmartApp;
+
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.web.WebAppConfiguration;
+import org.springframework.test.web.servlet.ResultActions;
+
+import org.springframework.boot.test.context.SpringBootTest;
+
+@WebAppConfiguration
+@SpringBootTest
+@ContextConfiguration(classes = RecruitsmartApp.class)
+public abstract class StepDefs {
+
+    protected ResultActions actions;
+
+}

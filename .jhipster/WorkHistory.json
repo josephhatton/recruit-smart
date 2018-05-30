@@ -1,0 +1,60 @@
+{
+    "relationships": [
+    ],
+    "fields": [
+        {
+            "fieldName": "company",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "title",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "startDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "endDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "startingCompensation",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "endingCompensation",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "compensationType",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "supervisor",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "supervisorTitle",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "supervisorPhone",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "duties",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "reasonForLeaving",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180527205518",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "workHistory",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
+}

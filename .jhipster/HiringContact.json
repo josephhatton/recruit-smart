@@ -1,0 +1,88 @@
+{
+    "relationships": [
+        {
+            "relationshipName": "company",
+            "otherEntityName": "company",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "hiringContactComment",
+            "otherEntityName": "hiringContactComment",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "hiringContact"
+        },
+        {
+            "relationshipName": "hiringContactInternalComment",
+            "otherEntityName": "hiringContactInternalComment",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "hiringContact"
+        },
+        {
+            "relationshipName": "jobOrder",
+            "otherEntityName": "jobOrder",
+            "relationshipType": "many-to-many",
+            "otherEntityField": "id",
+            "ownerSide": false
+        },
+        {
+            "relationshipName": "activity",
+            "otherEntityName": "activity",
+            "relationshipType": "many-to-many",
+            "otherEntityField": "id",
+            "ownerSide": false
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "firstName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "lastName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "phone1",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "phone2",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "email1",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "jobTitle",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "referralSource",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "contactType",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "email2",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "middleName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "lastModifiedBy",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180527205518",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "hiringContact",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination"
+}

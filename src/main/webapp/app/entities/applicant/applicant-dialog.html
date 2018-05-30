@@ -1,0 +1,172 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myApplicantLabel">Create or edit a Applicant</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.applicant.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.applicant.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_firstName">First Name</label>
+            <input type="text" class="form-control" name="firstName" id="field_firstName"
+                    ng-model="vm.applicant.firstName"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_middleName">Middle Name</label>
+            <input type="text" class="form-control" name="middleName" id="field_middleName"
+                    ng-model="vm.applicant.middleName"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_lastName">Last Name</label>
+            <input type="text" class="form-control" name="lastName" id="field_lastName"
+                    ng-model="vm.applicant.lastName"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_title">Title</label>
+            <input type="text" class="form-control" name="title" id="field_title"
+                    ng-model="vm.applicant.title"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_email1">Email 1</label>
+            <input type="text" class="form-control" name="email1" id="field_email1"
+                    ng-model="vm.applicant.email1"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_homePhone">Home Phone</label>
+            <input type="text" class="form-control" name="homePhone" id="field_homePhone"
+                    ng-model="vm.applicant.homePhone"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_cellPhone">Cell Phone</label>
+            <input type="text" class="form-control" name="cellPhone" id="field_cellPhone"
+                    ng-model="vm.applicant.cellPhone"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_isDeleted">Is Deleted</label>
+                <input type="checkbox" name="isDeleted" id="field_isDeleted"
+                          ng-model="vm.applicant.isDeleted"/>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_workPhone">Work Phone</label>
+            <input type="text" class="form-control" name="workPhone" id="field_workPhone"
+                    ng-model="vm.applicant.workPhone"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_email2">Email 2</label>
+            <input type="text" class="form-control" name="email2" id="field_email2"
+                    ng-model="vm.applicant.email2"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_referralSource">Referral Source</label>
+            <input type="text" class="form-control" name="referralSource" id="field_referralSource"
+                    ng-model="vm.applicant.referralSource"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_workStatusNote">Work Status Note</label>
+            <input type="text" class="form-control" name="workStatusNote" id="field_workStatusNote"
+                    ng-model="vm.applicant.workStatusNote"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_currentSalary">Current Salary</label>
+            <input type="text" class="form-control" name="currentSalary" id="field_currentSalary"
+                    ng-model="vm.applicant.currentSalary"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_desiredSalary">Desired Salary</label>
+            <input type="text" class="form-control" name="desiredSalary" id="field_desiredSalary"
+                    ng-model="vm.applicant.desiredSalary"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_minSalary">Min Salary</label>
+            <input type="text" class="form-control" name="minSalary" id="field_minSalary"
+                    ng-model="vm.applicant.minSalary"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_currentTotalComp">Current Total Comp</label>
+            <input type="text" class="form-control" name="currentTotalComp" id="field_currentTotalComp"
+                    ng-model="vm.applicant.currentTotalComp"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_currentHourlyRate">Current Hourly Rate</label>
+            <input type="text" class="form-control" name="currentHourlyRate" id="field_currentHourlyRate"
+                    ng-model="vm.applicant.currentHourlyRate"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_desiredHourlyRate">Desired Hourly Rate</label>
+            <input type="text" class="form-control" name="desiredHourlyRate" id="field_desiredHourlyRate"
+                    ng-model="vm.applicant.desiredHourlyRate"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_minHourlyRate">Min Hourly Rate</label>
+            <input type="text" class="form-control" name="minHourlyRate" id="field_minHourlyRate"
+                    ng-model="vm.applicant.minHourlyRate"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_compensationComment">Compensation Comment</label>
+            <input type="text" class="form-control" name="compensationComment" id="field_compensationComment"
+                    ng-model="vm.applicant.compensationComment"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_resume">Resume</label>
+                <textarea class="form-control" name="resume" id="field_resume"
+                    ng-model="vm.applicant.resume" ></textarea>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_pto">Pto</label>
+                <input type="checkbox" name="pto" id="field_pto"
+                          ng-model="vm.applicant.pto"/>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_health">Health</label>
+                <input type="checkbox" name="health" id="field_health"
+                          ng-model="vm.applicant.health"/>
+        </div>
+
+        <div class="form-group">
+            <label for="field_applicantStatus">Applicant Status</label>
+            <select class="form-control" id="field_applicantStatus" name="applicantStatus" ng-model="vm.applicant.applicantStatus" ng-options="applicantStatus as applicantStatus.id for applicantStatus in vm.applicantstatuses track by applicantStatus.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_workStatus">Work Status</label>
+            <select class="form-control" id="field_workStatus" name="workStatus" ng-model="vm.applicant.workStatus" ng-options="workStatus as workStatus.id for workStatus in vm.workstatuses track by workStatus.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

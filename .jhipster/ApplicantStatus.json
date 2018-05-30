@@ -1,0 +1,20 @@
+{
+    "relationships": [
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180527205518",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "applicantStatus",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
+}

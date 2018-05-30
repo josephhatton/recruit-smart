@@ -1,0 +1,119 @@
+
+<div>
+    <h2><span>Applicant</span> {{vm.applicant.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>First Name</span></dt>
+        <dd>
+            <span>{{vm.applicant.firstName}}</span>
+        </dd>
+        <dt><span>Middle Name</span></dt>
+        <dd>
+            <span>{{vm.applicant.middleName}}</span>
+        </dd>
+        <dt><span>Last Name</span></dt>
+        <dd>
+            <span>{{vm.applicant.lastName}}</span>
+        </dd>
+        <dt><span>Title</span></dt>
+        <dd>
+            <span>{{vm.applicant.title}}</span>
+        </dd>
+        <dt><span>Email 1</span></dt>
+        <dd>
+            <span>{{vm.applicant.email1}}</span>
+        </dd>
+        <dt><span>Home Phone</span></dt>
+        <dd>
+            <span>{{vm.applicant.homePhone}}</span>
+        </dd>
+        <dt><span>Cell Phone</span></dt>
+        <dd>
+            <span>{{vm.applicant.cellPhone}}</span>
+        </dd>
+        <dt><span>Is Deleted</span></dt>
+        <dd>
+            <span>{{vm.applicant.isDeleted}}</span>
+        </dd>
+        <dt><span>Work Phone</span></dt>
+        <dd>
+            <span>{{vm.applicant.workPhone}}</span>
+        </dd>
+        <dt><span>Email 2</span></dt>
+        <dd>
+            <span>{{vm.applicant.email2}}</span>
+        </dd>
+        <dt><span>Referral Source</span></dt>
+        <dd>
+            <span>{{vm.applicant.referralSource}}</span>
+        </dd>
+        <dt><span>Work Status Note</span></dt>
+        <dd>
+            <span>{{vm.applicant.workStatusNote}}</span>
+        </dd>
+        <dt><span>Current Salary</span></dt>
+        <dd>
+            <span>{{vm.applicant.currentSalary}}</span>
+        </dd>
+        <dt><span>Desired Salary</span></dt>
+        <dd>
+            <span>{{vm.applicant.desiredSalary}}</span>
+        </dd>
+        <dt><span>Min Salary</span></dt>
+        <dd>
+            <span>{{vm.applicant.minSalary}}</span>
+        </dd>
+        <dt><span>Current Total Comp</span></dt>
+        <dd>
+            <span>{{vm.applicant.currentTotalComp}}</span>
+        </dd>
+        <dt><span>Current Hourly Rate</span></dt>
+        <dd>
+            <span>{{vm.applicant.currentHourlyRate}}</span>
+        </dd>
+        <dt><span>Desired Hourly Rate</span></dt>
+        <dd>
+            <span>{{vm.applicant.desiredHourlyRate}}</span>
+        </dd>
+        <dt><span>Min Hourly Rate</span></dt>
+        <dd>
+            <span>{{vm.applicant.minHourlyRate}}</span>
+        </dd>
+        <dt><span>Compensation Comment</span></dt>
+        <dd>
+            <span>{{vm.applicant.compensationComment}}</span>
+        </dd>
+        <dt><span>Resume</span></dt>
+        <dd>
+            <span>{{vm.applicant.resume}}</span>
+        </dd>
+        <dt><span>Pto</span></dt>
+        <dd>
+            <span>{{vm.applicant.pto}}</span>
+        </dd>
+        <dt><span>Health</span></dt>
+        <dd>
+            <span>{{vm.applicant.health}}</span>
+        </dd>
+        <dt><span>Applicant Status</span></dt>
+        <dd>
+            <a ui-sref="applicant-status-detail({id:vm.applicant.applicantStatus.id})">{{vm.applicant.applicantStatus.id}}</a>
+        </dd>
+        <dt><span>Work Status</span></dt>
+        <dd>
+            <a ui-sref="work-status-detail({id:vm.applicant.workStatus.id})">{{vm.applicant.workStatus.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="applicant-detail.edit({id:vm.applicant.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,23 @@
+{
+    "relationships": [
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180527205518",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "activityAction",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
+}

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180527205518_added_entity_Applicant.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180527205518_added_entity_Address.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180527205518_added_entity_Activity.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180527205518_added_entity_ActivityAction.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180527205518_added_entity_ApplicantComment.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180527205518_added_entity_ApplicantInternalComment.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180527205518_added_entity_ApplicantStatus.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180527205518_added_entity_Company.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180527205518_added_entity_CompanyComment.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180527205518_added_entity_CompanyInternalComment.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180527205518_added_entity_HiringContact.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180527205518_added_entity_HiringContactComment.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180527205518_added_entity_HiringContactInternalComment.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180527205518_added_entity_HotList.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180527205518_added_entity_JobOrder.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180527205518_added_entity_JobOrderComment.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180527205518_added_entity_JobOrderInternalComment.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180527205518_added_entity_Skill.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180527205518_added_entity_SkillCategory.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180527205518_added_entity_WorkHistory.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180527205518_added_entity_WorkStatus.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180527205518_added_entity_Book.xml" relativeToChangelogFile="false"/>
+    <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
+    <include file="classpath:config/liquibase/changelog/applicants.sql" relativeToChangelogFile="false"/>
+</databaseChangeLog>

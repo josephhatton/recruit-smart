@@ -1,0 +1,19 @@
+{
+    "relationships": [
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20180527205518",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "skill",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
+}
