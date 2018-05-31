@@ -31,7 +31,8 @@ Add the `-h` flag on any command to see how you can use it. For example, `bower 
 
 For further instructions on how to develop with JHipster, have a look at [Using JHipster in development][].
 
-
+## ElasticSearch Reindex
+http://localhost:8080/api/elasticsearch/index
 
 ## Building for production
 
