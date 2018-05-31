@@ -100,7 +100,10 @@ public class Applicant implements Serializable {
     @ManyToOne
     private ApplicantStatus applicantStatus;
 
-//    @OneToMany(mappedBy = "applicant")
+    @ManyToOne
+    private WorkStatus workStatus;
+
+    //    @OneToMany(mappedBy = "applicant")
 //    @JsonIgnore
 //    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 //    private Set<Address> addresses = new HashSet<>();
@@ -124,9 +127,6 @@ public class Applicant implements Serializable {
 //    @JsonIgnore
 //    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 //    private Set<ApplicantInternalComment> applicantInternalComments = new HashSet<>();
-
-    @ManyToOne
-    private WorkStatus workStatus;
 
 //    @OneToMany(mappedBy = "applicant")
 //    @JsonIgnore

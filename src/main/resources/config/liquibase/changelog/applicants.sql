@@ -2,7 +2,7 @@
 
 
 --changeset applicant:name runOnChange:1
-insert into applicant (first_name, last_name, email_1, cell_phone, title, is_deleted, created_date, resume) values ('Brian', 'Taylor', 'btaylor0@columbia.edu', '1-(130)502-4599', 'Recruiting Manager', 0, '2016-03-29 14:02', 'Professional Summary:
+insert into applicant (first_name, last_name, email_1, cell_phone, title, is_deleted, created_date, resume,applicant_status_id,work_status_id) values ('Brian', 'Taylor', 'btaylor0@columbia.edu', '1-(130)502-4599', 'Recruiting Manager', 0, '2016-03-29 14:02', 'Professional Summary:
 Programmer Analyst with 5 years of experience with over 2 years of exclusive software development experience, a strong educational background developing full lifecycle core Java applications as well as corporate technical support and development experience. Able to integrate and adapt to new information, is organized and can work independently or in a team environment. Has ability to quickly analyze and resolve technical problems. Possesses excellent interpersonal communication skills, a positive attitude and incredible aptitude, teamwork skills, technical troubleshooting skills, and maintains a strong technical understanding.
 
 Technical Summary:
@@ -60,9 +60,9 @@ Educational Experience:
 Washington University in St. Louis	Maryville University
 Bachelor of Science in Computer Science	Bachelor of Science in Mathematics
 Graduated Fall 2007	Graduated Fall 2007
-');
+',1,1);
 
-insert into applicant (first_name, last_name, email_1, cell_phone, title, is_deleted, created_date, resume) values ('Phillip', 'Edwards', 'pedwards1@vk.com', '262-(790)551-4949', 'Research Nurse', 0, '2016-03-29 14:02', 'Professional Profile:
+insert into applicant (first_name, last_name, email_1, cell_phone, title, is_deleted, created_date, resume,applicant_status_id,work_status_id) values ('Phillip', 'Edwards', 'pedwards1@vk.com', '262-(790)551-4949', 'Research Nurse', 0, '2016-03-29 14:02', 'Professional Profile:
 
 •          11 years experience with Java EE-J2EE based systems in full SDLC development.
 
@@ -305,9 +305,9 @@ Government Clearances:
 
 Security Clearance. Approved on 8-16-2009.
 NACLC Approved on 3-21-2007.
-');
+',1,1);
 
-insert into applicant (first_name, last_name, email_1, cell_phone, title, is_deleted, created_date, resume) values ('Johnny', 'Austin', 'jaustin2@spiegel.de', '63-(155)460-7959', 'Structural Analysis Engineer', 0, '2016-03-29 14:02', 'Senior DB2 / SQLServer Database Administrator | SQL Programmer/Developer
+insert into applicant (first_name, last_name, email_1, cell_phone, title, is_deleted, created_date, resume,applicant_status_id,work_status_id) values ('Johnny', 'Austin', 'jaustin2@spiegel.de', '63-(155)460-7959', 'Structural Analysis Engineer', 0, '2016-03-29 14:02', 'Senior DB2 / SQLServer Database Administrator | SQL Programmer/Developer
 
 EXECUTIVE SUMMARY
 A self-motivated, goal-oriented senior level SQL DEVELOPER & SQL/DB2 DBA with demonstrated records of challenging achievements with over 20 years of progressive IT experience in relational database administration, design, and application support. An advanced database administrator, having extensive experience in analysis, physical and logical database design, installation, configuration, maintenance, performance monitoring, tuning, query analysis, ETL, backup/recovery, stored procedures, SQL, and Q-replication. Mid-range: (over 15 years) AS/400, IBM S/3X, OpenVMS VAX, AS400-DB2, DB2 SQL/400, COBOL, COBOL ILE, Query Manager/400, File Scope, Client Access 400-ODBC, UNIX/AIX.
@@ -429,9 +429,9 @@ MCI:  Crystal City VA   Industry: Telecommunications 09/1994 – 12/1994
 DB2 Database Administrator
 This was a very large and dynamic environment with many simultaneous DB2 projects. As a DB2 DBA my scope of work was scattered across the board: from modifying KORN scripts for data extraction to calculating projected table size and database growth, assuring successful backups, working closely with the project System Administrator in implementing hardware changes, and accessing hardware requirements for new test servers. I also acted as a team lead participant. Purging and archived data out of large critical tables by using existing scripts and trying to improve performance and data availability, and using parallel scans to retrieve data were also routine tasks.
 
-');
+',1,1);
 
-insert into applicant (first_name, last_name, email_1, cell_phone, title, is_deleted, created_date, resume) values ('Kenneth', 'Riley', 'kriley3@webmd.com', '47-(107)899-4538', 'Sales Representative', 0, '2016-03-29 14:02', 'OBJECTIVE
+insert into applicant (first_name, last_name, email_1, cell_phone, title, is_deleted, created_date, resume,applicant_status_id,work_status_id) values ('Kenneth', 'Riley', 'kriley3@webmd.com', '47-(107)899-4538', 'Sales Representative', 0, '2016-03-29 14:02', 'OBJECTIVE
 To leverage my business education and technical experience to work with talented teams to deliver innovative solutions that solve real world problems. I have very broad and deep technical skills, excellent writing and communications skills, and work very well alone or in team environments. I spend a considerable amount of time keeping abreast of technology and trends, and keeping my hands-on technical skills up to date. I focus on results, prefer a dynamic, fast-paced environment, and raising the bar. I believe there is always room for improvement, be it in design or architecture, development methodology, quality assurance, marketing, delivery and support, and ultimately, customer satisfaction.
 
 EXPERIENCE
@@ -442,9 +442,9 @@ AMS Controls develops and manufactures hardware controllers and software for the
 Jan 2011-Sep 2011 Oracle – Redwood Shores, CA – Principal Member of Technical Staff (Telecommuter)
 Oracle acquired Passlogix as of Jan. 1, 2011 – continued duties on eSSO architecture, as part of the Identity Management group, Fusion Middleware. (Telecommuting position)
 
-May 2008-Dec 2010 Passlogix – New York, NY – Senior Engineer/R&D/Enterprise Architect (Telecommuter)');
+May 2008-Dec 2010 Passlogix – New York, NY – Senior Engineer/R&D/Enterprise Architect (Telecommuter)',1,1);
 
-insert into applicant (first_name, last_name, email_1, cell_phone, title, is_deleted, created_date, resume) values ('Timothy', 'Arnold', 'tarnold5@dot.gov', '86-(454)859-8917', 'Operator', 0, '2016-03-29 14:02', 'EXPERIENCE
+insert into applicant (first_name, last_name, email_1, cell_phone, title, is_deleted, created_date, resume,applicant_status_id,work_status_id) values ('Timothy', 'Arnold', 'tarnold5@dot.gov', '86-(454)859-8917', 'Operator', 0, '2016-03-29 14:02', 'EXPERIENCE
 Key Technologies: C#, Silverlight/WPF, ASP/MVC, Web Services/REST/WCF, EntityFramework, SQL Server, Telerik Reporting, SignalR, Reactive Steams, NServiceBus
 Passlogix was the industry leader in single sign on (SSO) technology for the enterprise. As a member of the engineering team I worked on a variety of enhancements to various components of the platform and developed the architecture and implementation of the reporting sub-system, a key missing feature.
 MONSANTO, St. Louis, MO (9/2012 – present)
@@ -479,9 +479,9 @@ Senior Software Programmer
 •          Co-authored SRS, SDD, STD documents for major airborne radar upgrade project.
 •          Performed requirements management using DOORS (Telelogic/IBM) software.
 •          Part of team which re-engineered land based software for radar system
-');
+',1,1);
 
-insert into applicant (first_name, last_name, email_1, cell_phone, title, is_deleted, created_date, resume) values ('Fred', 'Hunter', 'fhunter4@eventbrite.com', '86-(582)172-4931', 'Junior Executive', 0, '2016-03-29 14:02', 'Experience
+insert into applicant (first_name, last_name, email_1, cell_phone, title, is_deleted, created_date, resume,applicant_status_id,work_status_id) values ('Fred', 'Hunter', 'fhunter4@eventbrite.com', '86-(582)172-4931', 'Junior Executive', 0, '2016-03-29 14:02', 'Experience
 The Centric Group, St. Louis MO (Contract Position) [05.2011 – Present]
 Senior Web Developer
 The Centric group is a holding company owned by Enterprise Rent-A-Car. Their business is based on acquiring other companies to build a portfolio of brands and products in the travel accessory, hospitality and correctional industries. I work on a team of talented technologists who provide shared IT services to our brands. Some of my duties and accomplishments include:
@@ -496,9 +496,9 @@ At Habanero I worked as an integral part of their web development team. Being th
 •          Playing a key role on strategy projects. One of the services Habanero offers is working with companies who already have development teams to plan large-scale projects. I was the technical architect on some of these projects, and through rigorous requirement gathering have helped design public facing sites, intranet/extranet portals and e-commerce systems, most of which were eventually developed on SharePoint.
 •          Architected and developed the global web presence for a large steel manufacturer. The customer has offices in nineteen countries and hired Habanero to build their public-facing site, an e-commerce store and develop an extranet portal.
 Environment: C#, ASP.NET 3.5/Visual Studio 2008, SQL Server 2005/2008, Microsoft Office SharePoint Server 2007, Ektron CMS400.NET, Sitefinity CMS, Umbraco CMS, HTML, CSS, JavaScript
-');
+',1,1);
 
-insert into applicant (first_name, last_name, email_1, cell_phone, title, is_deleted, created_date, resume) values ('Sean', 'Ward', 'sward6@dropbox.com', '30-(381)782-7752', 'Compensation Analyst', 0, '2016-03-29 14:02', 'StationDigital, St. Louis, MO Oct 2014 – Dec 31, 2014
+insert into applicant (first_name, last_name, email_1, cell_phone, title, is_deleted, created_date, resume,applicant_status_id,work_status_id) values ('Sean', 'Ward', 'sward6@dropbox.com', '30-(381)782-7752', 'Compensation Analyst', 0, '2016-03-29 14:02', 'StationDigital, St. Louis, MO Oct 2014 – Dec 31, 2014
 Java Developer (Consultant)
 
 Responsible for creation of stationdigital.com.
@@ -539,9 +539,9 @@ Responsible for enhancements to the following web applications liste below. I wa
 
 Technical Environment: Java, Tomcat, AJAX, JSP, HTML, AngularJS, jQuery, JBOSS, JUnit Testing, Spring 3.2.2, Hibernate, MAVEN
 
-');
+',1,1);
 
-insert into applicant (first_name, last_name, email_1, cell_phone, title, is_deleted, created_date, resume) values ('Teresa', 'Reed', 'treed7@lulu.com', '63-(942)392-2790', 'Design Engineer', 0, '2016-03-29 14:02', 'iBridge Solutions, St. Louis, MO Nov 2012 – Present
+insert into applicant (first_name, last_name, email_1, cell_phone, title, is_deleted, created_date, resume,applicant_status_id,work_status_id) values ('Teresa', 'Reed', 'treed7@lulu.com', '63-(942)392-2790', 'Design Engineer', 0, '2016-03-29 14:02', 'iBridge Solutions, St. Louis, MO Nov 2012 – Present
 Consultant
 Provide software development consulting services including design and implementation of software systems applying object-oriented design principles and patterns, refactoring, technology selection, and mentoring.
 •          MasterCard (11/2012- current) – Member of the Integrated Processing Solutions (IPS) team supporting and enhancing technology solutions for the debit/credit processing business. Extended an existing SMS communications framework to add campaign messaging and improve throughput by introducing multi-threading. Wrote the detailed design and led development on construction of an internal customer sanctions matching system to prevent fraudulent transactions.
@@ -562,9 +562,9 @@ Used: Rally, Filenet P8, Eclipse 3.4, Java 5, Hibernate 3, JDBC, Spring, Oracle 
 o        Analyzed user stories and drew Visio process diagrams to depict message flow and transformation using an Enterprise Integration Patterns template.
 o        Wrote a configurable marshalling framework based on the Apache commons beanutils to parse/assemble pipe-delimited messages to/from Java classes.
 o        Investigated the workings of the JBossTS transaction server integrated in Mule and developed integration classes that allowed services to utilize Hibernate for persistence with JDBC Connections enlisted in a global XA-transaction started by a Mule endpoint (something neither the client nor the vendor had previously accomplished).
-');
+',1,1);
 
-insert into applicant (first_name, last_name, email_1, cell_phone, title, is_deleted, created_date, resume) values ('Jennifer', 'George', 'jgeorge8@indiatimes.com', '63-(931)345-5409', 'Speech Pathologist', 0, '2016-03-29 14:02', 'SniperDyne 2015 – Present
+insert into applicant (first_name, last_name, email_1, cell_phone, title, is_deleted, created_date, resume,applicant_status_id,work_status_id) values ('Jennifer', 'George', 'jgeorge8@indiatimes.com', '63-(931)345-5409', 'Speech Pathologist', 0, '2016-03-29 14:02', 'SniperDyne 2015 – Present
 Senior Software Engineer
          Fixed a bug in the FedEx shipping API where commercial addresses were being billed as residential
 
@@ -590,9 +590,9 @@ Senior Software Engineer
         Implemented new features in the case management system
         Worked with users to resolve production issues
         Wrote stored procedures and reports in SSRS
-');
+',1,1);
 
-insert into applicant (first_name, last_name, email_1, cell_phone, title, is_deleted, created_date, resume) values ('Barbara', 'Gardner', 'bgardner9@google.es', '86-(124)589-4114', 'Administrative Officer', 0, '2016-03-29 14:02', 'Novaant
+insert into applicant (first_name, last_name, email_1, cell_phone, title, is_deleted, created_date, resume,applicant_status_id,work_status_id) values ('Barbara', 'Gardner', 'bgardner9@google.es', '86-(124)589-4114', 'Administrative Officer', 0, '2016-03-29 14:02', 'Novaant
 IT Systems Architect
 				Apr 2012 - Date
 •	Managed various vendors
@@ -618,9 +618,9 @@ IT Systems Architect
 •	Responsible for the design and configuration of several networks
 •	Design and implementation of Active Directory
 •	Migration of multiple Exchange servers
-');
+',1,1);
 
-insert into applicant (first_name, last_name, email_1, cell_phone, title, is_deleted, created_date, resume) values ('Albert', 'Scott', 'ascotta@hp.com', '63-(355)272-0048', 'Accountant III', 0,  '2016-03-29 14:02', '
+insert into applicant (first_name, last_name, email_1, cell_phone, title, is_deleted, created_date, resume,applicant_status_id,work_status_id) values ('Albert', 'Scott', 'ascotta@hp.com', '63-(355)272-0048', 'Accountant III', 0,  '2016-03-29 14:02', '
 Unit4 - Ellisville, MO	12/2015- 3/2016
 Business Intelligence / ETL Senior Developer
 
@@ -663,9 +663,9 @@ Business Technology Architect
 •	Used Oracle PL/SQL to query and ETL data from Oracle Databases
 •	Projects worked on used both Microsoft reporting and Business Objects Webi and Universes.
 •	Work with IDocs to extract and load information from SAP for reporting.
-');
+',1,1);
 
-insert into applicant (first_name, last_name, email_1, cell_phone, title, is_deleted, created_date, resume) values ('Adam', 'Torres', 'atorresb@sbwire.com', '81-(595)796-1207', 'Product Engineer', 0,  '2016-03-29 14:02', ' SACWIS stands for Statewide Automated Child Welfare Information System is a Child benefits application that helps the children of Wisconsin State to receive benefits based on certain state rules. The system allows the county workers and other designated officers to use the application and process for allowing or deny the benefits based on certain rules and conditions.
+insert into applicant (first_name, last_name, email_1, cell_phone, title, is_deleted, created_date, resume,applicant_status_id,work_status_id) values ('Adam', 'Torres', 'atorresb@sbwire.com', '81-(595)796-1207', 'Product Engineer', 0,  '2016-03-29 14:02', ' SACWIS stands for Statewide Automated Child Welfare Information System is a Child benefits application that helps the children of Wisconsin State to receive benefits based on certain state rules. The system allows the county workers and other designated officers to use the application and process for allowing or deny the benefits based on certain rules and conditions.
 
  Responsibilities: .
 •	Analyzed, designed and implemented application based on Object Oriented programming i.e., Object oriented Analysis and Design.
@@ -723,9 +723,9 @@ PIP and MBS were provider and member website applications. PIP provides the info
 
 
 Environment: Java, J2EE, JSP, Servlets, Struts 2, spring, Hibernate 3.0.,EJB,JMS, JSTL, jQuery,  Angular JS, Bootstrap, Groovy, Eclipse, ANT, IBM Web SEAL, DB2 8.1, MongoDB, Agile, IBM Rational Application Developer, JUnit, Log4j, Backbone.js, HTML, CSS, Java Script, JSON, XML, Design patterns, GitHub.
-');
+',1,1);
 
-insert into applicant (first_name, last_name, email_1, cell_phone, title, is_deleted, created_date, resume) values ('Pamela', 'Butler', 'pbutlerc@prnewswire.com', '46-(917)172-6878', 'Senior Developer', 0,  '2016-03-29 14:02', '
+insert into applicant (first_name, last_name, email_1, cell_phone, title, is_deleted, created_date, resume,applicant_status_id,work_status_id) values ('Pamela', 'Butler', 'pbutlerc@prnewswire.com', '46-(917)172-6878', 'Senior Developer', 0,  '2016-03-29 14:02', '
 Software Architect/Analyst at Preferred Resources, contracted to Maritz, Inc.	May 2014 – Present
 Software Architect/Analyst
 Contract to the Maritz Motivation Company through Preferred Resources as a Software Architect and Analyst, responsible for providing the high level design, time estimates and low level design for software projects.  Also responsible for helping the software support team in determining the root cause and resolution to software issues.
@@ -757,9 +757,9 @@ As a Senior Software Engineer at Save-A-Lot, responsible for mentoring junior de
 •	As part of the JBoss upgrade, designed and implemented framework code to leverage Save-A-Lot’s existing security infrastructure for new JSF applications
 •	Consistently sought as a knowledge resource by other developers and team leads to help with performance issues, SQL queries and overall Save-A-Lot system knowledge
 Technologies Used: Java, JBoss, MS SQL, Oracle, DB2, PostgreSQL, Collabnet TeamForge, SVN, Serena Dimensions, Maven, Ant, JSF, Flex, Java EE, RedHat Linux, Windows Server, Eclipse, Visual Studio, VB6, C#, Appworx job scheduler, IBM Unix, Jenkins, HTML, Javascript, Python, Spring (exploratory), Hibernate (exploratory), GWT (exploratory)
-');
+',1,1);
 
-insert into applicant (first_name, last_name, email_1, cell_phone, title, is_deleted, created_date, resume) values ('Ernest', 'Morris', 'emorrisd@blogs.com', '81-(785)122-6062', 'Graphic Designer', 0,  '2016-03-29 14:02', ' Monsanto, Maryland Heights, MO						 Mar14—Present
+insert into applicant (first_name, last_name, email_1, cell_phone, title, is_deleted, created_date, resume,applicant_status_id,work_status_id) values ('Ernest', 'Morris', 'emorrisd@blogs.com', '81-(785)122-6062', 'Graphic Designer', 0,  '2016-03-29 14:02', ' Monsanto, Maryland Heights, MO						 Mar14—Present
 Role: Application Developer
 Description: Apollo Field Manager/REST API’s
 Monsanto has risen to leadership status in the biotech industry through its ability to turn cutting edge science into strategic advantage. A great deal of this success was facilitated through the analysis, collection and reporting tools developed by Technology Pipeline Solutions. One tool used by TPS to provide these solutions is Apollo. The term Apollo can be used to reference the Apollo Application or the Apollo Framework. Apollo the application is a single desktop application with multiple plugins. It provides a single user interface shared by many of our Pipeline applications. The Apollo Framework is used to develop the Apollo application.
@@ -827,9 +827,9 @@ Form.
 •	Apache Ant is used as build tool.
 •	Interacted with Business Analysts for obtaining the requirements and validating the Implementation of the requirement.
 Environment: Java 1.6,Struts 2.0, AJAX, XML, Spring 2.5,Hibernate 3.0,WebServices, Web Logic10.3, JUnit4, Oracle 10g,PL/SQL, Eclipse , Clear Case, Clear Quest, Unix.
-');
+',1,1);
 
-insert into applicant (first_name, last_name, email_1, cell_phone, title, is_deleted, created_date, resume) values ('Ruth', 'Andrews', 'randrewse@spotify.com', '380-(472)135-1796', 'Design Engineer', 0,  '2016-03-29 14:02', ' MasterCard Worldwide (OFallon, Missouri) November 2010-present
+insert into applicant (first_name, last_name, email_1, cell_phone, title, is_deleted, created_date, resume,applicant_status_id,work_status_id) values ('Ruth', 'Andrews', 'randrewse@spotify.com', '380-(472)135-1796', 'Design Engineer', 0,  '2016-03-29 14:02', ' MasterCard Worldwide (OFallon, Missouri) November 2010-present
 Project Manager, Senior Systems Analyst, and Web/Omniture Analyst
 
 Job Responsibility:
@@ -859,9 +859,9 @@ Job Responsibility:
 ·         Enforce project deadlines and schedules, focusing on tasks and milestones.
 ·         Coordinate and consolidate 5 or more projects at a time.
 Tools: Oracle 10g, MS Project, Navigator, Excel (Macros)
-');
+',1,1);
 
-insert into applicant (first_name, last_name, email_1, cell_phone, title, is_deleted, created_date, resume) values ('Jimmy', 'Wood', 'jwoodf@cargocollective.com', '256-(819)355-7417', 'Associate Professor', 0,  '2016-03-29 14:02', ' Front-end Developer
+insert into applicant (first_name, last_name, email_1, cell_phone, title, is_deleted, created_date, resume,applicant_status_id,work_status_id) values ('Jimmy', 'Wood', 'jwoodf@cargocollective.com', '256-(819)355-7417', 'Associate Professor', 0,  '2016-03-29 14:02', ' Front-end Developer
 •	Member of the Implementation Team, responsible for specific (Enterprise) customers regarding the front-end implementation (and aftercare) of their community platforms, which are used by millions of users.
 •	Together with my direct colleagues (including designers, project implementation manager and more) I work in an agile mode (short lines) to ensure that the project is successfully implemented and the customer is happy.
 •	I ensure that specific designs are implemented using HTML5/CSS3 and Javascript in combination with the standardized inSided platform components using Twig templates.
@@ -885,9 +885,9 @@ Front-end Developer (contractor)
 •	Created a site making extensive use of jQuery animation techniques.
 •	Worked on a sited which was loosely based on the Ascensor javascript framework.
 •	Applied a responsive-design layout to an existing retail site for mobile devices.
-');
+',1,1);
 
-insert into applicant (first_name, last_name, email_1, cell_phone, title, is_deleted, created_date, resume) values ('Peter', 'Harvey', 'pharveyg@list-manage.com', '1-(777)427-9855', 'Safety Technician I', 0,  '2016-03-29 14:02', ' Savvis, St. Louis, Mo.
+insert into applicant (first_name, last_name, email_1, cell_phone, title, is_deleted, created_date, resume,applicant_status_id,work_status_id) values ('Peter', 'Harvey', 'pharveyg@list-manage.com', '1-(777)427-9855', 'Safety Technician I', 0,  '2016-03-29 14:02', ' Savvis, St. Louis, Mo.
 April 2012 - present
 Senior Software Engineer
         Developed custom modules from scratch for Drupal 7 using PHP and MySQL.
@@ -921,9 +921,9 @@ Application Developer
         Built sites using a heavily modified Zend MVC framework.
         Worked with PHP, MySQL, jQuery, and Apache on Red Hat, CentOS, and Ubuntu Linux.
         Worked extensively with git and subversion version control systems.
-');
+',1,1);
 
-insert into applicant (first_name, last_name, email_1, cell_phone, title, is_deleted, created_date, resume) values ('Elizabeth', 'Ryan', 'eryanh@mapy.cz', '86-(994)173-6624', 'Mechanical Systems Engineer', 0,  '2016-03-29 14:02', ' Java Design and Development (Web and IVR)
+insert into applicant (first_name, last_name, email_1, cell_phone, title, is_deleted, created_date, resume,applicant_status_id,work_status_id) values ('Elizabeth', 'Ryan', 'eryanh@mapy.cz', '86-(994)173-6624', 'Mechanical Systems Engineer', 0,  '2016-03-29 14:02', ' Java Design and Development (Web and IVR)
 
 Responsible for IVR and Java design and development for the IPS Prepaid and Debit Platforms.
 •	Lead team of 5 responsible for design, development and maintenance of core functionality to MasterCard Prepaid and Debit Processing Platform:  All IVR Functionality, Web Shopping Cart, Web and IVR Pin Functionality.
@@ -951,9 +951,9 @@ Responsible for Java development in AT&Ts high profile project NCSC which InfoWo
 •	Responsible for System Feature Design, Detail Design, Development and Unit testing for projects in the IVR.
 •	Interfaced with CTI to pass data attached data to agents in the call center.
 Environment Clustered nationally distributed with 64 Websphere clones on UNIX servers interfacing with 107 Nortel IVR Servers.
-');
+',1,1);
 
-insert into applicant (first_name, last_name, email_1, cell_phone, title, is_deleted, created_date, resume) values ('Michelle', 'Anderson', 'mandersoni@plala.or.jp', '54-(161)559-1996', 'Design Engineer', 0,  '2016-03-29 14:02', ' Enterprise Fleet Management - St. Louis, MO  09/2011 – Present Senior Software Engineer Senior Java web developer in an Eclipse / WebLogic development environment.  Lead integration efforts between Salesforce.com instance and EDGE using Informatica Cloud and plugins developed in Informatica PowerCenter.  EDGE is a backend system that provides a central repository of all of customer, quote, or vehicle information from the prospect phase to the customer activation phase.   EDGE supports complete fleet management, including master data entry, customer management, quote, orders, vendor management, and lease management.  Provided oversight of development efforts of CSC, Salesforce and Informatica Professional Services consultants working on site, remote and off shore.
+insert into applicant (first_name, last_name, email_1, cell_phone, title, is_deleted, created_date, resume,applicant_status_id,work_status_id) values ('Michelle', 'Anderson', 'mandersoni@plala.or.jp', '54-(161)559-1996', 'Design Engineer', 0,  '2016-03-29 14:02', ' Enterprise Fleet Management - St. Louis, MO  09/2011 – Present Senior Software Engineer Senior Java web developer in an Eclipse / WebLogic development environment.  Lead integration efforts between Salesforce.com instance and EDGE using Informatica Cloud and plugins developed in Informatica PowerCenter.  EDGE is a backend system that provides a central repository of all of customer, quote, or vehicle information from the prospect phase to the customer activation phase.   EDGE supports complete fleet management, including master data entry, customer management, quote, orders, vendor management, and lease management.  Provided oversight of development efforts of CSC, Salesforce and Informatica Professional Services consultants working on site, remote and off shore.
 Environment : Salesforce, Informatica Cloud, PowerCenter, Java, JSP, WebLogic, Oracle 11g,
 ClearCase, Struts, Hibernate, Log4j, SQL and Ant. Senior Java web developer in an Eclipse / WebLogic development environment.  Team contributor on rewrite of existing License, Tax and Title(LTT) application.
 Environment :Java, JSP, Spring, Struts, Hibernate, jQuery, jqGrid, WebLogic, Oracle 11g,
@@ -964,9 +964,9 @@ Team Lead / Java Web Developer - Centene Coporation Lead four teams of Java web 
 Environment: Java, JSP, WebSphere Portal, WebSphere Application Server, Oracle 10g, SQL, IBM - Rational Application Developer, Subversion, Hudson, Hibernate
 Development Studio, LLC- St. Louis, MO  11/2009 – Present Android Development Designer and developer for Preflop Drill Sergeant (PDS).  PDS is an Android 2.0 application that using a SQLite database to allow users to practice a narrow aspect of the Texas hold ‘em poker game on a mobile device.  Responsible for the design of the overall project, database design, UI graphic design and Java coding.
 Environment: Java, SQLite, SQL, Eclipse with the Android ADT plugin as IDE
-');
+',1,1);
 
-insert into applicant (first_name, last_name, email_1, cell_phone, title, is_deleted, created_date, resume) values ('Gerald', 'Cooper', 'gcooperj@abc.net.au', '86-(173)949-5106', 'Software Consultant', 0,  '2016-03-29 14:02', ' E4Sciences 2014 – Present (Rhode Island / Newton, CT)
+insert into applicant (first_name, last_name, email_1, cell_phone, title, is_deleted, created_date, resume,applicant_status_id,work_status_id) values ('Gerald', 'Cooper', 'gcooperj@abc.net.au', '86-(173)949-5106', 'Software Consultant', 0,  '2016-03-29 14:02', ' E4Sciences 2014 – Present (Rhode Island / Newton, CT)
 •	Android (SDK) Application Developer for Schlumberger Quarterly Periodical w/ Pictures & Multimedia Content
 •	Maintain Stash repository via Eclipse IDE
 •	Worked with Android Notification Libraries, specifically Parse and UrbanAirship
@@ -989,4 +989,4 @@ Raytheon 1997- 2010 (Rhode Island / Aurora, CO)
 •	Developed Earth Satellite (EMOS) ground based Satellite Command and Control Software using C++ and C on Windows based PC for NASA maneuvering and the sending and receiving of telemetry data that was useful for long-term global observations of the land surface, biosphere, atmosphere, and oceans of the Earth.
 •	Created Communication Satellite (SuperBird 6) ground based Command and Control Software using C++ and C on Windows based PC for a satellite made by Boeing for a Japanese Telecommunications/Defense company commanding position maneuvering, data encryption, and the sending and receiving of business telecommunication services.
 •	Lead Team Developer, participating in all phases from generating requirements using DOORS and Rose UML, C++, C, JAVA, code development, to final integration and Unit testing of U.S. Navy Zumwalt Next Generation Destroyer Sensor software ensembles that produced a next-generation Sonar to detect enemy targets.
-');
+',1,1);

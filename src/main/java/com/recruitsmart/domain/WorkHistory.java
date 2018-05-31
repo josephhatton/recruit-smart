@@ -14,7 +14,7 @@ import java.util.Objects;
  * A WorkHistory.
  */
 @Entity
-@Table(name = "workHistory")
+@Table(name = "work_history")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "workhistory")
 public class WorkHistory implements Serializable {

@@ -1,57 +1,424 @@
+<div class="page-container">
+    <h2 ng-hide="vm.contactEditable">{{vm.company.name}}</h2>
+    <h2 ng-show="vm.contactEditable" class="form-inline">
+        <input type="text" ng-model="vm.company.name" class="form-control">
+    </h2>
+    <p></p>
+    <div class="company-info well">
+        <h3>Contact Info
+            <button ng-hide="vm.contactEditable" ng-click="vm.contactEditable = !vm.contactEditable" type="submit"
+                    class="btn btn-success btn-sm"><span class="glyphicon glyphicon-pencil"></span></button>
+        </h3>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="genInfo">
+                    <div class="row">
+                        <div ng-hide="vm.contactEditable">
+                            <div class="col-md-4"><span>Website: {{ vm.company.website }}</span></div>
+                            <div class="col-md-4"><span>Email: {{ vm.company.email }}</span></div>
+                        </div>
+                        <div ng-show="vm.contactEditable">
+                            <div class="col-md-4"><span>Website:<input type="text" ng-model="vm.company.website"></span></div>
+                            <div class="col-md-4"><span>Email: <input type="text" ng-model="vm.company.email"></span></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div ng-hide="vm.contactEditable">
+                            <div class="col-md-4"><span>Employee Size: {{vm.company.employees}}</span></div>
+                            <div class="col-md-4"><span>Revenue: {{vm.company.revenue}}</span></div>
+                        </div>
+                        <div ng-show="vm.contactEditable">
+                            <div class="col-md-4"><span>Employee Size: <br><input type="text" ng-model="vm.company.employees"></span></div>
+                            <div class="col-md-4"><span>Revenue: <br><input type="text" ng-model="vm.company.revenue"></span></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div ng-hide="vm.contactEditable">
+                            <div class="col-md-4"><span>Industry: {{vm.company.industry}}</span></div>
+                        </div>
+                        <div ng-show="vm.contactEditable">
+                            <div class="col-md-4"><span>Industry: <br><input type="text" ng-model="vm.company.industry"></span></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="phone">
+                            <div ng-hide="vm.contactEditable">
+                                <div class="col-md-4"><span class="glyphicon glyphicon-phone">Main: {{vm.company.phone1}}&nbsp</span></div>
+                                <div class="col-md-4"><span class="glyphicon glyphicon-phone">Alt: {{vm.company.phone2}}&nbsp</span></div>
+                            </div>
+                            <div ng-show="vm.contactEditable">
+                                <div class="col-md-4"><span class="glyphicon glyphicon-phone">Main: <input type="text" ng-model="vm.company.phone1"></span></div>
+                                <div class="col-md-4"><span class="glyphicon glyphicon-phone">Alt: <input type="text" ng-model="vm.company.phone2"></span></div>
+                            </div>
+                        </div>
+                    </div>
 
-<div>
-    <h2><span>Company</span> {{vm.company.id}}</h2>
-    <hr>
-    <jhi-alert-error></jhi-alert-error>
-    <dl class="dl-horizontal jh-entity-details">
-        <dt><span>Name</span></dt>
-        <dd>
-            <span>{{vm.company.name}}</span>
-        </dd>
-        <dt><span>Website</span></dt>
-        <dd>
-            <span>{{vm.company.website}}</span>
-        </dd>
-        <dt><span>Industry</span></dt>
-        <dd>
-            <span>{{vm.company.industry}}</span>
-        </dd>
-        <dt><span>Revenue</span></dt>
-        <dd>
-            <span>{{vm.company.revenue}}</span>
-        </dd>
-        <dt><span>Employee</span></dt>
-        <dd>
-            <span>{{vm.company.employee}}</span>
-        </dd>
-        <dt><span>Is Deleted</span></dt>
-        <dd>
-            <span>{{vm.company.isDeleted}}</span>
-        </dd>
-        <dt><span>Company Type</span></dt>
-        <dd>
-            <span>{{vm.company.companyType}}</span>
-        </dd>
-        <dt><span>Company Status</span></dt>
-        <dd>
-            <span>{{vm.company.companyStatus}}</span>
-        </dd>
-        <dt><span>Skill</span></dt>
-        <dd>
-            <span ng-repeat="skill in vm.company.skills">
-                <a ui-sref="skill-detail({id: skill.id})">{{skill.name}}</a>{{$last ? '' : ', '}}
-            </span>
-        </dd>
-    </dl>
+                </div>
+                <uib-tabset class="well well-sm">
+                    <div>Address:
+                        <button ng-show="vm.contactEditable" ng-click="vm.addAddress();" class="addAddressbtn btn btn-success btn-xs">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                    </div>
+
+                    <uib-tab class="address" ng-repeat="address in vm.company.addresss track by $index">
+                        <uib-tab-heading>
+                            {{ $index +1 }}
+                        </uib-tab-heading>
+                        <div ng-hide="vm.contactEditable">
+                            {{address.address1}}<br>
+                            <span ng-show="address.address2">{{address.address2}}<br></span>
+                            {{address.city}}, {{address.state}} {{address.zipCode}}<br>
+                            {{address.country}}<br>
+                        </div>
+                        <div ng-show="vm.contactEditable">
+                            <input type="text" ng-model="address.address1"><br>
+                            <input type="text" ng-model="address.address2"><br>
+                            <input type="text" ng-model="address.city"><br>
+                            <select type="text" ng-model="address.state">
+                                <option value="AL">Alabama</option>
+                                <option value="AK">Alaska</option>
+                                <option value="AZ">Arizona</option>
+                                <option value="AR">Arkansas</option>
+                                <option value="CA">California</option>
+                                <option value="CO">Colorado</option>
+                                <option value="CT">Connecticut</option>
+                                <option value="DE">Delaware</option>
+                                <option value="DC">District Of Columbia</option>
+                                <option value="FL">Florida</option>
+                                <option value="GA">Georgia</option>
+                                <option value="HI">Hawaii</option>
+                                <option value="ID">Idaho</option>
+                                <option value="IL">Illinois</option>
+                                <option value="IN">Indiana</option>
+                                <option value="IA">Iowa</option>
+                                <option value="KS">Kansas</option>
+                                <option value="KY">Kentucky</option>
+                                <option value="LA">Louisiana</option>
+                                <option value="ME">Maine</option>
+                                <option value="MD">Maryland</option>
+                                <option value="MA">Massachusetts</option>
+                                <option value="MI">Michigan</option>
+                                <option value="MN">Minnesota</option>
+                                <option value="MS">Mississippi</option>
+                                <option value="MO">Missouri</option>
+                                <option value="MT">Montana</option>
+                                <option value="NE">Nebraska</option>
+                                <option value="NV">Nevada</option>
+                                <option value="NH">New Hampshire</option>
+                                <option value="NJ">New Jersey</option>
+                                <option value="NM">New Mexico</option>
+                                <option value="NY">New York</option>
+                                <option value="NC">North Carolina</option>
+                                <option value="ND">North Dakota</option>
+                                <option value="OH">Ohio</option>
+                                <option value="OK">Oklahoma</option>
+                                <option value="OR">Oregon</option>
+                                <option value="PA">Pennsylvania</option>
+                                <option value="RI">Rhode Island</option>
+                                <option value="SC">South Carolina</option>
+                                <option value="SD">South Dakota</option>
+                                <option value="TN">Tennessee</option>
+                                <option value="TX">Texas</option>
+                                <option value="UT">Utah</option>
+                                <option value="VT">Vermont</option>
+                                <option value="VA">Virginia</option>
+                                <option value="WA">Washington</option>
+                                <option value="WV">West Virginia</option>
+                                <option value="WI">Wisconsin</option>
+                                <option value="WY">Wyoming</option>
+                            </select><br>
+                            <input type="text" ng-model="address.zipCode">
+                            <button ng-click="vm.removeAddress($index);" class="deleteAddressbtn btn btn-danger btn-xs pull-right">
+                                <span class="glyphicon glyphicon-minus"></span>
+                            </button>
+                        </div>
+                    </uib-tab>
+                </uib-tabset>
+                <button ng-show="vm.contactEditable" class="addAddressbtn btn btn-success btn-xs" ng-click="vm.contactSave()">
+                    save
+                </button>
+                <button ng-show="vm.contactEditable" class="addAddressbtn btn btn-success btn-xs" ng-click="vm.cancelContactSave()">
+                    cancel
+                </button>
+            </div>
+
+            <div class="col-md-6">
+                <div class="row">
+                    <div ng-hide="vm.contactEditable">
+                        <div class="col-md-5"><span>Type: {{ vm.company.companyType }}</span></div>
+                    </div>
+                    <div ng-show="vm.contactEditable">
+                        <div class="col-md-5">
+                            Type: <select class="form-control" name="companyType"
+                                          ng-model="vm.company.companyType" id="field_companyType">
+                            <option value="CLIENT">CLIENT</option>
+                            <option value="POSPECT">POSPECT</option>
+                            <option value="VENDOR">VENDOR</option>
+                        </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div ng-hide="vm.contactEditable">
+                        <div class="col-md-5"><span>Status: {{ vm.company.companyStatus }}</span></div>
+                    </div>
+                    <div ng-show="vm.contactEditable">
+                        <div class="col-md-5">
+                            Status: <select ng-show="vm.contactEditable" class="form-control" name="companyStatus"
+                                            ng-model="vm.company.companyStatus" id="field_companyStatus">
+                            <option value="NO_CONTRACT" translate="recruitSmartApp.CompanyStatus.NO_CONTRACT">NO_CONTRACT</option>
+                            <option value="MSA">MSA</option>
+                            <option value="SA">SA</option>
+                            <option value="SOW">SOW</option>
+                        </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div ng-hide="vm.contactEditable">
+                        <div class="col-md-5"><span>Referral Source: {{ vm.company.referralSource }}</span></div>
+                    </div>
+                    <div ng-show="vm.contactEditable">
+                        <div class="col-md-5">
+                            Referral Source: <input type="text" ng-model="vm.company.referralSource">
+                        </div>
+                    </div>
+                </div>
+                Comment(s): <br>
+                <div class="row"  ng-repeat="companyComments in vm.company.companyCommentss track by $index">
+                    <div class="col-md-5"><span>{{vm.companyComments.description}}</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-------- ACTIVITIES --------------->
+    <activity activitys="vm.company.activitys" company-id="{{vm.company.id}}"></activity>
+
+    <div class="table-responsive well">
+        <div class="form-group">
+            <label for="field_users">Assign to Users</label>
+            <select class="form-control" id="field_users" multiple name="users" ng-model="vm.company.users"
+                    ng-options="user as (user.lastName +', '+user.firstName) for user in vm.users track by user.id"></select>
+        </div>
+    </div>
+    <!-------- GENERAL COMMENTS --------------->
+    <div class="table-responsive well">
+        <table class="table table-striped">
+            <h3><span>General Comments  </span>
+                <button ng-hide="vm.genCommentsEditable" ng-click="vm.genCommentsEditable = !vm.genCommentsEditable"
+                        type="submit" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-plus"></span></button>
+                <button ng-show="vm.genCommentsEditable" class="btn btn-primary" ng-click="vm.genCommentsSave()">save</button>
+                <button ng-show="vm.genCommentsEditable" class="btn btn-default" ng-click="vm.cancelGenCommentsSave()">cancel
+                </button>
+            </h3>
+            <tbody>
+            <tr>
+                <td>
+          <textarea class="form-control" ng-disabled="!vm.genCommentsEditable"
+                    ng-model="vm.newCompanyComment"></textarea>
+                </td>
+            </tr>
+            <tr ng-repeat="companyComments in vm.company.companyCommentss track by $index">
+                <td>{{companyComments.description}}</td>
+                <td>
+                    <button ng-click="vm.removeGenComments($index);" class="btn btn btn-danger btn-xs pull-right"></button>
+                </td>
+            </tr>
+            </tbody>
+
+        </table>
+    </div>
+    <!-- END GENERAL COMMENTS -->
+
+    <!-- INTERNAL COMMENTS -->
+    <div class="table-responsive well">
+        <table class="table table-striped">
+            <h3><span>Internal Comments  </span>
+                <button ng-hide="vm.internalCommentsEditable"
+                        ng-click="vm.internalCommentsEditable = !vm.internalCommentsEditable" type="submit"
+                        class="btn btn-success btn-sm"><span class="glyphicon glyphicon-plus"></span></button>
+                <button ng-show="vm.internalCommentsEditable" class="btn btn-primary" ng-click="vm.internalCommentsSave()">
+                    save
+                </button>
+                <button ng-show="vm.internalCommentsEditable" class="btn btn-default"
+                        ng-click="vm.cancelInternalCommentsSave()">cancel
+                </button>
+            </h3>
+            <tbody>
+            <tr>
+                <td>
+          <textarea class="form-control" ng-disabled="!vm.internalCommentsEditable"
+                    ng-model="vm.newCompanyInternalComment"></textarea>
+                </td>
+            </tr>
+            <tr ng-repeat="companyInternalComments in vm.company.companyInternalCommentss track by $index">
+                <td>{{companyInternalComments.description}}</td>
+                <td>
+                    <button ng-click="vm.removeInternalComments($index);" class="btn btn btn-danger btn-xs pull-right"></button>
+                </td>
+            </tr>
+            </tbody>
+
+        </table>
+    </div>
+
+    <!-- END INTERNAL COMMENTS -->
+    <div class="table-responsive well">
+        <table class="table table-striped">
+            <h3>
+                <span>Skills Hired</span>
+                <button class="btn btn-success btn-xs" ng-click="vm.skillsEditable = !vm.skillsEditable">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                </button>
+            </h3>
+            <thead>
+            <tr>
+                <th>
+          <span ng-show="vm.skillsEditable">
+              <input type="text" ng-model="vm.newSkill"
+                     uib-typeahead="skill as skill.name for skill in vm.skills | filter:$viewValue | limitTo:8">
+              <button ng-click="vm.addSkill(vm.newSkill)" class="btn btn-success btn-xs">
+              <span class="glyphicon glyphicon-plus"></span> add skill
+              </button>
+          </span>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td ng-hide="vm.skillsEditable"><span ng-repeat="skill in vm.company.skills track by $index">{{ skill.name }}{{$last ? '' : ', '}}</span>
+                </td>
+                <td ng-show="vm.skillsEditable">
+                    <span ng-repeat="skill in vm.company.skills track by $index">
+                        {{ skill.name }}
+                        <button class="btn btn-danger btn-xs">
+                            <span class="glyphicon glyphicon-remove-circle" ng-click="vm.deleteSkill($index);"></span>
+                        </button>
+                    </span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="table-responsive well">
+        <table class="table table-striped">
+            <h3>
+                <span>Company Contacts</span>
+                <button class="btn btn-success btn-xs" ui-sref="company-detail.newHC({id:vm.company.id})">
+                    <span class="glyphicon glyphicon-plus"></span>
+                </button>
+            </h3>
+            <thead>
+
+            <tr>
+                <td>Name</td>
+                <td>Contact Type</td>
+                <td>Job Title</td>
+                <td>Email</td>
+                <td>Alt. Email</td>
+                <td>Main Phone</td>
+                <td>Alt. Phone</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="hiringContact in vm.company.hiringContacts track by $index">
+                <td><a ui-sref="hiring-contact-detail({id:hiringContact.id})">{{hiringContact.lastName}},
+                    {{hiringContact.firstName}}</a></td>
+                <td>{{hiringContact.contactType }}</td>
+                <td>{{hiringContact.jobTitle}}</td>
+                <td>{{hiringContact.email1}}</td>
+                <td>{{hiringContact.email2}}</td>
+                <td>{{hiringContact.phone1}}</td>
+                <td>{{hiringContact.phone2}}</td>
+                <td>
+                    <button type="submit"
+                            ui-sref="hiringContact.delete({id:hiringContact.id})"
+                            class="btn btn-danger btn-sm">
+                        <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"></span>
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="table-responsive well">
+        <table class="table table-striped">
+            <h3>
+                <span>Job Orders</span>
+                <button class="btn btn-success btn-xs" ui-sref="company-detail.newJob({id:vm.company.id})">
+                    <span class="glyphicon glyphicon-plus"></span>
+                </button>
+            </h3>
+            <thead>
+
+            <tr>
+                <td>Position Title</td>
+                <td>Company Contact</td>
+                <td>Status</td>
+                <td>Type</td>
+                <td>Compensation</td>
+                <td>Date Entered</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="job in vm.company.jobOrders track by $index">
+                <td><a ui-sref="job-order-detail({id:job.id})">{{job.title}}</a></td>
+                <td><a ng-repeat="contact in vm.company.jobOrders track by $index"
+                       ui-sref="hiring-contact-detail({id:contact.id})">{{contact.lastName}}, {{contact.firstName}}</a></td>
+                <td>{{job.jobStatus}}</td>
+                <td>{{job.jobType}}</td>
+                <td>Salary: $ {{job.salary}}<br> Hourly: $ {{job.hourly}}</td>
+                <td>{{job.createdDate}}</td>
+                <td>
+                    <button type="submit"
+                            ui-sref="jobOrder.delete({id:job.id})"
+                            class="btn btn-danger btn-sm">
+                        <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"></span>
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!---------- ATTACHMENTS ------------>
+    <div class="table-responsive well">
+        <table class="table table-striped">
+
+            <thead>
+            <tr>
+                <th><h3>Attachments</h3></th>
+                <th>
+                    <button class="btn btn-success btn-xs pull-right">
+                        <span class="glyphicon glyphicon-plus"></span>
+                    </button>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><a>crescendoMSA.pdf</a></td>
+                <td>
+                    <button type="submit"
+                            ui-sref="jobs.delete({id:jobs.id})"
+                            class="btn btn-danger btn-sm">
+                        <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span
+                        translate="entity.action.delete"> Delete</span>
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 
     <button type="submit"
-            ui-sref="{{ vm.previousState }}"
-            class="btn btn-info">
-        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
-    </button>
-
-    <button type="button" ui-sref="company-detail.edit({id:vm.company.id})" class="btn btn-primary">
-        <span class="glyphicon glyphicon-pencil"></span>
-        <span class="hidden-sm-down"> Edit</span>
+            onclick="window.history.back()"
+            class="btn btn-success">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
     </button>
 </div>

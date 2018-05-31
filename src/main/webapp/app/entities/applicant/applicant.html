@@ -38,9 +38,9 @@
                     <th jh-sort-by="firstName"><span>First Name</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="lastName"><span>Last Name</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="title"><span>Title</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="email1"><span>Email 1</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="applicantStatus.id"><span>Applicant Status</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="workStatus.id"><span>Work Status</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="email1"><span>Email</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="applicantStatus.name"><span>Applicant Status</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="workStatus.name"><span>Work Status</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -50,12 +50,8 @@
                     <td><a ui-sref="applicant-detail({id:applicant.id})">{{applicant.lastName}}</a></td>
                     <td>{{applicant.title}}</td>
                     <td>{{applicant.email1}}</td>
-                    <td>
-                        <a ui-sref="applicant-status-detail({id:applicant.applicantStatus.id})">{{applicant.applicantStatus.id}}</a>
-                    </td>
-                    <td>
-                        <a ui-sref="work-status-detail({id:applicant.workStatus.id})">{{applicant.workStatus.id}}</a>
-                    </td>
+                    <td>{{applicant.applicantStatus.name}}</td>
+                    <td>{{applicant.workStatus.name}}</td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"
@@ -66,7 +62,7 @@
                             </button>
                             <button type="submit"
                                     ui-sref="applicant.delete({id:applicant.id})"
-                                    class="btn btn-danger btn-sm">
+                                    class="btn btn-warning btn-sm">
                                 <span class="glyphicon glyphicon-remove-circle"></span>
                                 <span class="hidden-sm-down"></span>
                             </button>

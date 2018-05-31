@@ -114,11 +114,11 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="applicant_status_id" type="bigint">
+            <column name="applicant_status_id" type="int">
                 <constraints nullable="true" />
             </column>
 
-            <column name="work_status_id" type="bigint">
+            <column name="work_status_id" type="int">
                 <constraints nullable="true" />
             </column>
             <column name="created_date" type="timestamp" defaultValueDate="${now}">

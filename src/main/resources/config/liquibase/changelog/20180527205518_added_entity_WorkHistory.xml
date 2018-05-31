@@ -18,7 +18,7 @@
         Added the entity WorkHistory.
     -->
     <changeSet id="20180527205518-1" author="jhipster">
-        <createTable tableName="workHistory">
+        <createTable tableName="work_history">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>

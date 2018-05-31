@@ -14,7 +14,7 @@ import java.util.Objects;
  * A ActivityAction.
  */
 @Entity
-@Table(name = "activityAction")
+@Table(name = "activity_action")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "activityaction")
 public class ActivityAction implements Serializable {

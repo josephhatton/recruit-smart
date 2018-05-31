@@ -16,7 +16,7 @@ import com.recruitsmart.domain.enumeration.MainEntity;
  * A HotList.
  */
 @Entity
-@Table(name = "hotList")
+@Table(name = "hot_list")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "hotlist")
 public class HotList implements Serializable {

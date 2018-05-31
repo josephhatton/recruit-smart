@@ -13,7 +13,7 @@ import java.util.Objects;
  * A ApplicantStatus.
  */
 @Entity
-@Table(name = "applicantStatus")
+@Table(name = "applicant_status")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "applicantstatus")
 public class ApplicantStatus implements Serializable {

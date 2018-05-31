@@ -150,22 +150,22 @@
 
         <div class="form-group">
             <label for="field_applicantStatus">Applicant Status</label>
-            <select class="form-control" id="field_applicantStatus" name="applicantStatus" ng-model="vm.applicant.applicantStatus" ng-options="applicantStatus as applicantStatus.id for applicantStatus in vm.applicantstatuses track by applicantStatus.id">
+            <select class="form-control" id="field_applicantStatus" name="applicantStatus" ng-model="vm.applicant.applicantStatus" ng-options="applicantStatus as applicantStatus.name for applicantStatus in vm.applicantstatuses track by applicantStatus.id">
                 <option value=""></option>
             </select>
         </div>
         <div class="form-group">
             <label for="field_workStatus">Work Status</label>
-            <select class="form-control" id="field_workStatus" name="workStatus" ng-model="vm.applicant.workStatus" ng-options="workStatus as workStatus.id for workStatus in vm.workstatuses track by workStatus.id">
+            <select class="form-control" id="field_workStatus" name="workStatus" ng-model="vm.applicant.workStatus" ng-options="workStatus as workStatus.name for workStatus in vm.workstatuses track by workStatus.id">
                 <option value=""></option>
             </select>
         </div>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+        <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="vm.clear()">
             <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
         </button>
-        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-success">
             <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
         </button>
     </div>

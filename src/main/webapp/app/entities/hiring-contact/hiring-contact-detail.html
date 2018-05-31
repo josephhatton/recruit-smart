@@ -1,67 +1,228 @@
+<div class="page-container">
+    <div class="row">
+        <h2 ng-hide="vm.contactEditable">{{vm.hiringContact.firstName}} {{ vm.hiringContact.middleName }}
+            {{vm.hiringContact.lastName}} <span ng-if="vm.hiringContact.nickName">"{{ vm.hiringContact.nickName }}"</span></h2>
+    </div>
+    <h3 ng-show="vm.contactEditable" class="form-inline">
+        <input type="text" ng-model="vm.hiringContact.firstName"/>
+        <input type="text" ng-model="vm.hiringContact.middleName"/>
+        <input type="text" ng-model="vm.hiringContact.lastName"/><br>
+        <span>"<input type="text" ng-model="vm.hiringContact.nickName"/>"</span>
 
-<div>
-    <h2><span>Hiring Contact</span> {{vm.hiringContact.id}}</h2>
-    <hr>
-    <jhi-alert-error></jhi-alert-error>
-    <dl class="dl-horizontal jh-entity-details">
-        <dt><span>First Name</span></dt>
-        <dd>
-            <span>{{vm.hiringContact.firstName}}</span>
-        </dd>
-        <dt><span>Last Name</span></dt>
-        <dd>
-            <span>{{vm.hiringContact.lastName}}</span>
-        </dd>
-        <dt><span>Phone 1</span></dt>
-        <dd>
-            <span>{{vm.hiringContact.phone1}}</span>
-        </dd>
-        <dt><span>Phone 2</span></dt>
-        <dd>
-            <span>{{vm.hiringContact.phone2}}</span>
-        </dd>
-        <dt><span>Email 1</span></dt>
-        <dd>
-            <span>{{vm.hiringContact.email1}}</span>
-        </dd>
-        <dt><span>Job Title</span></dt>
-        <dd>
-            <span>{{vm.hiringContact.jobTitle}}</span>
-        </dd>
-        <dt><span>Referral Source</span></dt>
-        <dd>
-            <span>{{vm.hiringContact.referralSource}}</span>
-        </dd>
-        <dt><span>Contact Type</span></dt>
-        <dd>
-            <span>{{vm.hiringContact.contactType}}</span>
-        </dd>
-        <dt><span>Email 2</span></dt>
-        <dd>
-            <span>{{vm.hiringContact.email2}}</span>
-        </dd>
-        <dt><span>Middle Name</span></dt>
-        <dd>
-            <span>{{vm.hiringContact.middleName}}</span>
-        </dd>
-        <dt><span>Last Modified By</span></dt>
-        <dd>
-            <span>{{vm.hiringContact.lastModifiedBy}}</span>
-        </dd>
-        <dt><span>Company</span></dt>
-        <dd>
-            <a ui-sref="company-detail({id:vm.hiringContact.company.id})">{{vm.hiringContact.company.id}}</a>
-        </dd>
-    </dl>
+    </h3>
+    <p></p>
+    <div class="hiringContact-info well">
+        <div class="row">
+            <div class="col-xs-6">
+                <h2 ng-hide="vm.contactEditable">{{vm.hiringContact.firstName}} {{ vm.hiringContact.middleName }}
+                    {{vm.hiringContact.lastName}} <span ng-if="vm.hiringContact.nickName">"{{ vm.hiringContact.nickName }}"</span></h2>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-6">
+                <h3>Contact Info
+                    <button ng-hide="vm.contactEditable" ng-click="vm.contactEditable = !vm.contactEditable" type="submit"
+                            class="btn btn-success btn-sm"><span class="glyphicon glyphicon-pencil"></span></button>
+                </h3>
+            </div>
+            <div class="col-xs-6">
+                <h3>Person Type: Hiring Contact</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">
+                <div class="phone">
+                    <span ng-hide="vm.contactEditable" class="glyphicon glyphicon-phone"><label>Main Phone:</label> {{vm.hiringContact.phone1}}&nbsp</span>
+                    <span ng-hide="vm.contactEditable" class="glyphicon glyphicon-phone"><label>Alt. Phone:</label> {{vm.hiringContact.phone2}}&nbsp</span>
+                    <div ng-show="vm.contactEditable">
+                        <span class="glyphicon glyphicon-phone"><label>Main Phone:</label> <input type="text" ng-model="vm.hiringContact.phone1"></span>
+                        <span class="glyphicon glyphicon-phone"><label>Alt. Phone:</label> <input type="text" ng-model="vm.hiringContact.phone2"></span>
+                    </div>
+                </div>
+                <div class="email">
+          <span ng-hide="vm.contactEditable" class="glyphicon glyphicon-envelope"> <a
+              href='mailto:{{vm.hiringContact.email1}}'>{{ vm.hiringContact.email1 }}</a></span>
+                    &nbsp&nbsp&nbsp&nbsp<span ng-hide="vm.contactEditable" class="glyphicon glyphicon-envelope"> <a
+                    href='mailto:{{vm.hiringContact.email2}}'>{{ vm.hiringContact.email2 }}</a></span>
+                    <span ng-show="vm.contactEditable" class="glyphicon glyphicon-envelope">
+            <input type="text" ng-model="vm.hiringContact.email1"></span>
+                    <span ng-show="vm.contactEditable" class="glyphicon glyphicon-envelope">
+            <input type="text" ng-model="vm.hiringContact.email2"></span>
+                </div>
+                <p></p>
+                <button ng-show="vm.contactEditable" class="btn btn-success btn-sm" ng-click="vm.contactSave()">
+                    save
+                </button>
+                <button ng-show="vm.contactEditable" class="btn btn-success btn-sm" ng-click="vm.cancelContactSave()">
+                    cancel
+                </button>
+            </div>
+            <div class="col-xs-6">
+                <span><label>Contact Type:</label> </span><span ng-hide="vm.contactEditable">{{vm.hiringContact.contactType}}</span>
+                <select type="text" ng-show="vm.contactEditable" ng-model="vm.hiringContact.contactType">
+                    <option value="Hiring Authority"> Hiring Authority</option>
+                    <option value="Interviewer"> Interviewer</option>
+                    <option value="other"> Other</option>
+                </select>
+                <input
+                    ng-show="vm.contactEditable && vm.hiringContact.contactType != null && vm.hiringContact.contactType != 'Hiring Authority' && vm.hiringContact.contactType != 'Interviewer'"
+                    type="text" ng-model="vm.hiringContact.contactType"/>
+                <!--        <input type="checkbox"  ng-show="contactEditable" ng-model="hiringContact.contactType" value="HiringAuthority">Hiring Authority</input> -->
+                <!--        <input type="checkbox" ng-show="contactEditable" ng-model="hiringContact.contactType" value="Interviewer">Interviewer</input> -->
+                <!--        <input type="checkbox" ng-show="contactEditable" ng-model="hiringContact.contactType" value="Other">Other</input>-->
+                <br>
+                <div class="company well well-sm">
+                    <span><strong>Company</strong></span><br>
+                    <span ng-hide="vm.contactEditable"><label>Name:</label> <a ui-sref="company-detail({id:vm.hiringContact.company.id})">{{vm.hiringContact.company.name}}</a>&nbsp;</span><br>
+                    <span ng-hide="vm.contactEditable"><label>Job Title:</label> {{vm.hiringContact.jobTitle}}&nbsp</span><br>
+                    <span ng-hide="vm.contactEditable"><label>Referral Source:</label> {{vm.hiringContact.referralSource}}&nbsp</span>
+                    <div ng-show="vm.contactEditable">
+            <span>Company Name: <select class="form-control" id="field_company" name="company"
+                                        ng-model="vm.hiringContact.company.name"
+                                        ng-options="company as company.name for company in vm.companys track by company.id">
+                </select>
+            </span>
+                        <span>JobTitle: <input type="text" ng-model="vm.hiringContact.jobTitle"></span><br>
+                        <span>Referral Source: <input type="text" ng-model="vm.hiringContact.referralSource"></span>
+                    </div>
+                </div>
+                <label>Comments:</label> <span ng-repeat="hiringContactComments in vm.hiringContact.hiringContactCommentss track by $index">{{vm.hiringContactComments.description}}</span>
+            </div>
+        </div>
+    </div>
+
+    <!-------------- ACTIVITIES --------------->
+    <activity activitys="vm.hiringContact.activitys" hiring-contact-id="{{vm.hiringContact.id}}"></activity>
+
+    <!-------------- ATTACHMENTS --------------->
+    <div class="table-responsive well">
+        <table class="table table-striped">
+            <button class="btn btn-success btn-xs pull-right">
+                <span class="glyphicon glyphicon-plus"></span>
+            </button>
+            <h3>Attachments</h3>
+
+            <tbody>
+            <tr>
+
+                <td><a>John_Doe_Resume.pdf</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="table-responsive well">
+        <table class="table table-striped">
+            <h3>
+                <span>Job Orders</span>
+                <button class="btn btn-success btn-xs" ui-sref="hiring-contact-detail.newJob({id:vm.hiringContact.id})">
+                    <span class="glyphicon glyphicon-plus"></span>
+                </button>
+            </h3>
+            <thead>
+
+            <tr>
+                <td>Position Title</td>
+                <td>Company Contacts</td>
+                <td>Status</td>
+                <td>Type</td>
+                <td>Compensation</td>
+                <td>Date Created</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="job in vm.hiringContact.company.jobOrders track by $index">
+                <td><a ui-sref="job-order-detail({id:job.id})">{{job.title}}</a></td>
+                <td>{{vm.hiringContact.firstName}}, {{vm.hiringContact.lastName}}</a></td>
+                <td>{{job.jobStatus}}</td>
+                <td>{{job.jobType}}</td>
+                <td>Salary: $ {{job.salary}}<br> Hourly: $ {{job.hourly}}</td>
+                <td>{{job.createdDate}}</td>
+                <td>
+                    <button type="submit"
+                            ui-sref="jobOrder.delete({id:job.id})"
+                            class="btn btn-danger btn-sm">
+                        <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"></span>
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- GENERAL COMMENTS -->
+    <div class="table-responsive well">
+        <table class="table table-striped">
+
+            <h3><span>General Comments  </span>
+                <button ng-hide="vm.genCommentsEditable" ng-click="vm.genCommentsEditable = !vm.genCommentsEditable"
+                        type="submit" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-plus"> </span></button>
+                <button ng-show="vm.genCommentsEditable" class="btn btn-primary" ng-click="vm.genCommentsSave()">save</button>
+                <button ng-show="vm.genCommentsEditable" class="btn btn-default" ng-click="vm.cancelGenCommentsSave()">cancel
+                </button>
+            </h3>
+            <tbody>
+
+            <tr>
+                <td>
+          <textarea class="form-control" ng-disabled="!vm.genCommentsEditable"
+                    ng-model="vm.newHiringContactComment"></textarea>
+                </td>
+            </tr>
+
+            <tr ng-repeat="hiringContactComments in vm.hiringContact.hiringContactCommentss track by $index">
+                <td>{{hiringContactComments.description}}</td>
+                <td>
+                    <button ng-click="vm.removeGenComments($index);" class="btn btn btn-danger btn-xs pull-right"></button>
+                </td>
+            </tr>
+            </tbody>
+
+        </table>
+    </div>
+
+    <!-- END GENERAL COMMENTS -->
+
+    <!-- INTERNAL COMMENTS -->
+    <div class="table-responsive well">
+        <table class="table table-striped">
+            <h3><span>Internal Comments  </span>
+                <button ng-hide="vm.internalCommentsEditable"
+                        ng-click="vm.internalCommentsEditable = !vm.internalCommentsEditable" type="submit"
+                        class="btn btn-success btn-sm"><span class="glyphicon glyphicon-plus"></span></button>
+                <button ng-show="vm.internalCommentsEditable" class="btn btn-primary" ng-click="vm.internalCommentsSave()">
+                    save
+                </button>
+                <button ng-show="vm.internalCommentsEditable" class="btn btn-default"
+                        ng-click="vm.cancelInternalCommentsSave()">cancel
+                </button>
+            </h3>
+            <tbody>
+            <tr>
+                <td>
+          <textarea class="form-control" ng-disabled="!vm.internalCommentsEditable"
+                    ng-model="vm.newHiringContactInternalComment"></textarea>
+                </td>
+            </tr>
+            <tr ng-repeat="hiringContactInternalComments in vm.hiringContact.hiringContactInternalCommentss track by $index">
+                <td>{{hiringContactInternalComments.description}}</td>
+                <td>
+                    <button ng-click="vm.removeInternalComments($index);" class="btn btn btn-danger btn-xs pull-right"></button>
+                </td>
+            </tr>
+            </tbody>
+
+        </table>
+    </div>
+
+    <!-- END INTERNAL COMMENTS -->
 
     <button type="submit"
-            ui-sref="{{ vm.previousState }}"
-            class="btn btn-info">
-        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+            onclick="window.history.back()"
+            class="btn btn-success">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
     </button>
 
-    <button type="button" ui-sref="hiring-contact-detail.edit({id:vm.hiringContact.id})" class="btn btn-primary">
-        <span class="glyphicon glyphicon-pencil"></span>
-        <span class="hidden-sm-down"> Edit</span>
-    </button>
+
 </div>

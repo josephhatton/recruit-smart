@@ -1,0 +1,17 @@
+id;name;description
+1;DBA;DBA
+2;Systems Administrator;Systems Administrator
+3;Security Administrator;Security Administrator
+4;Network Administrator;Network Administrator
+5;Linux Administrator;Linux Administrator
+6;Java Developer;Java Developer
+7;.NET Developer;.NET Developer
+8;Software Developer;Software Developer
+9;UI Developer;UI Developer
+10;Business Anaylst;Business Anaylst
+11;Middleware Engineer;Middleware Engineer
+12;Architect Engineer;Architect Engineer
+13;Mobile Developer;Mobile Developer
+14;IT Manager;IT Manager
+15;HelpDesk;HelpDesk
+16;Other;Other

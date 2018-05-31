@@ -13,7 +13,7 @@ import java.util.Objects;
  * A JobOrderComment.
  */
 @Entity
-@Table(name = "jobOrderComment")
+@Table(name = "job_order_comment")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "jobordercomment")
 public class JobOrderComment implements Serializable {

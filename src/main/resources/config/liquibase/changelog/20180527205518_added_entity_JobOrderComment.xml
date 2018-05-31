@@ -18,7 +18,7 @@
         Added the entity JobOrderComment.
     -->
     <changeSet id="20180527205518-1" author="jhipster">
-        <createTable tableName="jobOrderComment">
+        <createTable tableName="job_order_comment">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>

@@ -13,7 +13,7 @@ import java.util.Objects;
  * A SkillCategory.
  */
 @Entity
-@Table(name = "skillCategory")
+@Table(name = "skill_category")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "skillcategory")
 public class SkillCategory implements Serializable {

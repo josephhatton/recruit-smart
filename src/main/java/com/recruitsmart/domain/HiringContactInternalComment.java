@@ -13,7 +13,7 @@ import java.util.Objects;
  * A HiringContactInternalComment.
  */
 @Entity
-@Table(name = "hiringContactInternalComment")
+@Table(name = "hiring_contact_internal_comment")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "hiringcontactinternalcomment")
 public class HiringContactInternalComment implements Serializable {
