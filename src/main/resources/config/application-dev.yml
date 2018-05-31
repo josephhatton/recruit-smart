@@ -64,6 +64,8 @@ spring:
             cluster-name:
             cluster-nodes:
             properties:
+                http:
+                enabled: true
                 path:
                     logs: build/elasticsearch/log
                     data: build/elasticsearch/data
