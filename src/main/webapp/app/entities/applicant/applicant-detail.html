@@ -24,8 +24,7 @@
                     </div>
                     <h5>
                         <small ng-hide="vm.contactEditable">Assigned To:
-                            <a ng-repeat="user in vm.applicant.users track by $index" ui-sref="user-management-detail({login: user.login})">{{user.login}}{{$last
-                                ? '' : ', '}}</a></small>
+                            <a ng-repeat="user in vm.applicant.users track by $index" ui-sref="user-management-detail({login: user.login})">{{user.login}}{{$last? '' : ', '}}</a></small>
                     </h5>
                 </h3>
 
@@ -59,8 +58,8 @@
               href='mailto:{{vm.applicant.email1}}'>{{ vm.applicant.email1 }}</a></span>
                     &nbsp&nbsp&nbsp&nbsp<span ng-hide="vm.contactEditable" class="glyphicon glyphicon-envelope"> <a
                     href='mailto:{{vm.applicant.email2}}'>{{ vm.applicant.email2 }}</a></span>
-                    <span ng-show="vm.contactEditable" class="glyphicon glyphicon-envelope"> <input type="text"
-                                                                                                    ng-model="vm.applicant.email1"></span>
+                    <span ng-show="vm.contactEditable" class="glyphicon glyphicon-envelope">
+                        <input type="text" ng-model="vm.applicant.email1"></span>
                     <span ng-show="vm.contactEditable" class="glyphicon glyphicon-envelope"> <input type="text"
                                                                                                     ng-model="vm.applicant.email2"></span>
                 </div>
@@ -334,17 +333,16 @@
         <div class="table-responsive well">
             <table class="table table-striped">
                 <h3><span>General Comments  </span>
-                    <button ng-hide="vm.genCommentsEditable" ng-click="vm.genCommentsEditable = !vm.genCommentsEditable"
+                    <button ng-hide="vm.editableComment" ng-click="vm.editableComment = !vm.editableComment"
                             type="submit" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-plus"> </span></button>
-                    <button ng-show="vm.genCommentsEditable" class="btn btn-success" ng-click="vm.genCommentsSave()">save</button>
-                    <button ng-show="vm.genCommentsEditable" class="btn btn-danger" ng-click="vm.cancelGenCommentsSave()">cancel
+                    <button ng-show="vm.editableComment" class="btn btn-success" ng-click="vm.saveComment()">save</button>
+                    <button ng-show="vm.editableComment" class="btn btn-danger" ng-click="vm.cancelComment()">cancel
                     </button>
                 </h3>
                 <tbody>
-
                 <tr>
                     <td>
-            <textarea class="form-control" ng-disabled="!vm.genCommentsEditable"
+            <textarea class="form-control" ng-disabled="!vm.editableComment"
                       ng-model="vm.newApplicantComment"></textarea>
                     </td>
                 </tr>
