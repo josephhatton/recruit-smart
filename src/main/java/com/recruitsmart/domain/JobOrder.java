@@ -1,6 +1,7 @@
 package com.recruitsmart.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -54,6 +55,17 @@ public class JobOrder implements Serializable {
     @Column(name = "job_status")
     private JobStatus jobStatus;
 
+    @OneToMany(orphanRemoval=true, fetch = FetchType.EAGER, mappedBy = "jobOrderComment", cascade = { CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE, CascadeType.REFRESH })
+    @JsonManagedReference("jobOrderComment")
+    private Set<JobOrderComment> jobOrderComments = new HashSet<>();
+
+    @OneToMany(orphanRemoval=true, fetch = FetchType.EAGER, mappedBy = "jobOrderInternalComment", cascade = { CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE, CascadeType.REFRESH })
+    @JsonManagedReference("jobOrderInternalComment")
+    private Set<JobOrderInternalComment> jobOrderInternalComments = new HashSet<>();
+
+    @ManyToOne
+    private Company company;
+
 //    @OneToMany(mappedBy = "jobOrder")
 //    @JsonIgnore
 //    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -70,10 +82,6 @@ public class JobOrder implements Serializable {
 //               joinColumns = @JoinColumn(name="job_orders_id", referencedColumnName="id"),
 //               inverseJoinColumns = @JoinColumn(name="skills_id", referencedColumnName="id"))
 //    private Set<Skill> skills = new HashSet<>();
-
-    @ManyToOne
-    private Company company;
-
 //    @OneToMany(mappedBy = "jobOrder")
 //    @JsonIgnore
 //    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -156,29 +164,13 @@ public class JobOrder implements Serializable {
         this.jobStatus = jobStatus;
     }
 
-//    public Set<JobOrderComment> getJobOrderComments() {
-//        return jobOrderComments;
-//    }
-//
-//    public void setJobOrderComments(Set<JobOrderComment> jobOrderComments) {
-//        this.jobOrderComments = jobOrderComments;
-//    }
-//
-//    public Set<Address> getAddresses() {
-//        return addresses;
-//    }
-//
-//    public void setAddresses(Set<Address> addresses) {
-//        this.addresses = addresses;
-//    }
-//
-//    public Set<Skill> getSkills() {
-//        return skills;
-//    }
-//
-//    public void setSkills(Set<Skill> skills) {
-//        this.skills = skills;
-//    }
+    public Set<JobOrderComment> getJobOrderComments() {
+        return jobOrderComments;
+    }
+
+    public void setJobOrderComments(Set<JobOrderComment> jobOrderComments) {
+        this.jobOrderComments = jobOrderComments;
+    }
 
     public Company getCompany() {
         return company;
@@ -188,29 +180,14 @@ public class JobOrder implements Serializable {
         this.company = company;
     }
 
-//    public Set<JobOrderInternalComment> getJobOrderInternalComments() {
-//        return jobOrderInternalComments;
-//    }
-//
-//    public void setJobOrderInternalComments(Set<JobOrderInternalComment> jobOrderInternalComments) {
-//        this.jobOrderInternalComments = jobOrderInternalComments;
-//    }
-//
-//    public Set<HiringContact> getHiringContacts() {
-//        return hiringContacts;
-//    }
-//
-//    public void setHiringContacts(Set<HiringContact> hiringContacts) {
-//        this.hiringContacts = hiringContacts;
-//    }
-//
-//    public Set<Activity> getActivities() {
-//        return activities;
-//    }
-//
-//    public void setActivities(Set<Activity> activities) {
-//        this.activities = activities;
-//    }
+    public Set<JobOrderInternalComment> getJobOrderInternalComments() {
+        return jobOrderInternalComments;
+    }
+
+    public void setJobOrderInternalComments(Set<JobOrderInternalComment> jobOrderInternalComments) {
+        this.jobOrderInternalComments = jobOrderInternalComments;
+    }
+
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override

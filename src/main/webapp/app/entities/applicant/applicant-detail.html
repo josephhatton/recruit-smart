@@ -343,10 +343,10 @@
                 <tr>
                     <td>
             <textarea class="form-control" ng-disabled="!vm.editableComment"
-                      ng-model="vm.newApplicantComment"></textarea>
+                      ng-model="vm.applicantComment"></textarea>
                     </td>
                 </tr>
-                <tr ng-repeat="applicantComments in vm.applicant.applicantCommentss track by $index">
+                <tr ng-repeat="applicantComments in vm.applicant.applicantComments track by $index">
                     <td>{{applicantComments.description}}</td>
                     <td>
                         <button ng-click="vm.removeGenComments($index);" class="btn btn btn-danger btn-xs pull-right"></button>

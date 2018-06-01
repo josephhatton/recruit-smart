@@ -1,6 +1,7 @@
 package com.recruitsmart.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -102,6 +103,14 @@ public class Applicant implements Serializable {
 
     @ManyToOne
     private WorkStatus workStatus;
+
+    @OneToMany(orphanRemoval=true, fetch = FetchType.EAGER, mappedBy = "applicantComment", cascade = { CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE, CascadeType.REFRESH })
+    @JsonManagedReference("applicantComment")
+    private Set<ApplicantComment> applicantComments = new HashSet<>();
+
+    @OneToMany(orphanRemoval=true, fetch = FetchType.EAGER, mappedBy = "applicantInternalComment", cascade = { CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE, CascadeType.REFRESH })
+    @JsonManagedReference("applicantInternalComment")
+    private Set<ApplicantInternalComment> applicantInternalComments = new HashSet<>();
 
     //    @OneToMany(mappedBy = "applicant")
 //    @JsonIgnore
@@ -335,45 +344,6 @@ public class Applicant implements Serializable {
         this.applicantStatus = applicantStatus;
     }
 
-//    public Set<Address> getAddresses() {
-//        return addresses;
-//    }
-//
-//    public void setAddresses(Set<Address> addresses) {
-//        this.addresses = addresses;
-//    }
-//    public Set<ApplicantComment> getApplicantComments() {
-//        return applicantComments;
-//    }
-//
-//    public void setApplicantComments(Set<ApplicantComment> applicantComments) {
-//        this.applicantComments = applicantComments;
-//    }
-//
-//    public Set<Skill> getSkills() {
-//        return skills;
-//    }
-//
-//    public void setSkills(Set<Skill> skills) {
-//        this.skills = skills;
-//    }
-//
-//    public Set<WorkHistory> getWorkHistories() {
-//        return workHistories;
-//    }
-//
-//    public void setWorkHistories(Set<WorkHistory> workHistories) {
-//        this.workHistories = workHistories;
-//    }
-//
-//    public Set<ApplicantInternalComment> getApplicantInternalComments() {
-//        return applicantInternalComments;
-//    }
-//
-//    public void setApplicantInternalComments(Set<ApplicantInternalComment> applicantInternalComments) {
-//        this.applicantInternalComments = applicantInternalComments;
-//    }
-
     public WorkStatus getWorkStatus() {
         return workStatus;
     }
@@ -382,13 +352,21 @@ public class Applicant implements Serializable {
         this.workStatus = workStatus;
     }
 
-//    public Set<Activity> getActivities() {
-//        return activities;
-//    }
-//
-//    public void setActivities(Set<Activity> activities) {
-//        this.activities = activities;
-//    }
+    public Set<ApplicantComment> getApplicantComments() {
+        return applicantComments;
+    }
+
+    public void setApplicantComments(Set<ApplicantComment> applicantComments) {
+        this.applicantComments = applicantComments;
+    }
+
+    public Set<ApplicantInternalComment> getApplicantInternalComments() {
+        return applicantInternalComments;
+    }
+
+    public void setApplicantInternalComments(Set<ApplicantInternalComment> applicantInternalComments) {
+        this.applicantInternalComments = applicantInternalComments;
+    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override

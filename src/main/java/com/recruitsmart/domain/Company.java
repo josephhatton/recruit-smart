@@ -1,6 +1,7 @@
 package com.recruitsmart.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -57,42 +58,13 @@ public class Company implements Serializable {
     @Column(name = "company_status")
     private CompanyStatus companyStatus;
 
-//    @OneToMany(mappedBy = "company")
-//    @JsonIgnore
-//    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-//    private Set<CompanyComment> companyComments = new HashSet<>();
-//
-//    @OneToMany(mappedBy = "company")
-//    @JsonIgnore
-//    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-//    private Set<Address> addresses = new HashSet<>();
-//
-//    @OneToMany(mappedBy = "company")
-//    @JsonIgnore
-//    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-//    private Set<JobOrder> jobOrders = new HashSet<>();
+    @OneToMany(orphanRemoval=true, fetch = FetchType.EAGER, mappedBy = "companyComment", cascade = { CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE, CascadeType.REFRESH })
+    @JsonManagedReference("companyComment")
+    private Set<CompanyComment> companyComments = new HashSet<>();
 
-//    @OneToMany(mappedBy = "company")
-//    @JsonIgnore
-//    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-//    private Set<HiringContact> hiringContacts = new HashSet<>();
-//
-//    @OneToMany(mappedBy = "company")
-//    @JsonIgnore
-//    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-//    private Set<CompanyInternalComment> companyInternalComments = new HashSet<>();
-//
-//    @OneToMany(mappedBy = "company")
-//    @JsonIgnore
-//    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-//    private Set<Activity> activities = new HashSet<>();
-//
-//    @ManyToMany
-//    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-//    @JoinTable(name = "company_skill",
-//               joinColumns = @JoinColumn(name="companies_id", referencedColumnName="id"),
-//               inverseJoinColumns = @JoinColumn(name="skills_id", referencedColumnName="id"))
-//    private Set<Skill> skills = new HashSet<>();
+    @OneToMany(orphanRemoval=true, fetch = FetchType.EAGER, mappedBy = "companyInternalComment", cascade = { CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE, CascadeType.REFRESH })
+    @JsonManagedReference("companyInternalComment")
+    private Set<CompanyInternalComment> companyInternalComments = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -167,61 +139,21 @@ public class Company implements Serializable {
         this.companyStatus = companyStatus;
     }
 
-//    public Set<CompanyComment> getCompanyComments() {
-//        return companyComments;
-//    }
-//
-//    public void setCompanyComments(Set<CompanyComment> companyComments) {
-//        this.companyComments = companyComments;
-//    }
-//
-//    public Set<Address> getAddresses() {
-//        return addresses;
-//    }
-//
-//    public void setAddresses(Set<Address> addresses) {
-//        this.addresses = addresses;
-//    }
-//
-//    public Set<JobOrder> getJobOrders() {
-//        return jobOrders;
-//    }
-//
-//    public void setJobOrders(Set<JobOrder> jobOrders) {
-//        this.jobOrders = jobOrders;
-//    }
-//
-//    public Set<HiringContact> getHiringContacts() {
-//        return hiringContacts;
-//    }
-//
-//    public void setHiringContacts(Set<HiringContact> hiringContacts) {
-//        this.hiringContacts = hiringContacts;
-//    }
-//
-//    public Set<CompanyInternalComment> getCompanyInternalComments() {
-//        return companyInternalComments;
-//    }
-//
-//    public void setCompanyInternalComments(Set<CompanyInternalComment> companyInternalComments) {
-//        this.companyInternalComments = companyInternalComments;
-//    }
-//
-//    public Set<Activity> getActivities() {
-//        return activities;
-//    }
-//
-//    public void setActivities(Set<Activity> activities) {
-//        this.activities = activities;
-//    }
-//
-//    public Set<Skill> getSkills() {
-//        return skills;
-//    }
-//
-//    public void setSkills(Set<Skill> skills) {
-//        this.skills = skills;
-//    }
+    public Set<CompanyComment> getCompanyComments() {
+        return companyComments;
+    }
+
+    public void setCompanyComments(Set<CompanyComment> companyComments) {
+        this.companyComments = companyComments;
+    }
+
+    public Set<CompanyInternalComment> getCompanyInternalComments() {
+        return companyInternalComments;
+    }
+
+    public void setCompanyInternalComments(Set<CompanyInternalComment> companyInternalComments) {
+        this.companyInternalComments = companyInternalComments;
+    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override

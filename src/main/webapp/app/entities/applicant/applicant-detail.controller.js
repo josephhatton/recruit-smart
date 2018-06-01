@@ -82,17 +82,13 @@
         //COMMENTS
         //General Comments
         vm.saveComment = function () {
-            if (vm.newApplicantComment !== null) {
-                vm.isSaving = true;
-                vm.applicant.applicantCommentss.push({
-                    id: null,
-                    description: vm.newApplicantComment
-                });
+            vm.applicant.applicantComments.push({
+                id: null,
+                description: vm.applicantComment
+            });
                 Applicant.update(vm.applicant, function (result) {
                     vm.applicant = result;
                 }, onSaveError);
-            }
-            vm.newApplicantComment = '';
             vm.editableComment = false;
         };
 
