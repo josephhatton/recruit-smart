@@ -156,25 +156,24 @@
         <table class="table table-striped">
 
             <h3><span>General Comments  </span>
-                <button ng-hide="vm.genCommentsEditable" ng-click="vm.genCommentsEditable = !vm.genCommentsEditable"
+                <button ng-hide="vm.commentEditable" ng-click="vm.commentEditable = !vm.commentEditable"
                         type="submit" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-plus"> </span></button>
-                <button ng-show="vm.genCommentsEditable" class="btn btn-primary" ng-click="vm.genCommentsSave()">save</button>
-                <button ng-show="vm.genCommentsEditable" class="btn btn-default" ng-click="vm.cancelGenCommentsSave()">cancel
+                <button ng-show="vm.commentEditable" class="btn btn-success" ng-click="vm.commentSave()">save</button>
+                <button ng-show="vm.commentEditable" class="btn btn-danger" ng-click="vm.cancelComment()">cancel
                 </button>
             </h3>
             <tbody>
 
             <tr>
                 <td>
-          <textarea class="form-control" ng-disabled="!vm.genCommentsEditable"
-                    ng-model="vm.newHiringContactComment"></textarea>
+                  <textarea class="form-control" ng-disabled="!vm.commentEditable" ng-model="vm.hiringContactComment"></textarea>
                 </td>
             </tr>
 
-            <tr ng-repeat="hiringContactComments in vm.hiringContact.hiringContactCommentss track by $index">
-                <td>{{hiringContactComments.description}}</td>
+            <tr ng-repeat="hiringContactComment in vm.hiringContact.hiringContactComments track by $index">
+                <td>{{hiringContactComment.comment}}</td>
                 <td>
-                    <button ng-click="vm.removeGenComments($index);" class="btn btn btn-danger btn-xs pull-right"></button>
+                    <button ng-click="vm.removeComment($index);" class="btn btn btn-danger btn-xs pull-right"></button>
                 </td>
             </tr>
             </tbody>
@@ -187,28 +186,27 @@
     <!-- INTERNAL COMMENTS -->
     <div class="table-responsive well">
         <table class="table table-striped">
-            <h3><span>Internal Comments  </span>
-                <button ng-hide="vm.internalCommentsEditable"
-                        ng-click="vm.internalCommentsEditable = !vm.internalCommentsEditable" type="submit"
+            <h3><span>Internal Comments </span>
+                <button ng-hide="vm.internalCommentEditable"
+                        ng-click="vm.internalCommentEditable = !vm.internalCommentEditable" type="submit"
                         class="btn btn-success btn-sm"><span class="glyphicon glyphicon-plus"></span></button>
-                <button ng-show="vm.internalCommentsEditable" class="btn btn-primary" ng-click="vm.internalCommentsSave()">
+                <button ng-show="vm.internalCommentEditable" class="btn btn-success" ng-click="vm.internalCommentSave()">
                     save
                 </button>
-                <button ng-show="vm.internalCommentsEditable" class="btn btn-default"
-                        ng-click="vm.cancelInternalCommentsSave()">cancel
+                <button ng-show="vm.internalCommentEditable" class="btn btn-danger"
+                        ng-click="vm.cancelInternalComment()">cancel
                 </button>
             </h3>
             <tbody>
             <tr>
                 <td>
-          <textarea class="form-control" ng-disabled="!vm.internalCommentsEditable"
-                    ng-model="vm.newHiringContactInternalComment"></textarea>
+                  <textarea class="form-control" ng-disabled="!vm.internalCommentEditable" ng-model="vm.hiringContactInternalComment"></textarea>
                 </td>
             </tr>
-            <tr ng-repeat="hiringContactInternalComments in vm.hiringContact.hiringContactInternalCommentss track by $index">
-                <td>{{hiringContactInternalComments.description}}</td>
+            <tr ng-repeat="hiringContactInternalComment in vm.hiringContact.hiringContactInternalComments track by $index">
+                <td>{{hiringContactInternalComment.comment}}</td>
                 <td>
-                    <button ng-click="vm.removeInternalComments($index);" class="btn btn btn-danger btn-xs pull-right"></button>
+                    <button ng-click="vm.removeInternalComment($index);" class="btn btn btn-danger btn-xs pull-right"></button>
                 </td>
             </tr>
             </tbody>
