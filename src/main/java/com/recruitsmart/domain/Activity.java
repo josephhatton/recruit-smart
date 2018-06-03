@@ -35,7 +35,7 @@ public class Activity implements Serializable {
     @Column(name = "status")
     private String status;
 
-    @Column(name = "jhi_comment")
+    @Column(name = "comment")
     private String comment;
 
     @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.EAGER)
