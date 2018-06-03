@@ -207,24 +207,22 @@
     <!-------- GENERAL COMMENTS --------------->
     <div class="table-responsive well">
         <table class="table table-striped">
-            <h3><span>General Comments  </span>
-                <button ng-hide="vm.genCommentsEditable" ng-click="vm.genCommentsEditable = !vm.genCommentsEditable"
+            <h3><span>General Comments </span>
+                <button ng-hide="vm.commentEditable" ng-click="vm.commentEditable = !vm.commentEditable"
                         type="submit" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-plus"></span></button>
-                <button ng-show="vm.genCommentsEditable" class="btn btn-primary" ng-click="vm.genCommentsSave()">save</button>
-                <button ng-show="vm.genCommentsEditable" class="btn btn-default" ng-click="vm.cancelGenCommentsSave()">cancel
-                </button>
+                <button ng-show="vm.commentEditable" class="btn btn-success" ng-click="vm.commentSave()">save</button>
+                <button ng-show="vm.commentEditable" class="btn btn-danger" ng-click="vm.cancelComment()">cancel</button>
             </h3>
             <tbody>
             <tr>
                 <td>
-          <textarea class="form-control" ng-disabled="!vm.genCommentsEditable"
-                    ng-model="vm.newCompanyComment"></textarea>
+                  <textarea class="form-control" ng-disabled="!vm.commentEditable" ng-model="vm.companyComment"></textarea>
                 </td>
             </tr>
-            <tr ng-repeat="companyComments in vm.company.companyCommentss track by $index">
-                <td>{{companyComments.description}}</td>
+            <tr ng-repeat="companyComment in vm.company.companyComments track by $index">
+                <td>{{companyComment.comment}}</td>
                 <td>
-                    <button ng-click="vm.removeGenComments($index);" class="btn btn btn-danger btn-xs pull-right"></button>
+                    <button ng-click="vm.removeComment($index);" class="btn btn btn-danger btn-xs pull-right"></button>
                 </td>
             </tr>
             </tbody>
@@ -237,27 +235,25 @@
     <div class="table-responsive well">
         <table class="table table-striped">
             <h3><span>Internal Comments  </span>
-                <button ng-hide="vm.internalCommentsEditable"
-                        ng-click="vm.internalCommentsEditable = !vm.internalCommentsEditable" type="submit"
+                <button ng-hide="vm.internalCommentEditable"
+                        ng-click="vm.internalCommentEditable = !vm.internalCommentEditable" type="submit"
                         class="btn btn-success btn-sm"><span class="glyphicon glyphicon-plus"></span></button>
-                <button ng-show="vm.internalCommentsEditable" class="btn btn-primary" ng-click="vm.internalCommentsSave()">
+                <button ng-show="vm.internalCommentEditable" class="btn btn-success" ng-click="vm.internalCommentSave()">
                     save
                 </button>
-                <button ng-show="vm.internalCommentsEditable" class="btn btn-default"
-                        ng-click="vm.cancelInternalCommentsSave()">cancel
-                </button>
+                <button ng-show="vm.internalCommentEditable" class="btn btn-danger"
+                        ng-click="vm.cancelInternalCommentSave()">cancel</button>
             </h3>
             <tbody>
             <tr>
                 <td>
-          <textarea class="form-control" ng-disabled="!vm.internalCommentsEditable"
-                    ng-model="vm.newCompanyInternalComment"></textarea>
+                  <textarea class="form-control" ng-disabled="!vm.internalCommentEditable" ng-model="vm.companyInternalComment"></textarea>
                 </td>
             </tr>
-            <tr ng-repeat="companyInternalComments in vm.company.companyInternalCommentss track by $index">
-                <td>{{companyInternalComments.description}}</td>
+            <tr ng-repeat="companyInternalComment in vm.company.companyInternalComments track by $index">
+                <td>{{companyInternalComment.comment}}</td>
                 <td>
-                    <button ng-click="vm.removeInternalComments($index);" class="btn btn btn-danger btn-xs pull-right"></button>
+                    <button ng-click="vm.removeInternalComment($index);" class="btn btn btn-danger btn-xs pull-right"></button>
                 </td>
             </tr>
             </tbody>

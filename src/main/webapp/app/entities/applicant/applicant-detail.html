@@ -17,15 +17,6 @@
                 <h3>Contact Info
                     <button ng-hide="vm.contactEditable" ng-click="vm.contactEditable = !vm.contactEditable" type="submit"
                             class="btn btn-success btn-sm"><span class="glyphicon glyphicon-pencil"></span></button>
-                    <div class="form-group" ng-show="vm.contactEditable">
-                        <label for="field_users">Assign to Users</label>
-                        <select class="form-control" id="field_users" multiple name="users" ng-model="vm.applicant.users"
-                                ng-options="user as user.firstName for user in vm.users track by user.id"></select>
-                    </div>
-                    <h5>
-                        <small ng-hide="vm.contactEditable">Assigned To:
-                            <a ng-repeat="user in vm.applicant.users track by $index" ui-sref="user-management-detail({login: user.login})">{{user.login}}{{$last? '' : ', '}}</a></small>
-                    </h5>
                 </h3>
 
                 <div class="phone">
@@ -183,12 +174,212 @@
             </div>
         </div>
     </div>
-    <!------------------- ACTIVITIES   -------------------------->
+    <!--------------------- ACTIVITIES   ------------------------------->
     <div class="row">
-        <activity activitys="vm.applicant.activitys" entity-id="{{vm.applicant.id}}" type="APPLICANT"></activity>
+        <div class="applicant-activites well">
+            <h3>
+                <span>Pending Activities:</span>   <!-- addActivity() -->
+                <button ng-hide="addNewActivity" class="btn btn-success btn-sm" ng-click="vm.open()">
+                    <span class="glyphicon glyphicon-plus"></span>
+                </button>
+            </h3>
+
+            <div class="table-responsive">
+
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Status</th>
+                        <th>Activity Date</th>
+                        <th>Start Time</th>
+                        <th>Action/Comments</th>
+                        <th>Applicant</th>
+                        <th>Hiring Contact</th>
+                        <th>Company</th>
+                        <th>Job</th>
+                        <th>Created</th>
+                        <th>User</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="animate-repeat"
+                        ng-repeat="activity in activitys | filter:{status: 'Pending'} | orderBy:'-created' track by $index">
+                        <td>
+                            <select name="status" ng-model="activity.status" ng-change="vm.statusChange(activity)">
+                                <option value="Pending">Pending</option>
+                                <option value="Complete">Complete</option>
+                            </select>
+                        </td>
+                        <td>
+                    <span>
+                        {{ activity.startDate | date:'MM-dd-yyyy' }}
+                      </span>
+                        </td>
+                        <td>
+                    <span>
+                        {{ activity.startDate | date:'HH:mm a' }}
+                      </span>
+                        </td>
+                        <td>
+                    <span>
+                        {{ activity.activityAction.name }} / {{ activity.comments}}
+                      </span>
+                        </td>
+                        <td>
+                            <a ui-sref="applicant-detail({id: activity.applicant.id})">{{ activity.applicant.firstName }} {{
+                                activity.applicant.lastName }}</a>
+                        </td>
+                        <td>
+                    <span ng-repeat="people in activity.hiringContacts">
+                        <a ui-sref="hiring-contact-detail({id:people.id})">{{ people.firstName }} {{ people.lastName }}{{$last ? '' : ', '}}</a>
+                      </span>
+                        </td>
+                        <td>
+                    <span>
+                        <a ui-sref="company-detail({id: activity.company.id})">{{ activity.company.name }}</a>
+                      </span>
+                        </td>
+                        <td>
+                    <span>
+                        <a ui-sref="job-order-detail({id: activity.jobOrder.id})">{{ activity.jobOrder.title }}</a>
+                      </span>
+                        </td>
+                        <td>
+                    <span>
+                        {{ activity.createdDate | date:'MM-dd-yyyy HH:mm a'}}
+                      </span>
+                        </td>
+                        <td>
+                    <span>
+                        {{ activity.user.firstName }}
+                      </span>
+                        </td>
+                        <td style="white-space: nowrap">
+                            <form editable-form name="openactivitiesform" onbeforesave="saveUser($data, user.id)"
+                                  ng-show="openactivitiesform.$visible" class="form-buttons form-inline" shown="inserted == activity">
+                                <button type="submit" ng-disabled="openactivitiesform.$waiting" class="btn btn-primary">
+                                    save
+                                </button>
+                                <button type="button" ng-disabled="openactivitiesform.$waiting" ng-click="openactivitiesform.$cancel()"
+                                        class="btn btn-default">
+                                    cancel
+                                </button>
+                            </form>
+                            <div class="buttons" ng-show="!openactivitiesform.$visible">
+                                <button class="btn btn-success btn-xs" ng-click="vm.open(activity)"><span
+                                    class="glyphicon glyphicon-pencil"></span></button>
+                                <button class="btn btn-danger btn-xs" ng-click="vm.deleteActivity(activity)"><span
+                                    class="glyphicon glyphicon-remove-circle"></span></button>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+            <h3>
+                <span>Completed Activities:</span>
+            </h3>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Status</th>
+                        <th>Activity Date</th>
+                        <th>Action/Comments</th>
+                        <th>Applicant</th>
+                        <th>Hiring Contact</th>
+                        <th>Company</th>
+                        <th>Job</th>
+                        <th>Created</th>
+                        <th>User</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="animate-repeat"
+                        ng-repeat="activity in activitys | filter:{status: 'Complete'} | orderBy:'-created' track by $index">
+                        <td>
+                            <select id="field_status" name="status" ng-model="activity.status" ng-change="vm.statusChange(activity)">
+                                <option value="Pending">Pending</option>
+                                <option value="Complete">Complete</option>
+                            </select>
+                        </td>
+                        <td>
+                    <span>
+                        {{ activity.startDate | date:'MM-dd-yyyy' }}
+                      </span>
+                        </td>
+                        <td>
+                    <span>
+                        {{ activity.activityAction.name }} / {{ activity.comments}}
+                      </span>
+                        </td>
+                        <td>
+                    <span>
+                        <a ui-sref="applicant-detail({id: activity.applicant.id})">{{ activity.applicant.firstName }} {{ activity.applicant.lastName }}</a>
+                      </span>
+                        </td>
+                        <td>
+                    <span ng-repeat="people in activity.hiringContacts">
+                        <a ui-sref="hiring-contact-detail({id:people.id})">{{ people.firstName }} {{ people.lastName }}{{$last ? '' : ', '}}</a>
+                      </span>
+                        </td>
+                        <td>
+                    <span>
+                        <a ui-sref="company-detail({id: activity.company.id})">{{ activity.company.name }}</a>
+                      </span>
+                        </td>
+                        <td>
+                    <span>
+                        <a ui-sref="job-order-detail({id: activity.job.id})">{{ activity.jobOrder.title }}</a>
+                      </span>
+                        </td>
+                        <td>
+                    <span>
+                        {{ activity.createdDate | date:'MM-dd-yyyy HH:mm a' }}
+                      </span>
+                        </td>
+                        <td>
+                    <span>
+                        {{ activity.user.firstName }}
+                      </span>
+                        </td>
+                        <td style="white-space: nowrap">
+                            <form editable-form name="closedactivitiesform" onbeforesave="saveUser($data, user.id)"
+                                  ng-show="closedactivitiesform.$visible" class="form-buttons form-inline" shown="inserted == activity">
+                                <button type="submit" ng-disabled="closedactivitiesform.$waiting" class="btn btn-primary">
+                                    save
+                                </button>
+                                <button type="button" ng-disabled="closedactivitiesform.$waiting" ng-click="closedactivitiesform.$cancel()"
+                                        class="btn btn-default">
+                                    cancel
+                                </button>
+                            </form>
+                            <div class="buttons" ng-show="!closedactivitiesform.$visible">
+                                <button class="btn btn-success btn-xs" ng-click="vm.open(activity)"><span
+                                    class="glyphicon glyphicon-pencil"></span></button>
+                                <button class="btn btn-danger btn-xs" ng-click="vm.deleteActivity(activity)"><span
+                                    class="glyphicon glyphicon-remove-circle"></span></button>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 
-    <!------------------- Resume/Attachments   ------------------------>
+    <!--------------------- ASSIGN TO USERS   ------------------------>
+    <div class="table-responsive well">
+        <div class="form-group">
+            <label>Assign to Users</label>
+            <select class="form-control" multiple name="users" ng-model="vm.applicant.users"
+                    ng-options="user as (user.lastName +', '+user.firstName) for user in vm.users track by user.id"></select>
+        </div>
+    </div>
+
+    <!--------------------- Resume/Attachments   ------------------------>
     <div class="row">
         <div class="table-responsive well">
             <table class="table table-striped">
@@ -240,12 +431,12 @@
     <div class="row">
         <div class="applicant-compensation well">
             <h3>Compensation:
-                <button ng-hide="vm.compEdit" ng-click="vm.compEdit = !vm.compEdit" type="submit" class="btn btn-success btn-sm">
+                <button ng-hide="vm.compensationEditable" ng-click="vm.compensationEditable = !vm.compensationEditable" type="submit" class="btn btn-success btn-sm">
                     <span class="glyphicon glyphicon-pencil"></span></button>
-                <button ng-show="vm.compEdit" class="btn btn-success" ng-click="vm.contactSave()">
+                <button ng-show="vm.compensationEditable" class="btn btn-success" ng-click="vm.contactSave()">
                     save
                 </button>
-                <button ng-show="vm.compEdit" class="btn btn-danger" ng-click="vm.cancelContactSave()">
+                <button ng-show="vm.compensationEditable" class="btn btn-danger" ng-click="vm.cancelContactSave()">
                     cancel
                 </button>
             </h3>
@@ -255,29 +446,29 @@
                         <tr>
                             <td><span class="label label-default">Current Salary</span></td>
                             <td>
-                                <span ng-hide="vm.compEdit">{{ vm.applicant.currentSalary || 'empty' }}</span>
-                                <input type="text" class="form-control" ng-show="vm.compEdit" ng-model="vm.applicant.currentSalary">
+                                <span ng-hide="vm.compensationEditable">{{ vm.applicant.currentSalary || 'empty' }}</span>
+                                <input type="text" class="form-control" ng-show="vm.compensationEditable" ng-model="vm.applicant.currentSalary">
                             </td>
                         </tr>
                         <tr>
                             <td><span class="label label-default">Desired Salary</span></td>
                             <td>
-                                <span ng-hide="vm.compEdit">{{ vm.applicant.desiredSalary || 'empty' }}</span>
-                                <input type="text" class="form-control" ng-show="vm.compEdit" ng-model="vm.applicant.desiredSalary">
+                                <span ng-hide="vm.compensationEditable">{{ vm.applicant.desiredSalary || 'empty' }}</span>
+                                <input type="text" class="form-control" ng-show="vm.compensationEditable" ng-model="vm.applicant.desiredSalary">
                             </td>
                         </tr>
                         <tr>
                             <td><span class="label label-default">Minimum Salary</span></td>
                             <td>
-                                <span ng-hide="vm.compEdit">{{ vm.applicant.minSalary || 'empty' }}</span>
-                                <input type="text" class="form-control" ng-show="vm.compEdit" ng-model="vm.applicant.minSalary">
+                                <span ng-hide="vm.compensationEditable">{{ vm.applicant.minSalary || 'empty' }}</span>
+                                <input type="text" class="form-control" ng-show="vm.compensationEditable" ng-model="vm.applicant.minSalary">
                             </td>
                         </tr>
                         <tr>
                             <td><span class="label label-default">Current Total Comp</span></td>
                             <td>
-                                <span ng-hide="vm.compEdit">{{ vm.applicant.currentTotalComp || 'empty' }}</span>
-                                <input type="text" class="form-control" ng-show="vm.compEdit" ng-model="vm.applicant.currentTotalComp">
+                                <span ng-hide="vm.compensationEditable">{{ vm.applicant.currentTotalComp || 'empty' }}</span>
+                                <input type="text" class="form-control" ng-show="vm.compensationEditable" ng-model="vm.applicant.currentTotalComp">
                             </td>
                         </tr>
                     </table>
@@ -287,36 +478,36 @@
                         <tr>
                             <td><span class="label label-default">Current Hourly Rate</span></td>
                             <td>
-                                <span ng-hide="vm.compEdit">{{ vm.applicant.currentHourlyRate || 'empty' }}</span>
-                                <input type="text" class="form-control" ng-show="vm.compEdit" ng-model="vm.applicant.currentHourlyRate">
+                                <span ng-hide="vm.compensationEditable">{{ vm.applicant.currentHourlyRate || 'empty' }}</span>
+                                <input type="text" class="form-control" ng-show="vm.compensationEditable" ng-model="vm.applicant.currentHourlyRate">
                             </td>
                         </tr>
                         <tr>
                             <td><span class="label label-default">Desired Hourly Rate</span></td>
                             <td>
-                                <span ng-hide="vm.compEdit">{{ vm.applicant.desiredHourlyRate || 'empty' }}</span>
-                                <input type="text" class="form-control" ng-show="vm.compEdit" ng-model="vm.applicant.desiredHourlyRate">
+                                <span ng-hide="vm.compensationEditable">{{ vm.applicant.desiredHourlyRate || 'empty' }}</span>
+                                <input type="text" class="form-control" ng-show="vm.compensationEditable" ng-model="vm.applicant.desiredHourlyRate">
                             </td>
                         </tr>
                         <tr>
                             <td><span class="label label-default">Minimum Hourly Rate</span></td>
                             <td>
-                                <span ng-hide="vm.compEdit">{{ applicant.minHourlyRate || 'empty' }}</span>
-                                <input type="text" class="form-control" ng-show="vm.compEdit" ng-model="vm.applicant.minHourlyRate">
+                                <span ng-hide="vm.compensationEditable">{{ applicant.minHourlyRate || 'empty' }}</span>
+                                <input type="text" class="form-control" ng-show="vm.compensationEditable" ng-model="vm.applicant.minHourlyRate">
                             </td>
                         </tr>
                         <tr>
                             <td><span class="label label-default">Benefits</span></td>
                             <td>
-                                <label class="checkbox-inline"><input ng-model="vm.applicant.pto" ng-disabled="!vm.compEdit"
+                                <label class="checkbox-inline"><input ng-model="vm.applicant.pto" ng-disabled="!vm.compensationEditable"
                                                                       type="checkbox" value="">PTO</label>
-                                <label class="checkbox-inline"><input ng-model="vm.applicant.health" ng-disabled="!vm.compEdit"
+                                <label class="checkbox-inline"><input ng-model="vm.applicant.health" ng-disabled="!vm.compensationEditable"
                                                                       type="checkbox" value="">Health</label>
                             </td>
                     </table>
                 </div>
                 <div class="col-xs-4">
-                    Comments: <textarea class="form-control" ng-disabled="!vm.compEdit"
+                    Comments: <textarea class="form-control" ng-disabled="!vm.compensationEditable"
                                         ng-model="vm.applicant.compensationComments"></textarea>
                 </div>
             </div>
@@ -342,12 +533,11 @@
                 <tbody>
                 <tr>
                     <td>
-            <textarea class="form-control" ng-disabled="!vm.editableComment"
-                      ng-model="vm.applicantComment"></textarea>
+                        <textarea class="form-control" ng-disabled="!vm.editableComment" ng-model="vm.applicantComment"></textarea>
                     </td>
                 </tr>
-                <tr ng-repeat="applicantComments in vm.applicant.applicantComments track by $index">
-                    <td>{{applicantComments.description}}</td>
+                <tr ng-repeat="applicantComment in vm.applicant.applicantComments track by $index">
+                    <td>{{applicantComment.comment}}</td>
                     <td>
                         <button ng-click="vm.removeGenComments($index);" class="btn btn btn-danger btn-xs pull-right"></button>
                     </td>
@@ -374,12 +564,11 @@
                 <tbody>
                 <tr>
                     <td>
-            <textarea class="form-control" ng-disabled="!vm.internalCommentsEditable"
-                      ng-model="vm.newApplicantInternalComment"></textarea>
+                        <textarea class="form-control" ng-disabled="!vm.internalCommentsEditable" ng-model="vm.applicantInternalComment"></textarea>
                     </td>
                 </tr>
-                <tr ng-repeat="applicantInternalComments in vm.applicant.applicantInternalCommentss track by $index">
-                    <td>{{applicantInternalComments.description}}</td>
+                <tr ng-repeat="applicantInternalComment in vm.applicant.applicantInternalComments track by $index">
+                    <td>{{applicantInternalComment.comment}}</td>
                     <td>
                         <button ng-click="vm.removeInternalComments($index);" class="btn btn btn-danger btn-xs pull-right"></button>
                     </td>

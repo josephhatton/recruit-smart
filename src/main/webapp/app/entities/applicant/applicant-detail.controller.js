@@ -5,35 +5,45 @@
         .module('recruitsmartApp')
         .controller('ApplicantDetailController', ApplicantDetailController);
 
-    ApplicantDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'DataUtils', 'entity', 'Applicant', 'Address', 'ApplicantStatus', 'ApplicantComment', 'Skill', 'WorkHistory', 'ApplicantInternalComment', 'WorkStatus', 'Activity'];
+    ApplicantDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'DataUtils', 'entity',
+        'Principal', 'Applicant', 'Address', 'ApplicantStatus', 'Skill', 'WorkHistory', 'WorkStatus', 'Activity'];
 
-    function ApplicantDetailController($scope, $rootScope, $stateParams, previousState, DataUtils, entity, Applicant, Address, ApplicantStatus, ApplicantComment, Skill, WorkHistory, ApplicantInternalComment, WorkStatus, Activity) {
+    function ApplicantDetailController($scope, $rootScope, $stateParams, previousState, DataUtils, entity,
+                                       Principal, Applicant, Address, ApplicantStatus, Skill, WorkHistory, WorkStatus, Activity) {
         var vm = this;
 
         vm.applicant = entity;
+        vm.user = null;
         vm.previousState = previousState.name;
         vm.byteSize = DataUtils.byteSize;
         vm.openFile = DataUtils.openFile;
 
+        getAccount();
         var unsubscribe = $rootScope.$on('recruitsmartApp:applicantUpdate', function(event, result) {
             vm.applicant = result;
         });
         $scope.$on('$destroy', unsubscribe);
 
+        function getAccount() {
+            Principal.identity().then(function(account) {
+                vm.user = account;
+                vm.isAuthenticated = Principal.isAuthenticated;
+            });
+        }
+
         vm.contactSave = function () {
             vm.isSaving = true;
             Applicant.update(vm.applicant, onSaveSuccess, onSaveError);
             vm.contactEditable = false;
-            vm.compEdit = false;
+            vm.compensationEditable = false;
             vm.addNewActivity = false;
             vm.resumeEditable = false;
         };
 
         vm.cancelContactSave = function () {
             vm.contactEditable = false;
-            vm.compEdit = false;
+            vm.compensationEditable = false;
             vm.resumeEditable = false;
-            vm.load(vm.applicant.id); //reload applicant data
         };
 
         vm.skills = Skill.query();
@@ -80,54 +90,47 @@
         };
 
         //COMMENTS
-        //General Comments
+        //-------------------------- GENERAL COMMENTS -------------------------------
         vm.saveComment = function () {
             vm.applicant.applicantComments.push({
-                id: null,
-                description: vm.applicantComment
+                comment: vm.applicantComment,
+                user: vm.user
             });
-                Applicant.update(vm.applicant, function (result) {
-                    vm.applicant = result;
-                }, onSaveError);
+            Applicant.update(vm.applicant, function (result) {
+                vm.applicant = result;
+            }, onSaveError);
             vm.editableComment = false;
         };
 
         vm.cancelComment = function () {
             vm.editableComment = false;
-            vm.compEdit = false;
-            vm.load(vm.applicant.id); //reload applicant data
         };
 
         vm.removeGenComments = function (index) {
-            vm.applicant.applicantCommentss.splice(index, 1);
+            vm.applicant.applicantComments.splice(index, 1);
             Applicant.update(vm.applicant, onSaveSuccess, onSaveError);
         };
         //End of General Comments
 
         // Internal Comments
-
+        //-------------------------- INTERNAL COMMENTS -------------------------------
         vm.internalCommentsSave = function () {
-            if (vm.newApplicantInternalComment !== null) {
-                vm.isSaving = true;
-                vm.applicant.applicantInternalCommentss.push({
-                    id: null,
-                    description: vm.newApplicantInternalComment
-                });
-                Applicant.update(vm.applicant, function (result) {
-                    vm.applicant = result;
-                }, onSaveError);
-            }
-            vm.newApplicantInternalComment = '';
+            vm.applicant.applicantInternalComments.push({
+                comment: vm.newApplicantInternalComment,
+                user: vm.user
+            });
+            Applicant.update(vm.applicant, function (result) {
+                vm.applicant = result;
+            }, onSaveError);
             vm.internalCommentsEditable = false;
         };
 
         vm.cancelInternalCommentsSave = function () {
             vm.internalCommentsEditable = false;
-            vm.load(vm.applicant.id); //reload applicant data
         };
 
         vm.removeInternalComments = function (index) {
-            vm.applicant.applicantInternalCommentss.splice(index, 1);
+            vm.applicant.applicantInternalComments.splice(index, 1);
             Applicant.update(vm.applicant, onSaveSuccess, onSaveError);
         };
         // End of Internal Comments
