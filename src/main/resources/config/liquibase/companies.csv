@@ -1,4 +1,4 @@
-employee; is_deleted; name; revenue; website;company_type;companyStatus
+employee; is_deleted; name; revenue; website;company_type;company_status
 1; 0; Flipbug; $132830.43; yahoo.co.jp;Client;MSA
 9; 0; Meedoo; $790070.65; netvibes.com;Client;MSA
 2; 0; Gabtype; $713753.53; uol.com.br;Client;MSA
