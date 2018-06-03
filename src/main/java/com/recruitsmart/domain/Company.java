@@ -66,6 +66,10 @@ public class Company implements Serializable {
     @JsonManagedReference("companyInternalComment")
     private Set<CompanyInternalComment> companyInternalComments = new HashSet<>();
 
+    @OneToMany(orphanRemoval=true, fetch = FetchType.EAGER, mappedBy = "companyAddress", cascade = { CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE, CascadeType.REFRESH })
+    @JsonManagedReference("companyAddress")
+    private Set<Address> addresses = new HashSet<>();
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -153,6 +157,14 @@ public class Company implements Serializable {
 
     public void setCompanyInternalComments(Set<CompanyInternalComment> companyInternalComments) {
         this.companyInternalComments = companyInternalComments;
+    }
+
+    public Set<Address> getAddresses() {
+        return addresses;
+    }
+
+    public void setAddresses(Set<Address> addresses) {
+        this.addresses = addresses;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
