@@ -1,5 +1,6 @@
 package com.recruitsmart.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.Cache;
@@ -66,10 +67,6 @@ public class JobOrder implements Serializable {
     @ManyToOne
     private Company company;
 
-//    @OneToMany(mappedBy = "jobOrder")
-//    @JsonIgnore
-//    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-//    private Set<JobOrderComment> jobOrderComments = new HashSet<>();
 //
 //    @OneToMany(mappedBy = "jobOrder")
 //    @JsonIgnore
@@ -82,22 +79,10 @@ public class JobOrder implements Serializable {
 //               joinColumns = @JoinColumn(name="job_orders_id", referencedColumnName="id"),
 //               inverseJoinColumns = @JoinColumn(name="skills_id", referencedColumnName="id"))
 //    private Set<Skill> skills = new HashSet<>();
-//    @OneToMany(mappedBy = "jobOrder")
-//    @JsonIgnore
-//    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-//    private Set<JobOrderInternalComment> jobOrderInternalComments = new HashSet<>();
-//
-//    @ManyToMany
-//    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-//    @JoinTable(name = "job_order_hiring_contact",
-//               joinColumns = @JoinColumn(name="job_orders_id", referencedColumnName="id"),
-//               inverseJoinColumns = @JoinColumn(name="hiring_contacts_id", referencedColumnName="id"))
-//    private Set<HiringContact> hiringContacts = new HashSet<>();
-//
-//    @OneToMany(mappedBy = "jobOrder")
-//    @JsonIgnore
-//    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-//    private Set<Activity> activities = new HashSet<>();
+
+    @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.EAGER)
+    @JsonBackReference("hiringContactJobOrder")
+    private HiringContact hiringContactJobOrders;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {

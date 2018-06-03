@@ -1,5 +1,6 @@
 package com.recruitsmart.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -46,6 +47,10 @@ public class Skill implements Serializable {
         this.name = name;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
+
+    @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.EAGER)
+    @JsonBackReference("applicantSkill")
+    private Applicant applicantSkill;
 
     @Override
     public boolean equals(Object o) {

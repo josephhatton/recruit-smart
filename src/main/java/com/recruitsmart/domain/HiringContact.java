@@ -72,25 +72,13 @@ public class HiringContact implements Serializable {
     @JsonManagedReference("hiringContactInternalComment")
     private Set<HiringContactInternalComment> hiringContactInternalComments = new HashSet<>();
 
-//    @OneToMany(mappedBy = "hiringContact")
-//    @JsonIgnore
-//    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-//    private Set<HiringContactComment> hiringContactComments = new HashSet<>();
-//
-//    @OneToMany(mappedBy = "hiringContact")
-//    @JsonIgnore
-//    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-//    private Set<HiringContactInternalComment> hiringContactInternalComments = new HashSet<>();
-//
-//    @ManyToMany(mappedBy = "hiringContacts")
-//    @JsonIgnore
-//    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-//    private Set<JobOrder> jobOrders = new HashSet<>();
-//
-//    @ManyToMany(mappedBy = "hiringContacts")
-//    @JsonIgnore
-//    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-//    private Set<Activity> activities = new HashSet<>();
+    @OneToMany(orphanRemoval=true, fetch = FetchType.EAGER, mappedBy = "hiringContactJobOrder", cascade = { CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE, CascadeType.REFRESH })
+    @JsonManagedReference("hiringContactJobOrder")
+    private Set<JobOrder> jobOrders = new HashSet<>();
+
+    @OneToMany(orphanRemoval=true, fetch = FetchType.EAGER, mappedBy = "hiringContactActivity", cascade = { CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE, CascadeType.REFRESH })
+    @JsonManagedReference("hiringContactActivity")
+    private Set<Activity> activities = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -211,6 +199,22 @@ public class HiringContact implements Serializable {
 
     public void setHiringContactInternalComments(Set<HiringContactInternalComment> hiringContactInternalComments) {
         this.hiringContactInternalComments = hiringContactInternalComments;
+    }
+
+    public Set<JobOrder> getJobOrders() {
+        return jobOrders;
+    }
+
+    public void setJobOrders(Set<JobOrder> jobOrders) {
+        this.jobOrders = jobOrders;
+    }
+
+    public Set<Activity> getActivities() {
+        return activities;
+    }
+
+    public void setActivities(Set<Activity> activities) {
+        this.activities = activities;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

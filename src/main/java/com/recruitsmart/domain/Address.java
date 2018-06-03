@@ -1,5 +1,6 @@
 package com.recruitsmart.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -38,6 +39,10 @@ public class Address implements Serializable {
 
     @Column(name = "zip_code")
     private String zipCode;
+
+    @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.EAGER)
+    @JsonBackReference("applicantAddress")
+    private Applicant applicantAddress;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {

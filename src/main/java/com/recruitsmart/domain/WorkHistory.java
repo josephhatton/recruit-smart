@@ -1,5 +1,6 @@
 package com.recruitsmart.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -60,6 +61,10 @@ public class WorkHistory implements Serializable {
 
     @Column(name = "reason_for_leaving")
     private String reasonForLeaving;
+
+    @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.EAGER)
+    @JsonBackReference("applicantHistory")
+    private Applicant applicantHistory;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {

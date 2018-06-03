@@ -112,35 +112,17 @@ public class Applicant implements Serializable {
     @JsonManagedReference("applicantInternalComment")
     private Set<ApplicantInternalComment> applicantInternalComments = new HashSet<>();
 
-    //    @OneToMany(mappedBy = "applicant")
-//    @JsonIgnore
-//    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-//    private Set<Address> addresses = new HashSet<>();
-//
-//    @OneToMany(mappedBy = "applicant")
-//    @JsonIgnore
-//    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-//    private Set<ApplicantComment> applicantComments = new HashSet<>();
-//
-//    @OneToMany(mappedBy = "applicant")
-//    @JsonIgnore
-//    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-//    private Set<Skill> skills = new HashSet<>();
-//
-//    @OneToMany(mappedBy = "applicant")
-//    @JsonIgnore
-//    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-//    private Set<WorkHistory> workHistories = new HashSet<>();
-//
-//    @OneToMany(mappedBy = "applicant")
-//    @JsonIgnore
-//    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-//    private Set<ApplicantInternalComment> applicantInternalComments = new HashSet<>();
+    @OneToMany(orphanRemoval=true, fetch = FetchType.EAGER, mappedBy = "applicantAddress", cascade = { CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE, CascadeType.REFRESH })
+    @JsonManagedReference("applicantAddress")
+    private Set<Address> addresses = new HashSet<>();
 
-//    @OneToMany(mappedBy = "applicant")
-//    @JsonIgnore
-//    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-//    private Set<Activity> activities = new HashSet<>();
+    @OneToMany(orphanRemoval=true, fetch = FetchType.EAGER, mappedBy = "applicantSkill", cascade = { CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE, CascadeType.REFRESH })
+    @JsonManagedReference("applicantSkill")
+    private Set<Skill> skills = new HashSet<>();
+
+    @OneToMany(orphanRemoval=true, fetch = FetchType.EAGER, mappedBy = "applicantHistory", cascade = { CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE, CascadeType.REFRESH })
+    @JsonManagedReference("applicantHistory")
+    private Set<WorkHistory> workHistories = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -366,6 +348,30 @@ public class Applicant implements Serializable {
 
     public void setApplicantInternalComments(Set<ApplicantInternalComment> applicantInternalComments) {
         this.applicantInternalComments = applicantInternalComments;
+    }
+
+    public Set<Address> getAddresses() {
+        return addresses;
+    }
+
+    public void setAddresses(Set<Address> addresses) {
+        this.addresses = addresses;
+    }
+
+    public Set<Skill> getSkills() {
+        return skills;
+    }
+
+    public void setSkills(Set<Skill> skills) {
+        this.skills = skills;
+    }
+
+    public Set<WorkHistory> getWorkHistories() {
+        return workHistories;
+    }
+
+    public void setWorkHistories(Set<WorkHistory> workHistories) {
+        this.workHistories = workHistories;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
