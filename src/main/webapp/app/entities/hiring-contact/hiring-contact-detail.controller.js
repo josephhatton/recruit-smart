@@ -29,6 +29,10 @@
         });
         $scope.$on('$destroy', unsubscribe);
 
+        vm.cancelContactSave = function () {
+            vm.contactEditable = false;
+        };
+
         //COMMENTS
         //General Comments
         vm.commentSave = function () {

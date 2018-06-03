@@ -17,5 +17,9 @@
             vm.jobOrder = result;
         });
         $scope.$on('$destroy', unsubscribe);
+
+        vm.cancelInfo = function () {
+            vm.infoEditable = false;
+        };
     }
 })();

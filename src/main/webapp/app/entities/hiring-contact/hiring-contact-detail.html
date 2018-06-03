@@ -24,6 +24,12 @@
                 <h3>Contact Info
                     <button ng-hide="vm.contactEditable" ng-click="vm.contactEditable = !vm.contactEditable" type="submit"
                             class="btn btn-success btn-sm"><span class="glyphicon glyphicon-pencil"></span></button>
+                    <button ng-show="vm.contactEditable" class="btn btn-success btn-sm" ng-click="vm.contactSave()">
+                        save
+                    </button>
+                    <button ng-show="vm.contactEditable" class="btn btn-danger btn-sm" ng-click="vm.cancelContactSave()">
+                        cancel
+                    </button>
                 </h3>
             </div>
             <div class="col-xs-6">
@@ -51,12 +57,6 @@
             <input type="text" ng-model="vm.hiringContact.email2"></span>
                 </div>
                 <p></p>
-                <button ng-show="vm.contactEditable" class="btn btn-success btn-sm" ng-click="vm.contactSave()">
-                    save
-                </button>
-                <button ng-show="vm.contactEditable" class="btn btn-success btn-sm" ng-click="vm.cancelContactSave()">
-                    cancel
-                </button>
             </div>
             <div class="col-xs-6">
                 <span><label>Contact Type:</label> </span><span ng-hide="vm.contactEditable">{{vm.hiringContact.contactType}}</span>

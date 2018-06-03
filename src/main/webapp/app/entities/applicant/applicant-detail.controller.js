@@ -47,19 +47,20 @@
         };
 
         vm.skills = Skill.query();
+
         vm.addAddress = function () {
-            vm.applicant.addresss.push({
+            vm.address = {
                 address1: null,
                 address2: null,
                 city: null,
                 state: null,
-                zipCode: null,
-                id: null
-            });
+                zipCode: null
+            };
+            vm.applicant.addresses.push(vm.address);
         };
 
         vm.removeAddress = function (index) {
-            vm.applicant.addresss.splice(index, 1);
+            vm.applicant.addresses.splice(index, 1);
         };
 
         vm.addSkill = function () {

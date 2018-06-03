@@ -51,7 +51,7 @@
         };
 
         vm.removeAddress = function (index) {
-            vm.company.addresss.splice(index, 1);
+            vm.company.addresses.splice(index, 1);
         };
 
         //COMMENTS

@@ -24,6 +24,12 @@
         <h3>General Info
             <button ng-hide="vm.infoEditable" ng-click="vm.infoEditable = !vm.infoEditable" type="submit"
                     class="btn btn-success btn-sm"><span class="glyphicon glyphicon-pencil"></span></button>
+            <button ng-show="vm.infoEditable" class="btn btn-success btn-sm" ng-click="vm.infoSave()">
+                save
+            </button>
+            <button ng-show="vm.infoEditable" class="btn btn-danger btn-sm" ng-click="vm.cancelInfo();">
+                cancel
+            </button>
         </h3>
         <div class="row">
             <div class="col-xs-6">
@@ -106,12 +112,6 @@
                         </uib-tab>
                     </uib-tabset>
                     <p></p>
-                    <button ng-show="vm.infoEditable" class="btn btn-success btn-sm" ng-click="vm.infoSave()">
-                        save
-                    </button>
-                    <button ng-show="vm.infoEditable" class="btn btn-success btn-sm" ng-click="vm.cancelInfoSave();">
-                        cancel
-                    </button>
                 </div>
             </div>
 
