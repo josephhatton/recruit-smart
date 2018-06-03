@@ -63,25 +63,17 @@
         };
 
         vm.addSkill = function () {
-            //If new skill is an object then we know the skill exists in database
-            if (vm.newSkill !== null && typeof vm.newSkill === 'object') {
-                vm.applicant.skills.push(vm.newSkill);
-                Applicant.update(vm.applicant, onSaveSuccess, onSaveError);
-            } else if (vm.newSkill !== null) {
-                //If it's not, then add it to DB, then on completion update applicant
-                Skill.save({
-                    id: null,
-                    name: vm.newSkill
-                }, function (result) {
-                    vm.applicant.skills.push(result);
-                    Applicant.update(vm.applicant, onSaveSuccess);
-                }, function () {
-                    //failed to add skill to DB
-                    vm.applicant.skills.pop();
-                    onSaveError();
-                });
-            }
-            vm.newSkill = '';
+            //If it's not, then add it to DB, then on completion update applicant
+            Skill.update({
+                name: vm.newSkill
+            }, function (result) {
+                vm.applicant.skills.push(result);
+                Applicant.update(vm.applicant, onSaveSuccess);
+            }, function () {
+                //failed to add skill to DB
+                vm.applicant.skills.pop();
+                onSaveError();
+            });
         };
 
         vm.deleteSkill = function (index) {
