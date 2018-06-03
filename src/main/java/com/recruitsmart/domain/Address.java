@@ -46,7 +46,7 @@ public class Address implements Serializable {
 
     @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.EAGER)
     @JsonBackReference("companyAddress")
-    private Applicant companyAddress;
+    private Company companyAddress;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
