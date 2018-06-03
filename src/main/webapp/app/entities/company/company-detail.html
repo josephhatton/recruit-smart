@@ -7,7 +7,13 @@
     <div class="company-info well">
         <h3>Contact Info
             <button ng-hide="vm.contactEditable" ng-click="vm.contactEditable = !vm.contactEditable" type="submit"
-                    class="btn btn-success btn-sm"><span class="glyphicon glyphicon-pencil"></span></button>
+                    class="btn btn-success btn-xs"><span class="glyphicon glyphicon-pencil"></span></button>
+            <button ng-show="vm.contactEditable" class="addAddressbtn btn btn-success btn-xs" ng-click="vm.contactSave()">
+                save
+            </button>
+            <button ng-show="vm.contactEditable" class="addAddressbtn btn btn-danger btn-xs" ng-click="vm.cancelContactSave()">
+                cancel
+            </button>
         </h3>
         <div class="row">
             <div class="col-md-6">
@@ -61,7 +67,7 @@
                         </button>
                     </div>
 
-                    <uib-tab class="address" ng-repeat="address in vm.company.addresss track by $index">
+                    <uib-tab class="address" ng-repeat="address in vm.company.addresses track by $index">
                         <uib-tab-heading>
                             {{ $index +1 }}
                         </uib-tab-heading>
@@ -135,12 +141,6 @@
                         </div>
                     </uib-tab>
                 </uib-tabset>
-                <button ng-show="vm.contactEditable" class="addAddressbtn btn btn-success btn-xs" ng-click="vm.contactSave()">
-                    save
-                </button>
-                <button ng-show="vm.contactEditable" class="addAddressbtn btn btn-success btn-xs" ng-click="vm.cancelContactSave()">
-                    cancel
-                </button>
             </div>
 
             <div class="col-md-6">
@@ -209,7 +209,7 @@
         <table class="table table-striped">
             <h3><span>General Comments </span>
                 <button ng-hide="vm.commentEditable" ng-click="vm.commentEditable = !vm.commentEditable"
-                        type="submit" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-plus"></span></button>
+                        type="submit" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-plus"></span></button>
                 <button ng-show="vm.commentEditable" class="btn btn-success" ng-click="vm.commentSave()">save</button>
                 <button ng-show="vm.commentEditable" class="btn btn-danger" ng-click="vm.cancelComment()">cancel</button>
             </h3>
@@ -237,12 +237,12 @@
             <h3><span>Internal Comments  </span>
                 <button ng-hide="vm.internalCommentEditable"
                         ng-click="vm.internalCommentEditable = !vm.internalCommentEditable" type="submit"
-                        class="btn btn-success btn-sm"><span class="glyphicon glyphicon-plus"></span></button>
+                        class="btn btn-success btn-xs"><span class="glyphicon glyphicon-plus"></span></button>
                 <button ng-show="vm.internalCommentEditable" class="btn btn-success" ng-click="vm.internalCommentSave()">
                     save
                 </button>
                 <button ng-show="vm.internalCommentEditable" class="btn btn-danger"
-                        ng-click="vm.cancelInternalCommentSave()">cancel</button>
+                        ng-click="vm.cancelInternalComment()">cancel</button>
             </h3>
             <tbody>
             <tr>
@@ -400,9 +400,7 @@
             <tr>
                 <td><a>crescendoMSA.pdf</a></td>
                 <td>
-                    <button type="submit"
-                            ui-sref="jobs.delete({id:jobs.id})"
-                            class="btn btn-danger btn-sm">
+                    <button type="submit" ui-sref="jobs.delete({id:jobs.id})" class="btn btn-danger btn-sm">
                         <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span
                         translate="entity.action.delete"> Delete</span>
                     </button>

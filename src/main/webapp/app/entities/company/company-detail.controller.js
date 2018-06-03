@@ -6,10 +6,10 @@
         .controller('CompanyDetailController', CompanyDetailController);
 
     CompanyDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity',
-        'Principal', 'Company', 'Address', 'JobOrder', 'HiringContact', 'Activity', 'Skill'];
+        'Principal', 'Company', 'JobOrder', 'HiringContact', 'Activity', 'Skill'];
 
     function CompanyDetailController($scope, $rootScope, $stateParams, previousState, entity,
-                                     Principal, Company, Address, JobOrder, HiringContact, Activity, Skill) {
+                                     Principal, Company, JobOrder, HiringContact, Activity, Skill) {
         var vm = this;
 
         vm.company = entity;
@@ -28,6 +28,31 @@
                 vm.isAuthenticated = Principal.isAuthenticated;
             });
         }
+
+        vm.contactSave = function () {
+            Company.update(vm.company, function (result) {
+                vm.company = result;
+            }, onSaveError);
+            vm.contactEditable = false;
+        };
+        vm.cancelContactSave = function () {
+            vm.contactEditable = false;
+        };
+
+        vm.addAddress = function () {
+            vm.address = {
+                address1: null,
+                address2: null,
+                city: null,
+                state: null,
+                zipCode: null
+            };
+            vm.company.addresses.push(vm.address);
+        };
+
+        vm.removeAddress = function (index) {
+            vm.company.addresss.splice(index, 1);
+        };
 
         //COMMENTS
         //================== General Comments ================
@@ -65,9 +90,8 @@
             vm.internalCommentEditable = false;
         };
 
-        vm.cancelInternalCommentSave = function () {
+        vm.cancelInternalComment = function () {
             vm.internalCommentEditable = false;
-            vm.load(vm.company.id); //reload company data
         };
 
         vm.removeInternalComment = function (index) {
