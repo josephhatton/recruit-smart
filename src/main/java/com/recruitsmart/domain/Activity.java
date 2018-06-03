@@ -40,7 +40,7 @@ public class Activity implements Serializable {
 
     @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.EAGER)
     @JsonBackReference("hiringContactActivity")
-    private HiringContact hiringContactActivities;
+    private HiringContact hiringContactActivity;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
