@@ -52,6 +52,14 @@ public class Skill implements Serializable {
     @JsonBackReference("applicantSkill")
     private Applicant applicantSkill;
 
+    @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.EAGER)
+    @JsonBackReference("companySkill")
+    private Company companySkill;
+
+    @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.EAGER)
+    @JsonBackReference("jobOrderSkill")
+    private JobOrder jobOrderSkill;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

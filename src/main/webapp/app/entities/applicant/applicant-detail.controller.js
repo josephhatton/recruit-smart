@@ -17,12 +17,15 @@
         vm.previousState = previousState.name;
         vm.byteSize = DataUtils.byteSize;
         vm.openFile = DataUtils.openFile;
+        vm.applicantStatuses = ApplicantStatus.query();
+        vm.workStatuses = WorkStatus.query();
 
         getAccount();
         var unsubscribe = $rootScope.$on('recruitsmartApp:applicantUpdate', function(event, result) {
             vm.applicant = result;
         });
         $scope.$on('$destroy', unsubscribe);
+
 
         function getAccount() {
             Principal.identity().then(function(account) {

@@ -70,6 +70,10 @@ public class Company implements Serializable {
     @JsonManagedReference("companyAddress")
     private Set<Address> addresses = new HashSet<>();
 
+    @OneToMany(orphanRemoval=true, fetch = FetchType.EAGER, mappedBy = "companySkill", cascade = { CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE, CascadeType.REFRESH })
+    @JsonManagedReference("companySkill")
+    private Set<Skill> companySkills = new HashSet<>();
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -165,6 +169,14 @@ public class Company implements Serializable {
 
     public void setAddresses(Set<Address> addresses) {
         this.addresses = addresses;
+    }
+
+    public Set<Skill> getCompanySkills() {
+        return companySkills;
+    }
+
+    public void setCompanySkills(Set<Skill> companySkills) {
+        this.companySkills = companySkills;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

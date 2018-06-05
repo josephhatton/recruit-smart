@@ -261,11 +261,11 @@
         </table>
     </div>
 
-    <!-- END INTERNAL COMMENTS -->
+    <!-------------- SKILLS ----------------->
     <div class="table-responsive well">
         <table class="table table-striped">
             <h3>
-                <span>Skills Hired</span>
+                <span>Preferred Skills</span>
                 <button class="btn btn-success btn-xs" ng-click="vm.skillsEditable = !vm.skillsEditable">
                     <span class="glyphicon glyphicon-pencil"></span>
                 </button>
@@ -273,13 +273,13 @@
             <thead>
             <tr>
                 <th>
-          <span ng-show="vm.skillsEditable">
-              <input type="text" ng-model="vm.newSkill"
-                     uib-typeahead="skill as skill.name for skill in vm.skills | filter:$viewValue | limitTo:8">
-              <button ng-click="vm.addSkill(vm.newSkill)" class="btn btn-success btn-xs">
-              <span class="glyphicon glyphicon-plus"></span> add skill
-              </button>
-          </span>
+                  <span ng-show="vm.skillsEditable">
+                      <input type="text" ng-model="vm.newSkill"
+                             uib-typeahead="skill as skill.name for skill in vm.skills | filter:$viewValue | limitTo:8">
+                      <button ng-click="vm.addSkill(vm.newSkill)" class="btn btn-success btn-xs">
+                      <span class="glyphicon glyphicon-plus"></span> add skill
+                      </button>
+                  </span>
                 </th>
             </tr>
             </thead>

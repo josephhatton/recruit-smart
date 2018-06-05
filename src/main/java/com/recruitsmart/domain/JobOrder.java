@@ -67,18 +67,9 @@ public class JobOrder implements Serializable {
     @ManyToOne
     private Company company;
 
-//
-//    @OneToMany(mappedBy = "jobOrder")
-//    @JsonIgnore
-//    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-//    private Set<Address> addresses = new HashSet<>();
-//
-//    @ManyToMany
-//    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-//    @JoinTable(name = "job_order_skill",
-//               joinColumns = @JoinColumn(name="job_orders_id", referencedColumnName="id"),
-//               inverseJoinColumns = @JoinColumn(name="skills_id", referencedColumnName="id"))
-//    private Set<Skill> skills = new HashSet<>();
+    @OneToMany(orphanRemoval=true, fetch = FetchType.EAGER, mappedBy = "jobOrderSkill", cascade = { CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE, CascadeType.REFRESH })
+    @JsonManagedReference("jobOrderSkill")
+    private Set<Skill> skills = new HashSet<>();
 
     @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.EAGER)
     @JsonBackReference("hiringContactJobOrder")
@@ -173,6 +164,13 @@ public class JobOrder implements Serializable {
         this.jobOrderInternalComments = jobOrderInternalComments;
     }
 
+    public HiringContact getHiringContactJobOrder() {
+        return hiringContactJobOrder;
+    }
+
+    public void setHiringContactJobOrder(HiringContact hiringContactJobOrder) {
+        this.hiringContactJobOrder = hiringContactJobOrder;
+    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
