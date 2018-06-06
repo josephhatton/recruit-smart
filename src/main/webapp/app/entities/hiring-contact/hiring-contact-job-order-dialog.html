@@ -13,6 +13,7 @@
             <table class="jh-table table table-striped">
                 <thead>
                 <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th></th>
                     <th jh-sort-by="title"><span>Title</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="description"><span>Location</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="jobType"><span>Job Type</span> <span class="glyphicon glyphicon-sort"></span></th>
@@ -22,7 +23,8 @@
                 </thead>
                 <tbody>
                 <tr ng-repeat="jobOrder in vm.jobOrders track by jobOrder.id">
-                    <td><a ui-sref="job-order-detail({id:jobOrder.id})">{{jobOrder.title}}</a></td>
+                    <th><input type="checkbox" class="form-control"></th>
+                    <td>{{jobOrder.title}}</td>
                     <td>Some Location</td>
                     <td>{{jobOrder.jobType}}</td>
                     <td>{{jobOrder.jobStatus}}</td>
