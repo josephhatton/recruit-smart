@@ -162,6 +162,31 @@
                 });
             }]
         })
+        .state('hiring-contact-detail.job-order', {
+            parent: 'hiring-contact-detail',
+            url: '/job/order',
+            data: {
+                authorities: ['ROLE_USER']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/hiring-contact/hiring-contact-job-order-dialog.html',
+                    controller: 'HiringContactJobOrderDialogController',
+                    controllerAs: 'vm',
+                    backdrop: 'static',
+                    size: 'lg',
+                    resolve: {
+                        entity: ['HiringContact', function(HiringContact) {
+                            return HiringContact.get({id : $stateParams.id}).$promise;
+                        }]
+                    }
+                }).result.then(function() {
+                    $state.go('^', {}, { reload: false });
+                }, function() {
+                    $state.go('^');
+                });
+            }]
+        })
         .state('hiring-contact.delete', {
             parent: 'hiring-contact',
             url: '/{id}/delete',
