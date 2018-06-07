@@ -5,9 +5,9 @@
         .module('recruitsmartApp')
         .controller('JobOrderDetailController', JobOrderDetailController);
 
-    JobOrderDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'Principal', 'entity', 'JobOrder', 'Address', 'Skill', 'Company', 'HiringContact', 'Activity'];
+    JobOrderDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'Principal', 'entity', 'JobOrder', 'Address', 'Company', 'HiringContact', 'Activity'];
 
-    function JobOrderDetailController($scope, $rootScope, $stateParams, previousState, Principal, entity, JobOrder, Address, Skill, Company, HiringContact, Activity) {
+    function JobOrderDetailController($scope, $rootScope, $stateParams, previousState, Principal, entity, JobOrder, Address, Company, HiringContact, Activity) {
         var vm = this;
 
         vm.jobOrder = entity;
@@ -81,7 +81,6 @@
             JobOrder.update(vm.jobOrder, onSaveSuccess, onSaveError);
         };
         // End of Internal Comments
-
         //END OF COMMENTS
 
         var onSaveSuccess = function (result) {
@@ -93,5 +92,22 @@
             vm.isSaving = false;
             $Slog(result);
         };
+
+        vm.addSkill = function () {
+            //If it's not, then add it to DB, then on completion update applicant
+            vm.jobOrder.skills.push({
+                name: vm.newSkill
+            });
+            JobOrder.update(vm.jobOrder, onSaveSuccess);
+        };
+
+        vm.deleteSkill = function (index) {
+            vm.jobOrder.skills.splice(index, 1);
+            JobOrder.update(vm.jobOrder, onSaveSuccess, onSaveError);
+        };
+        vm.cancelSkill = function () {
+            vm.skillsEditable = false;
+        };
+
     }
 })();

@@ -99,8 +99,30 @@
             Company.update(vm.company, onSaveSuccess, onSaveError);
         };
         // End of Internal Comments
+
+        vm.addSkill = function () {
+            //If it's not, then add it to DB, then on completion update applicant
+            vm.company.companySkills.push({
+                name: vm.newSkill
+            });
+            Company.update(vm.company, onSaveSuccess);
+        };
+
+        vm.deleteSkill = function (index) {
+            vm.company.companySkills.splice(index, 1);
+            Company.update(vm.company, onSaveSuccess, onSaveError);
+        };
+        vm.cancelSkill = function () {
+            vm.skillsEditable = false;
+        };
+        var onSaveSuccess = function (result) {
+            $scope.$emit('recruitsmartApp:addressUpdate', result);
+            vm.isSaving = false;
+        };
+
         var onSaveError = function (result) {
             vm.isSaving = false;
         };
+
     }
 })();

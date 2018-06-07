@@ -49,8 +49,6 @@
             vm.resumeEditable = false;
         };
 
-        vm.skills = Skill.query();
-
         vm.addAddress = function () {
             vm.address = {
                 address1: null,
@@ -68,16 +66,10 @@
 
         vm.addSkill = function () {
             //If it's not, then add it to DB, then on completion update applicant
-            Skill.update({
+            vm.applicant.skills.push({
                 name: vm.newSkill
-            }, function (result) {
-                vm.applicant.skills.push(result);
-                Applicant.update(vm.applicant, onSaveSuccess);
-            }, function () {
-                //failed to add skill to DB
-                vm.applicant.skills.pop();
-                onSaveError();
             });
+             Applicant.update(vm.applicant, onSaveSuccess);
         };
 
         vm.deleteSkill = function (index) {
