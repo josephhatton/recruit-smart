@@ -216,23 +216,32 @@
 
     <div class="table-responsive well">
         <table class="table table-striped">
-            <h3>
-                <span>Job Description</span>
-                <button class="btn btn-success btn-xs" ng-click="vm.jobDescriptionEditable = !vm.jobDescriptionEditable">
+            <tr>
+                <h3>Job Description
+                <button class="btn btn-success btn-xs" ng-hide="vm.jobDescriptionEditable" ng-click="vm.jobDescriptionEditable = !vm.jobDescriptionEditable">
                     <span class="glyphicon glyphicon-pencil"></span>
                 </button>
-                <button ng-show="vm.jobDescriptionEditable" class="btn btn-primary" ng-click="vm.infoSave()">
+                <button ng-show="vm.jobDescriptionEditable" class="btn btn-success btn-xs" ng-click="vm.commentSave()">
                     save
                 </button>
-                <button ng-show="vm.jobDescriptionEditable" class="btn btn-default"
+                <button ng-show="vm.jobDescriptionEditable" class="btn btn-danger btn-xs"
                         ng-click="vm.jobDescriptionEditable = !vm.jobDescriptionEditable">
                     cancel
                 </button>
-            </h3>
+                </h3>
+            </tr>
             <thead></thead>
             <tbody>
-            <td><textarea ng-disabled="!vm.jobDescriptionEditable" ng-model="vm.jobOrder.description" class="form-control"
-                          rows="5"></textarea></td>
+            <tr>
+            <td><textarea ng-disabled="!vm.jobDescriptionEditable" ng-model="vm.jobOrderComment" class="form-control" rows="5"></textarea></td>
+            </tr>
+            <tr ng-repeat="jobOrderComment in vm.jobOrder.jobOrderComments track by $index">
+                <td>{{jobOrderComment.comment}}</td>
+                <td>
+                    <button ng-click="vm.removeComment($index);" class="btn btn btn-danger btn-xs pull-right"></button>
+                </td>
+            </tr>
+
             </tbody>
         </table>
     </div>
@@ -243,25 +252,25 @@
             <h3><span>Internal Comments  </span>
                 <button ng-hide="vm.internalCommentsEditable"
                         ng-click="vm.internalCommentsEditable = !vm.internalCommentsEditable" type="submit"
-                        class="btn btn-success btn-sm"><span class="glyphicon glyphicon-plus"></span></button>
-                <button ng-show="vm.internalCommentsEditable" class="btn btn-primary" ng-click="vm.internalCommentsSave()">
+                        class="btn btn-success btn-xs"><span class="glyphicon glyphicon-plus btn-xs"></span></button>
+                <button ng-show="vm.internalCommentsEditable" class="btn btn-success btn-xs" ng-click="vm.internalCommentSave()">
                     save
                 </button>
-                <button ng-show="vm.internalCommentsEditable" class="btn btn-default"
-                        ng-click="vm.cancelInternalCommentsSave()">cancel
+                <button ng-show="vm.internalCommentsEditable" class="btn btn-danger btn-xs"
+                        ng-click="vm.cancelInternalComment()">cancel
                 </button>
             </h3>
             <tbody>
             <tr>
                 <td>
           <textarea class="form-control" ng-disabled="!vm.internalCommentsEditable"
-                    ng-model="vm.newJobInternalComment"></textarea>
+                    ng-model="vm.jobOrderInternalComment"></textarea>
                 </td>
             </tr>
-            <tr ng-repeat="jobInternalComments in vm.jobOrder.jobInternalCommentss track by $index">
-                <td>{{jobInternalComments.description}}</td>
+            <tr ng-repeat="jobInternalComment in vm.jobOrder.jobOrderInternalComments track by $index">
+                <td>{{jobInternalComment.comment}}</td>
                 <td>
-                    <button ng-click="vm.removeInternalComments($index);" class="btn btn btn-danger btn-xs pull-right"></button>
+                    <button ng-click="vm.removeInternalComment($index);" class="btn btn btn-danger btn-xs pull-right"></button>
                 </td>
             </tr>
             </tbody>

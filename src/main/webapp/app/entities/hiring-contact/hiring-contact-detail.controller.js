@@ -6,10 +6,10 @@
         .controller('HiringContactDetailController', HiringContactDetailController);
 
     HiringContactDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity',
-        'Principal', 'HiringContact', 'Company', 'HiringContactComment', 'HiringContactInternalComment', 'JobOrder', 'Activity'];
+        'Principal', 'HiringContact', 'Company', 'JobOrder', 'Activity'];
 
     function HiringContactDetailController($scope, $rootScope, $stateParams, previousState, entity,
-                                           Principal, HiringContact, Company, HiringContactComment, HiringContactInternalComment, JobOrder, Activity) {
+                                           Principal, HiringContact, Company,  JobOrder, Activity) {
         var vm = this;
 
         vm.hiringContact = entity;

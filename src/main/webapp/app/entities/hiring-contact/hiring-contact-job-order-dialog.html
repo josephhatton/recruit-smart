@@ -15,7 +15,7 @@
                 <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
                     <th></th>
                     <th jh-sort-by="title"><span>Title</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="description"><span>Location</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="company.addresses.city"><span>Location</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="jobType"><span>Job Type</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="jobStatus"><span>Job Status</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="duration"><span>Skills</span> <span class="glyphicon glyphicon-sort"></span></th>
@@ -23,9 +23,9 @@
                 </thead>
                 <tbody>
                 <tr ng-repeat="jobOrder in vm.jobOrders track by jobOrder.id">
-                    <th><input type="checkbox" class="form-control"></th>
+                    <td><input type="checkbox" ng-model="jobOrder.checked"/></td>
                     <td>{{jobOrder.title}}</td>
-                    <td>Some Location</td>
+                    <td>{{jobOrder.company.addresses.city || "No Location"}}, {{jobOrder.company.addresses.state}}</td>
                     <td>{{jobOrder.jobType}}</td>
                     <td>{{jobOrder.jobStatus}}</td>
                     <td>Skills</td>
