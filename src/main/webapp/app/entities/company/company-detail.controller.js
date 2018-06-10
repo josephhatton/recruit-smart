@@ -6,10 +6,10 @@
         .controller('CompanyDetailController', CompanyDetailController);
 
     CompanyDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity',
-        'Principal', 'Company', 'CompanyJob', 'HiringContact', 'Activity', 'Skill'];
+        'Principal', 'Company', 'CompanyJob', 'HiringContact'];
 
     function CompanyDetailController($scope, $rootScope, $stateParams, previousState, entity,
-                                     Principal, Company, CompanyJob, HiringContact, Activity, Skill) {
+                                     Principal, Company, CompanyJob, HiringContact) {
         var vm = this;
 
         vm.company = entity;
