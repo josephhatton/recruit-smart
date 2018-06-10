@@ -8,6 +8,7 @@
 
     function Company ($resource) {
         var resourceUrl =  'api/companies/:id';
+        var resourceJobUrl =  'api/companies/job-order/:id';
 
         return $resource(resourceUrl, {}, {
             'query': { method: 'GET', isArray: true},
@@ -21,6 +22,9 @@
                 }
             },
             'update': { method:'PUT' }
+        }),
+        $resource(resourceJobUrl, {}, {
+            'jobs': { method: 'GET', isArray: true}
         });
     }
 })();

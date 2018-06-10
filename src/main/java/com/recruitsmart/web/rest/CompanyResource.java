@@ -3,7 +3,9 @@ package com.recruitsmart.web.rest;
 import com.codahale.metrics.annotation.Timed;
 import com.recruitsmart.domain.Company;
 
+import com.recruitsmart.domain.JobOrder;
 import com.recruitsmart.repository.CompanyRepository;
+import com.recruitsmart.repository.JobOrderRepository;
 import com.recruitsmart.repository.search.CompanySearchRepository;
 import com.recruitsmart.web.rest.errors.BadRequestAlertException;
 import com.recruitsmart.web.rest.util.HeaderUtil;
@@ -40,12 +42,13 @@ public class CompanyResource {
     private static final String ENTITY_NAME = "company";
 
     private final CompanyRepository companyRepository;
-
+    private final JobOrderRepository jobOrderRepository;
     private final CompanySearchRepository companySearchRepository;
 
-    public CompanyResource(CompanyRepository companyRepository, CompanySearchRepository companySearchRepository) {
+    public CompanyResource(CompanyRepository companyRepository, CompanySearchRepository companySearchRepository, JobOrderRepository jobOrderRepository) {
         this.companyRepository = companyRepository;
         this.companySearchRepository = companySearchRepository;
+        this.jobOrderRepository = jobOrderRepository;
     }
 
     /**
@@ -119,6 +122,21 @@ public class CompanyResource {
         log.debug("REST request to get Company : {}", id);
         Company company = companyRepository.findOne(id);
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(company));
+    }
+
+
+    /**
+     * GET  /companies : get all the companies.
+     *
+     * @param id the pagination information
+     * @return the ResponseEntity with status 200 (OK) and the list of companies in body
+     */
+    @GetMapping("/companies/job-order/{id}")
+    @Timed
+    public List<JobOrder> getAllJobOrders(@PathVariable Long id) {
+        log.debug("REST request to get a page of Companies by Job Order");
+        List<JobOrder> list = jobOrderRepository.findAllByCompanyId(id);
+        return list;
     }
 
     /**

@@ -14,4 +14,6 @@ import java.util.List;
 @Repository
 public interface JobOrderRepository extends JpaRepository<JobOrder, Long> {
 
+    List<JobOrder> findAllByCompanyId(Long companyId);
+
 }
