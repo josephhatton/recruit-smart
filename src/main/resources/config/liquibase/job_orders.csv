@@ -1,21 +1,21 @@
-duration; title; company_id
-6 Months; Project Manager;1
-Indefinite; Account Executive;2
-1 year; Community Outreach Specialist;3
-6 Months; Civil Engineer;4
-6 Months; Recruiting Manager;5
-6 Months; VP Accounting;6
-6 Months; Teacher;7
-6 Months; Engineer IV;8
-6 Months; Mechanical Systems Engineer;9
-1 year; Project Manager;10
-6 Months; Project Manager;11
-Indefinite; Account Executive;12
-1 year; Community Outreach Specialist;13
-6 Months; Civil Engineer;14
-6 Months; Recruiting Manager;15
-6 Months; VP Accounting;16
-6 Months; Teacher;17
-6 Months; Engineer IV;18
-6 Months; Mechanical Systems Engineer;19
-1 year; Project Manager;20
+duration; title; company_id;job_type;job_status
+6 Months; Project Manager;1;Contract;OPEN
+Indefinite; Account Executive;2;Contract;OPEN
+1 year; Community Outreach Specialist;3;Contract;OPEN
+6 Months; Civil Engineer;4;Contract;OPEN
+6 Months; Recruiting Manager;5;Contract;OPEN
+6 Months; VP Accounting;6;Contract;OPEN
+6 Months; Teacher;7;Contract;OPEN
+6 Months; Engineer IV;8;Contract;OPEN
+6 Months; Mechanical Systems Engineer;9;Contract;OPEN
+1 year; Project Manager;10;Contract;OPEN
+6 Months; Project Manager;11;Contract;OPEN
+Indefinite; Account Executive;12;Contract;OPEN
+1 year; Community Outreach Specialist;13;Contract;OPEN
+6 Months; Civil Engineer;14;Contract;OPEN
+6 Months; Recruiting Manager;15;Contract;OPEN
+6 Months; VP Accounting;16;Contract;OPEN
+6 Months; Teacher;17;Contract;OPEN
+6 Months; Engineer IV;18;Contract;OPEN
+6 Months; Mechanical Systems Engineer;19;Contract;OPEN
+1 year; Project Manager;20;Contract;OPEN
