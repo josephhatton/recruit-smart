@@ -354,7 +354,6 @@
 
             <tr>
                 <td>Position Title</td>
-                <td>Company Contact</td>
                 <td>Status</td>
                 <td>Type</td>
                 <td>Compensation</td>
@@ -362,11 +361,9 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="job in vm.company.jobOrders track by $index">
+            <tr ng-repeat="job in vm.jobOrders track by $index">
                 <td><a ui-sref="job-order-detail({id:job.id})">{{job.title}}</a></td>
-                <td><a ng-repeat="contact in vm.company.jobOrders track by $index"
-                       ui-sref="hiring-contact-detail({id:contact.id})">{{contact.lastName}}, {{contact.firstName}}</a></td>
-                <td>{{job.jobStatus}}</td>
+                <td>{{job.jobStatus.name}}</td>
                 <td>{{job.jobType}}</td>
                 <td>Salary: $ {{job.salary}}<br> Hourly: $ {{job.hourly}}</td>
                 <td>{{job.createdDate}}</td>

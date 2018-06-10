@@ -2,14 +2,14 @@
     'use strict';
     angular
         .module('recruitsmartApp')
-        .factory('Company', Company);
+        .factory('CompanyJob', CompanyJob);
 
-    Company.$inject = ['$resource'];
+    CompanyJob.$inject = ['$resource'];
 
-    function Company ($resource) {
-        var resourceUrl =  'api/companies/:id';
+    function CompanyJob ($resource) {
+        var resourceJobUrl =  'api/companies/job-order/:id';
 
-        return $resource(resourceUrl, {}, {
+        return $resource(resourceJobUrl, {}, {
             'query': { method: 'GET', isArray: true},
             'get': {
                 method: 'GET',

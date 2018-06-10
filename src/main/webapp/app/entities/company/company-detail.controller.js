@@ -6,10 +6,10 @@
         .controller('CompanyDetailController', CompanyDetailController);
 
     CompanyDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity',
-        'Principal', 'Company', 'HiringContact', 'Activity', 'Skill'];
+        'Principal', 'Company', 'CompanyJob', 'HiringContact', 'Activity', 'Skill'];
 
     function CompanyDetailController($scope, $rootScope, $stateParams, previousState, entity,
-                                     Principal, Company, HiringContact, Activity, Skill) {
+                                     Principal, Company, CompanyJob, HiringContact, Activity, Skill) {
         var vm = this;
 
         vm.company = entity;
@@ -29,7 +29,7 @@
                 vm.isAuthenticated = Principal.isAuthenticated;
             });
         }
-        Company.jobs({id: vm.company.id}, function (result) {
+        CompanyJob.query({id: $stateParams.id}, function (result) {
             vm.jobOrders = result;
         }, onSaveError);
 
