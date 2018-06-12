@@ -19,6 +19,7 @@
     <include file="config/liquibase/changelog/20180527205518_added_entity_HiringContactComment.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180527205518_added_entity_HiringContactInternalComment.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180527205518_added_entity_HotList.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180527205518_added_entity_HotListBucket.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180527205518_added_entity_JobOrder.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180527205518_added_entity_JobOrderComment.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180527205518_added_entity_JobOrderInternalComment.xml" relativeToChangelogFile="false"/>
@@ -27,7 +28,6 @@
     <include file="config/liquibase/changelog/20180527205518_added_entity_WorkHistory.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180527205518_added_entity_WorkStatus.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180527205518_added_entity_Book.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20180612144842_added_entity_HotListBucket.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
     <include file="classpath:config/liquibase/changelog/applicants.sql" relativeToChangelogFile="false"/>
