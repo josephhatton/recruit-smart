@@ -64,7 +64,7 @@ public class CacheConfiguration {
             cm.createCache(com.recruitsmart.domain.SkillCategory.class.getName(), jcacheConfiguration);
             cm.createCache(com.recruitsmart.domain.WorkHistory.class.getName(), jcacheConfiguration);
             cm.createCache(com.recruitsmart.domain.WorkStatus.class.getName(), jcacheConfiguration);
-            cm.createCache(com.recruitsmart.domain.JobOrderBucket.class.getName(), jcacheConfiguration);
+            cm.createCache(com.recruitsmart.domain.HotListBucket.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

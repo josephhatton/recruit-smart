@@ -99,13 +99,13 @@ public class ElasticsearchIndexService {
 
     private final HotListSearchRepository hotListSearchRepository;
 
+    private final HotListBucketRepository hotListBucketRepository;
+
+    private final HotListBucketSearchRepository hotListBucketSearchRepository;
+
     private final JobOrderRepository jobOrderRepository;
 
     private final JobOrderSearchRepository jobOrderSearchRepository;
-
-    private final JobOrderBucketRepository jobOrderBucketRepository;
-
-    private final JobOrderBucketSearchRepository jobOrderBucketSearchRepository;
 
     private final JobOrderCommentRepository jobOrderCommentRepository;
 
@@ -170,10 +170,10 @@ public class ElasticsearchIndexService {
         HiringContactInternalCommentSearchRepository hiringContactInternalCommentSearchRepository,
         HotListRepository hotListRepository,
         HotListSearchRepository hotListSearchRepository,
+        HotListBucketRepository hotListBucketRepository,
+        HotListBucketSearchRepository hotListBucketSearchRepository,
         JobOrderRepository jobOrderRepository,
         JobOrderSearchRepository jobOrderSearchRepository,
-        JobOrderBucketRepository jobOrderBucketRepository,
-        JobOrderBucketSearchRepository jobOrderBucketSearchRepository,
         JobOrderCommentRepository jobOrderCommentRepository,
         JobOrderCommentSearchRepository jobOrderCommentSearchRepository,
         JobOrderInternalCommentRepository jobOrderInternalCommentRepository,
@@ -219,10 +219,10 @@ public class ElasticsearchIndexService {
         this.hiringContactInternalCommentSearchRepository = hiringContactInternalCommentSearchRepository;
         this.hotListRepository = hotListRepository;
         this.hotListSearchRepository = hotListSearchRepository;
+        this.hotListBucketRepository = hotListBucketRepository;
+        this.hotListBucketSearchRepository = hotListBucketSearchRepository;
         this.jobOrderRepository = jobOrderRepository;
         this.jobOrderSearchRepository = jobOrderSearchRepository;
-        this.jobOrderBucketRepository = jobOrderBucketRepository;
-        this.jobOrderBucketSearchRepository = jobOrderBucketSearchRepository;
         this.jobOrderCommentRepository = jobOrderCommentRepository;
         this.jobOrderCommentSearchRepository = jobOrderCommentSearchRepository;
         this.jobOrderInternalCommentRepository = jobOrderInternalCommentRepository;
@@ -258,8 +258,8 @@ public class ElasticsearchIndexService {
                 reindexForClass(HiringContactComment.class, hiringContactCommentRepository, hiringContactCommentSearchRepository);
                 reindexForClass(HiringContactInternalComment.class, hiringContactInternalCommentRepository, hiringContactInternalCommentSearchRepository);
                 reindexForClass(HotList.class, hotListRepository, hotListSearchRepository);
+                reindexForClass(HotListBucket.class, hotListBucketRepository, hotListBucketSearchRepository);
                 reindexForClass(JobOrder.class, jobOrderRepository, jobOrderSearchRepository);
-                reindexForClass(JobOrderBucket.class, jobOrderBucketRepository, jobOrderBucketSearchRepository);
                 reindexForClass(JobOrderComment.class, jobOrderCommentRepository, jobOrderCommentSearchRepository);
                 reindexForClass(JobOrderInternalComment.class, jobOrderInternalCommentRepository, jobOrderInternalCommentSearchRepository);
                 reindexForClass(Skill.class, skillRepository, skillSearchRepository);
