@@ -103,6 +103,10 @@ public class ElasticsearchIndexService {
 
     private final JobOrderSearchRepository jobOrderSearchRepository;
 
+    private final JobOrderBucketRepository jobOrderBucketRepository;
+
+    private final JobOrderBucketSearchRepository jobOrderBucketSearchRepository;
+
     private final JobOrderCommentRepository jobOrderCommentRepository;
 
     private final JobOrderCommentSearchRepository jobOrderCommentSearchRepository;
@@ -168,6 +172,8 @@ public class ElasticsearchIndexService {
         HotListSearchRepository hotListSearchRepository,
         JobOrderRepository jobOrderRepository,
         JobOrderSearchRepository jobOrderSearchRepository,
+        JobOrderBucketRepository jobOrderBucketRepository,
+        JobOrderBucketSearchRepository jobOrderBucketSearchRepository,
         JobOrderCommentRepository jobOrderCommentRepository,
         JobOrderCommentSearchRepository jobOrderCommentSearchRepository,
         JobOrderInternalCommentRepository jobOrderInternalCommentRepository,
@@ -215,6 +221,8 @@ public class ElasticsearchIndexService {
         this.hotListSearchRepository = hotListSearchRepository;
         this.jobOrderRepository = jobOrderRepository;
         this.jobOrderSearchRepository = jobOrderSearchRepository;
+        this.jobOrderBucketRepository = jobOrderBucketRepository;
+        this.jobOrderBucketSearchRepository = jobOrderBucketSearchRepository;
         this.jobOrderCommentRepository = jobOrderCommentRepository;
         this.jobOrderCommentSearchRepository = jobOrderCommentSearchRepository;
         this.jobOrderInternalCommentRepository = jobOrderInternalCommentRepository;
@@ -251,6 +259,7 @@ public class ElasticsearchIndexService {
                 reindexForClass(HiringContactInternalComment.class, hiringContactInternalCommentRepository, hiringContactInternalCommentSearchRepository);
                 reindexForClass(HotList.class, hotListRepository, hotListSearchRepository);
                 reindexForClass(JobOrder.class, jobOrderRepository, jobOrderSearchRepository);
+                reindexForClass(JobOrderBucket.class, jobOrderBucketRepository, jobOrderBucketSearchRepository);
                 reindexForClass(JobOrderComment.class, jobOrderCommentRepository, jobOrderCommentSearchRepository);
                 reindexForClass(JobOrderInternalComment.class, jobOrderInternalCommentRepository, jobOrderInternalCommentSearchRepository);
                 reindexForClass(Skill.class, skillRepository, skillSearchRepository);
