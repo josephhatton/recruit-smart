@@ -10,8 +10,6 @@ import org.springframework.data.elasticsearch.annotations.Document;
 import java.io.Serializable;
 import java.util.Objects;
 
-import com.recruitsmart.domain.enumeration.MainEntity;
-
 /**
  * A HotList.
  */
@@ -31,10 +29,14 @@ public class HotList implements Serializable {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @NotNull
-    @Enumerated(EnumType.STRING)
-    @Column(name = "jhi_type", nullable = false)
-    private MainEntity type;
+    @ManyToOne
+    private HotListBucket hotListBucket;
+
+    @ManyToOne
+    private JobOrder jobOrder;
+
+    @ManyToOne
+    private Applicant applicant;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -53,13 +55,30 @@ public class HotList implements Serializable {
         this.name = name;
     }
 
-    public MainEntity getType() {
-        return type;
+    public HotListBucket getHotListBucket() {
+        return hotListBucket;
     }
 
-    public void setType(MainEntity type) {
-        this.type = type;
+    public void setHotListBucket(HotListBucket hotListBucket) {
+        this.hotListBucket = hotListBucket;
     }
+
+    public JobOrder getJobOrder() {
+        return jobOrder;
+    }
+
+    public void setJobOrder(JobOrder jobOrder) {
+        this.jobOrder = jobOrder;
+    }
+
+    public Applicant getApplicant() {
+        return applicant;
+    }
+
+    public void setApplicant(Applicant applicant) {
+        this.applicant = applicant;
+    }
+
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
@@ -87,7 +106,6 @@ public class HotList implements Serializable {
         return "HotList{" +
             "id=" + getId() +
             ", name='" + getName() + "'" +
-            ", type='" + getType() + "'" +
             "}";
     }
 }
