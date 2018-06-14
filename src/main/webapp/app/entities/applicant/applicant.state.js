@@ -149,6 +149,31 @@
                 });
             }]
         })
+        .state('applicant-detail.hot-list', {
+            parent: 'applicant-detail',
+            url: '/detail/hot/list/{id}',
+            data: {
+                authorities: ['ROLE_USER']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/applicant/applicant-hot-list-modal.html',
+                    controller: 'ApplicantHotListModalController',
+                    controllerAs: 'vm',
+                    backdrop: 'static',
+                    size: 'lg',
+                    resolve: {
+                        entity: ['Applicant', function(Applicant) {
+                            return Applicant.get({id : $stateParams.id}).$promise;
+                        }]
+                    }
+                }).result.then(function() {
+                    $state.go('applicant', null, { reload: 'applicant' });
+                }, function() {
+                    $state.go('^');
+                });
+            }]
+        })
         .state('applicant.edit', {
             parent: 'applicant',
             url: '/{id}/edit',

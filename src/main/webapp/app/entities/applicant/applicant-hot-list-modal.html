@@ -1,0 +1,59 @@
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+  <div class="modal-header">
+    <button type="button" class="close btn-sm" data-dismiss="modal" aria-hidden="true"
+            ng-click="vm.clear()">&times;</button>
+    <h5 class="modal-title text-warning"> Hot List
+      <small><span class="glyphicon glyphicon-flash text-danger"></span></small>
+    </h5>
+  </div>
+  <div class="modal-body">
+    <jhi-alert-error></jhi-alert-error>
+
+    <uib-tabset>
+      <uib-tab heading="Create New" ng-click="vm.tabChange()" active="vm.new">
+        <div class="form-group">
+          <input type="text" class="form-control" name="name" id="field_name"
+                 ng-model="vm.newBucket" placeholder="Folder Name" required/>
+        </div>
+      </uib-tab>
+      <uib-tab heading="Add to Existing" ng-click="vm.tabChange()" active="!vm.new">
+        <label class="control-label" for="field_name">Hot Lists</label>
+        <select class="form-control" ng-model="vm.exitingBucket" ng-change="vm.addToExisting('{{vm.exitingBucket}}')"
+                ng-options="hotList as hotList.name for hotList in vm.bucket track by hotList.id"></select>
+      </uib-tab>
+    </uib-tabset>
+
+    <div class="form-group">
+      <div class="text-center">
+        <label class="radio-inline"><input type="radio" name="optradio" ng-model="vm.userType" value="Agency">Agency</label>
+        <label class="radio-inline"><input type="radio" name="optradio" ng-model="vm.userType" value="Recruiter">Recruiter</label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <select class="form-control" name="hotListType" ng-model="vm.type" ng-change="vm.typeChange()"
+              id="field_hotListType">
+        <option value="" selected>-- Type --</option>
+        <option value="APPLICANT">Applicant</option>
+      </select>
+    </div>
+
+    <div class="form-group" ng-if="vm.type==='APPLICANT'">
+      <label>Applicant:</label>
+      <ui-select multiple="true" ng-model="vm.applicant" name="applicant">
+        <ui-select-match allow-clear="true" placeholder="Select person...">{{vm.applicant.firstName}} {{vm.applicant.lastName}}
+        </ui-select-match>
+      </ui-select>
+    </div>
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal" ng-click="vm.clear()">
+      <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+    </button>
+    <button type="submit" ng-disabled="editForm.$invalid" class="btn btn-success btn-sm">
+      <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+    </button>
+  </div>
+</form>
