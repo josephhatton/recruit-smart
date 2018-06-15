@@ -29,6 +29,9 @@ public class HotList implements Serializable {
     @Column(name = "name", nullable = false)
     private String name;
 
+    @Column(name = "hot_list_type")
+    private String hotListType;
+
     @ManyToOne
     private HotListBucket hotListBucket;
 
@@ -79,6 +82,13 @@ public class HotList implements Serializable {
         this.applicant = applicant;
     }
 
+    public String getHotListType() {
+        return hotListType;
+    }
+
+    public void setHotListType(String hotListType) {
+        this.hotListType = hotListType;
+    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override

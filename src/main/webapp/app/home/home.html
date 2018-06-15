@@ -1,79 +1,81 @@
 <div ng-cloak>
-    <div class="row">
-        <div class="col-md-2">
-            <span class="img-responsive img-rounded"></span>
+  <div class="row">
+    <div class="col-md-2">
+      <span class="img-responsive img-rounded"></span>
+    </div>
+    <div class="col-md-8">
+      <h1>Welcome, Recruit Smart!</h1>
+
+      <div ng-switch="vm.isAuthenticated()">
+        <div class="alert alert-warning" ng-switch-when="false">
+          If you want to <a class="alert-link" href="" ng-click="vm.login()">sign in</a>, you can try the default
+          accounts:<br/>- Administrator (login="admin" and password="admin") <br/>- User (login="user" and
+          password="user").
         </div>
-        <div class="col-md-8">
-            <h1>Welcome,  Recruit Smart!</h1>
+        <div class="alert alert-warning" ng-switch-when="false">
+          You don't have an account yet? <a class="alert-link" ui-sref="register">Register a new account</a>
+        </div>
 
-            <div ng-switch="vm.isAuthenticated()">
-                <div class="alert alert-warning" ng-switch-when="false">
-                    If you want to <a class="alert-link" href="" ng-click="vm.login()">sign in</a>, you can try the default accounts:<br/>- Administrator (login="admin" and password="admin") <br/>- User (login="user" and password="user").
-                </div>
-                <div class="alert alert-warning" ng-switch-when="false">
-                    You don't have an account yet? <a class="alert-link" ui-sref="register">Register a new account</a>
-                </div>
-
-                <div class="alert alert-success" ng-switch-when="true">
-                    <h3>Hello, {{vm.account.firstName}} {{vm.account.lastName}}!</h3>
-                </div>
-                <div ng-switch-when="true">
-                    <div class="dashboard">
-                        <div class="table-responsive well">
-                            <div class="crescendo-well">
-                                <h2>
-                                    <span>Dashboard</span>
-                                    <span class="pull-right">
+        <div class="alert alert-success" ng-switch-when="true">
+          <h3>Hello, {{vm.account.firstName}} {{vm.account.lastName}}!</h3>
+        </div>
+        <div ng-switch-when="true">
+          <div class="dashboard">
+            <div class="table-responsive well">
+              <div class="crescendo-well">
+                <h2>
+                  <span>Dashboard</span>
+                  <span class="pull-right">
                 <button uib-popover-template="dynamicPopover.templateUrl"
                         popover-title="{{dynamicPopover.title}}"
                         popover-placement="bottom"
                         popover-trigger="outsideClick" type="button"
                         class="btn btn-sm btn-primary">Total assigned Jobs:
                   <span class="badge text-danger">{{ vm.account.jobOrders.length }}</span></button></span>
-                                </h2>
-
-                                <script type="text/ng-template" id="myPopoverTemplate.html">
-                                    <div class="form-group">
-                                        <div ng-repeat="job in vm.account.jobOrders"><a
-                                            ui-sref="job-order-detail({id:job.id})">{{ job.title }} at {{
-                                            job.company.name }}</a></div>
-                                    </div>
-                                </script>
-                            </div>
-
-                            <table class="dashboardHome table table-striped table-hover">
-                                <thead>
-                                    <th><h5>Folder</h5></th>
-                                    <th></th>
-                                    <th><h5>name</h5></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th><h5>Year To Date</h5></th>
-                                    <th></th>
-                                </thead>
-                                <tbody ng-repeat="bucketList in vm.bucket track by bucketList.id">
-                                <tr class="success">
-                                    <td>{{bucketList.name}}</td>
-                                </tr>
-                                <tr>
-                                    <th></th>
-                                    <td class="warning">Interviews</td>
-                                    <td class="warning">{{ vm.interviewsCW }}</td>
-                                    <td class="warning">&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                    <td class="warning">Interviews</td>
-                                    <td class="warning">{{ vm.interviewsCM }}</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-
-
-
-
-
+                </h2>
+              </div>
+              <div class="table-responsive">
+                <table class="jh-table table table-striped">
+                <thead>
+                <th><h5>Folder</h5></th>
+                <th></th>
+                </thead>
+                <tbody ng-repeat="bucketList in vm.bucket track by bucketList.id">
+                <tr class="success">
+                  <td>{{bucketList.name}}</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>
+                    <table class="jh-table table table-striped table-condensed table-hover">
+                      <tbody ng-repeat="applicant in vm.applicants track by applicant.id">
+                      <tr class="warning" ng-if="bucketList.name == applicant.hotListBucket.name">
+                        <th></th>
+                        <th>{{applicant.name}}</th>
+                        <td><a>{{ applicant.applicant.firstName }} {{ applicant.applicant.lastName }}</a></td>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                        <td>{{ applicant.applicant.title }}</td>
+                      </tr>
+                      </tbody>
+                      <tbody ng-repeat="jobOrder in vm.jobOrders track by jobOrder.id">
+                      <tr class="warning" ng-if="bucketList.name == jobOrder.hotListBucket.name">
+                        <th></th>
+                        <th><a>{{jobOrder.jobOrder.title}}</a></th>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                        <td>{{ jobOrder.jobOrder.jobType }}</td>
+                        <td>{{ jobOrder.jobOrder.jobStatus }}</td>
+                      </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+              </table>
             </div>
+          </div>
         </div>
+        </div>
+
+      </div>
     </div>
+  </div>
 </div>

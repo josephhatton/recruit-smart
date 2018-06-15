@@ -14,7 +14,7 @@
     vm.userType = "Recruiter";
     vm.exitingBucket = null;
     vm.type = null;
-    vm.new = true;
+    vm.createdTab = true;
 
       load();
 
@@ -32,7 +32,8 @@
       }
 
     //changing tabs between 'Create New' and 'Add to Existing'
-    vm.tabChange = function () {
+    vm.tabChange = function (val) {
+        vm.createdTab = val
     }
 
     //Add to existing
@@ -41,21 +42,23 @@
     }
 
     vm.save = function () {
-        if (vm.new) {
-            vm.hotList = {
-                applicant:  vm.applicant,
-                hotListBucket:  vm.newBucket
-            };
+        if (vm.createdTab) {
             HotListBucket.save({name: vm.newBucket}, function (result) {
-                vm.hotList.hotListBucket = vm.newBucket;
+                HotList.save( {
+                    name: 'Applicants',
+                    hotListType: 'Applicants',
+                    applicant:  vm.applicant,
+                    hotListBucket:  result
+                }, onSaveSuccess, onSaveError);
             }, onSaveError);
         } else {
-            vm.hotList = {
+            HotList.save( {
+                name: 'Applicants',
+                hotListType: 'Applicants',
                 applicant:  vm.applicant,
                 hotListBucket: vm.exitingBucket
-            };
+            }, onSaveSuccess, onSaveError);
         }
-          HotList.save(vm.hotList, onSaveSuccess, onSaveError);
     };
 
     vm.clear = function () {

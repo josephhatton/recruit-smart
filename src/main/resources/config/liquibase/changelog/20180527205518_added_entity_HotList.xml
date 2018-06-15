@@ -26,8 +26,8 @@
                 <constraints nullable="false" />
             </column>
 
-            <column name="jhi_type" type="varchar(255)">
-                <constraints nullable="false" />
+            <column name="hot_list_type" type="varchar(255)">
+                <constraints nullable="true" />
             </column>
             <column name="hot_list_bucket_id" type="bigint">
                 <constraints nullable="true" />

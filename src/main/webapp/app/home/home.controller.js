@@ -1,38 +1,43 @@
-(function() {
-    'use strict';
+(function () {
+  'use strict';
 
-    angular
-        .module('recruitsmartApp')
-        .controller('HomeController', HomeController);
+  angular
+    .module('recruitsmartApp')
+    .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['$scope', 'Principal', 'LoginService', '$state', 'HotListBucket'];
+  HomeController.$inject = ['$scope', 'Principal', 'LoginService','filterFilter', '$state', 'HotListBucket', 'HotList'];
 
-    function HomeController ($scope, Principal, LoginService, $state, HotListBucket) {
-        var vm = this;
+  function HomeController($scope, Principal, LoginService, filterFilter, $state, HotListBucket, HotList) {
+    var vm = this;
 
-        vm.account = null;
-        vm.isAuthenticated = null;
-        vm.login = LoginService.open;
-        vm.register = register;
-        $scope.$on('authenticationSuccess', function() {
-            load();
-        });
+    vm.account = null;
+    vm.isAuthenticated = null;
+    vm.login = LoginService.open;
+    vm.register = register;
+    $scope.$on('authenticationSuccess', function () {
+      load();
+    });
 
-        load();
+    load();
 
-        function load() {
-            Principal.identity().then(function(account) {
-                vm.account = account;
-                vm.isAuthenticated = Principal.isAuthenticated;
-            });
+    function load() {
+      Principal.identity().then(function (account) {
+        vm.account = account;
+        vm.isAuthenticated = Principal.isAuthenticated;
+      });
 
-            HotListBucket.query(function(result) {
-                vm.bucket = result;
-            });
-
-        }
-        function register () {
-            $state.go('register');
-        }
+      HotListBucket.query(function (result) {
+        vm.bucket = result;
+      });
+      HotList.query(function (result) {
+        vm.hotLists = result;
+        vm.applicants = filterFilter(vm.hotLists, {name: 'Applicants'});
+        vm.jobOrders = filterFilter(vm.hotLists, {name: 'Job Orders'});
+      });
     }
+
+    function register() {
+      $state.go('register');
+    }
+  }
 })();

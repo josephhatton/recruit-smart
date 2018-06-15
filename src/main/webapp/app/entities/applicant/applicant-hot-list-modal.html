@@ -11,13 +11,13 @@
     <jhi-alert-error></jhi-alert-error>
 
     <uib-tabset>
-      <uib-tab heading="Create New" ng-click="vm.tabChange()" active="vm.new">
+      <uib-tab heading="Create New" ng-click="vm.tabChange(true)" active="vm.new">
         <div class="form-group">
           <input type="text" class="form-control" name="name" id="field_name"
                  ng-model="vm.newBucket" placeholder="Folder Name" required/>
         </div>
       </uib-tab>
-      <uib-tab heading="Add to Existing" ng-click="vm.tabChange()" active="!vm.new">
+      <uib-tab heading="Add to Existing" ng-click="vm.tabChange(false)" active="!vm.new">
         <label class="control-label" for="field_name">Hot Lists</label>
         <select class="form-control" ng-model="vm.exitingBucket" ng-change="vm.addToExisting('{{vm.exitingBucket}}')"
                 ng-options="hotList as hotList.name for hotList in vm.bucket track by hotList.id"></select>
@@ -52,7 +52,7 @@
     <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal" ng-click="vm.clear()">
       <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
     </button>
-    <button type="submit" ng-disabled="editForm.$invalid" class="btn btn-success btn-sm">
+    <button type="submit" class="btn btn-success btn-sm">
       <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
     </button>
   </div>
