@@ -1,42 +1,43 @@
-(function() {
-    'use strict';
+(function () {
+  'use strict';
 
-    angular
-        .module('recruitsmartApp')
-        .controller('ActivityActionController', ActivityActionController);
+  angular
+    .module('recruitsmartApp')
+    .controller('ActivityActionController', ActivityActionController);
 
-    ActivityActionController.$inject = ['ActivityAction', 'ActivityActionSearch'];
+  ActivityActionController.$inject = ['ActivityAction', 'ActivityActionSearch'];
 
-    function ActivityActionController(ActivityAction, ActivityActionSearch) {
+  function ActivityActionController(ActivityAction, ActivityActionSearch) {
 
-        var vm = this;
+    var vm = this;
 
-        vm.activityActions = [];
-        vm.clear = clear;
-        vm.search = search;
-        vm.loadAll = loadAll;
+    vm.activityActions = [];
+    vm.clear = clear;
+    vm.search = search;
+    vm.loadAll = loadAll;
 
-        loadAll();
+    loadAll();
 
-        function loadAll() {
-            ActivityAction.query(function(result) {
-                vm.activityActions = result;
-                vm.searchQuery = null;
-            });
-        }
+    function loadAll() {
+      ActivityAction.query(function (result) {
+        vm.activityActions = result;
+        vm.searchQuery = null;
+      });
+    }
 
-        function search() {
-            if (!vm.searchQuery) {
-                return vm.loadAll();
-            }
-            ActivityActionSearch.query({query: vm.searchQuery}, function(result) {
-                vm.activityActions = result;
-                vm.currentSearch = vm.searchQuery;
-            });
-        }
+    function search() {
+      if (!vm.searchQuery) {
+        return vm.loadAll();
+      }
+      ActivityActionSearch.query({query: vm.searchQuery}, function (result) {
+        vm.activityActions = result;
+        vm.currentSearch = vm.searchQuery;
+      });
+    }
 
-        function clear() {
-            vm.searchQuery = null;
-            loadAll();
-        }    }
+    function clear() {
+      vm.searchQuery = null;
+      loadAll();
+    }
+  }
 })();

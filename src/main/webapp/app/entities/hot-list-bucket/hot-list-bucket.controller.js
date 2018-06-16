@@ -1,42 +1,43 @@
-(function() {
-    'use strict';
+(function () {
+  'use strict';
 
-    angular
-        .module('recruitsmartApp')
-        .controller('HotListBucketController', HotListBucketController);
+  angular
+    .module('recruitsmartApp')
+    .controller('HotListBucketController', HotListBucketController);
 
-    HotListBucketController.$inject = ['HotListBucket', 'HotListBucketSearch'];
+  HotListBucketController.$inject = ['HotListBucket', 'HotListBucketSearch'];
 
-    function HotListBucketController(HotListBucket, HotListBucketSearch) {
+  function HotListBucketController(HotListBucket, HotListBucketSearch) {
 
-        var vm = this;
+    var vm = this;
 
-        vm.hotListBuckets = [];
-        vm.clear = clear;
-        vm.search = search;
-        vm.loadAll = loadAll;
+    vm.hotListBuckets = [];
+    vm.clear = clear;
+    vm.search = search;
+    vm.loadAll = loadAll;
 
-        loadAll();
+    loadAll();
 
-        function loadAll() {
-            HotListBucket.query(function(result) {
-                vm.hotListBuckets = result;
-                vm.searchQuery = null;
-            });
-        }
+    function loadAll() {
+      HotListBucket.query(function (result) {
+        vm.hotListBuckets = result;
+        vm.searchQuery = null;
+      });
+    }
 
-        function search() {
-            if (!vm.searchQuery) {
-                return vm.loadAll();
-            }
-            HotListBucketSearch.query({query: vm.searchQuery}, function(result) {
-                vm.hotListBuckets = result;
-                vm.currentSearch = vm.searchQuery;
-            });
-        }
+    function search() {
+      if (!vm.searchQuery) {
+        return vm.loadAll();
+      }
+      HotListBucketSearch.query({query: vm.searchQuery}, function (result) {
+        vm.hotListBuckets = result;
+        vm.currentSearch = vm.searchQuery;
+      });
+    }
 
-        function clear() {
-            vm.searchQuery = null;
-            loadAll();
-        }    }
+    function clear() {
+      vm.searchQuery = null;
+      loadAll();
+    }
+  }
 })();

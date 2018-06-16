@@ -1,28 +1,28 @@
-(function() {
-    'use strict';
+(function () {
+  'use strict';
 
-    angular
-        .module('recruitsmartApp')
-        .controller('BookDeleteController',BookDeleteController);
+  angular
+    .module('recruitsmartApp')
+    .controller('BookDeleteController', BookDeleteController);
 
-    BookDeleteController.$inject = ['$uibModalInstance', 'entity', 'Book'];
+  BookDeleteController.$inject = ['$uibModalInstance', 'entity', 'Book'];
 
-    function BookDeleteController($uibModalInstance, entity, Book) {
-        var vm = this;
+  function BookDeleteController($uibModalInstance, entity, Book) {
+    var vm = this;
 
-        vm.book = entity;
-        vm.clear = clear;
-        vm.confirmDelete = confirmDelete;
+    vm.book = entity;
+    vm.clear = clear;
+    vm.confirmDelete = confirmDelete;
 
-        function clear () {
-            $uibModalInstance.dismiss('cancel');
-        }
-
-        function confirmDelete (id) {
-            Book.delete({id: id},
-                function () {
-                    $uibModalInstance.close(true);
-                });
-        }
+    function clear() {
+      $uibModalInstance.dismiss('cancel');
     }
+
+    function confirmDelete(id) {
+      Book.delete({id: id},
+        function () {
+          $uibModalInstance.close(true);
+        });
+    }
+  }
 })();

@@ -1,45 +1,45 @@
-(function() {
-    'use strict';
-    angular
-        .module('recruitsmartApp')
-        .factory('WorkHistory', WorkHistory);
+(function () {
+  'use strict';
+  angular
+    .module('recruitsmartApp')
+    .factory('WorkHistory', WorkHistory);
 
-    WorkHistory.$inject = ['$resource', 'DateUtils'];
+  WorkHistory.$inject = ['$resource', 'DateUtils'];
 
-    function WorkHistory ($resource, DateUtils) {
-        var resourceUrl =  'api/work-histories/:id';
+  function WorkHistory($resource, DateUtils) {
+    var resourceUrl = 'api/work-histories/:id';
 
-        return $resource(resourceUrl, {}, {
-            'query': { method: 'GET', isArray: true},
-            'get': {
-                method: 'GET',
-                transformResponse: function (data) {
-                    if (data) {
-                        data = angular.fromJson(data);
-                        data.startDate = DateUtils.convertLocalDateFromServer(data.startDate);
-                        data.endDate = DateUtils.convertLocalDateFromServer(data.endDate);
-                    }
-                    return data;
-                }
-            },
-            'update': {
-                method: 'PUT',
-                transformRequest: function (data) {
-                    var copy = angular.copy(data);
-                    copy.startDate = DateUtils.convertLocalDateToServer(copy.startDate);
-                    copy.endDate = DateUtils.convertLocalDateToServer(copy.endDate);
-                    return angular.toJson(copy);
-                }
-            },
-            'save': {
-                method: 'POST',
-                transformRequest: function (data) {
-                    var copy = angular.copy(data);
-                    copy.startDate = DateUtils.convertLocalDateToServer(copy.startDate);
-                    copy.endDate = DateUtils.convertLocalDateToServer(copy.endDate);
-                    return angular.toJson(copy);
-                }
-            }
-        });
-    }
+    return $resource(resourceUrl, {}, {
+      'query': {method: 'GET', isArray: true},
+      'get': {
+        method: 'GET',
+        transformResponse: function (data) {
+          if (data) {
+            data = angular.fromJson(data);
+            data.startDate = DateUtils.convertLocalDateFromServer(data.startDate);
+            data.endDate = DateUtils.convertLocalDateFromServer(data.endDate);
+          }
+          return data;
+        }
+      },
+      'update': {
+        method: 'PUT',
+        transformRequest: function (data) {
+          var copy = angular.copy(data);
+          copy.startDate = DateUtils.convertLocalDateToServer(copy.startDate);
+          copy.endDate = DateUtils.convertLocalDateToServer(copy.endDate);
+          return angular.toJson(copy);
+        }
+      },
+      'save': {
+        method: 'POST',
+        transformRequest: function (data) {
+          var copy = angular.copy(data);
+          copy.startDate = DateUtils.convertLocalDateToServer(copy.startDate);
+          copy.endDate = DateUtils.convertLocalDateToServer(copy.endDate);
+          return angular.toJson(copy);
+        }
+      }
+    });
+  }
 })();

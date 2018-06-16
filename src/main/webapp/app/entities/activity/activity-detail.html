@@ -1,35 +1,34 @@
-
 <div>
-    <h2><span>Activity</span> {{vm.activity.id}}</h2>
-    <hr>
-    <jhi-alert-error></jhi-alert-error>
-    <dl class="dl-horizontal jh-entity-details">
-        <dt><span>Priority</span></dt>
-        <dd>
-            <span>{{vm.activity.priority}}</span>
-        </dd>
-        <dt><span>Start Date</span></dt>
-        <dd>
-            <span>{{vm.activity.startDate | date:'medium'}}</span>
-        </dd>
-        <dt><span>Status</span></dt>
-        <dd>
-            <span>{{vm.activity.status}}</span>
-        </dd>
-        <dt><span>Comment</span></dt>
-        <dd>
-            <span>{{vm.activity.comment}}</span>
-        </dd>
-    </dl>
+  <h2><span>Activity</span> {{vm.activity.id}}</h2>
+  <hr>
+  <jhi-alert-error></jhi-alert-error>
+  <dl class="dl-horizontal jh-entity-details">
+    <dt><span>Priority</span></dt>
+    <dd>
+      <span>{{vm.activity.priority}}</span>
+    </dd>
+    <dt><span>Start Date</span></dt>
+    <dd>
+      <span>{{vm.activity.startDate | date:'medium'}}</span>
+    </dd>
+    <dt><span>Status</span></dt>
+    <dd>
+      <span>{{vm.activity.status}}</span>
+    </dd>
+    <dt><span>Comment</span></dt>
+    <dd>
+      <span>{{vm.activity.comment}}</span>
+    </dd>
+  </dl>
 
-    <button type="submit"
-            ui-sref="{{ vm.previousState }}"
-            class="btn btn-info">
-        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
-    </button>
+  <button type="submit"
+          ui-sref="{{ vm.previousState }}"
+          class="btn btn-info">
+    <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+  </button>
 
-    <button type="button" ui-sref="activity-detail.edit({id:vm.activity.id})" class="btn btn-primary">
-        <span class="glyphicon glyphicon-pencil"></span>
-        <span class="hidden-sm-down"> Edit</span>
-    </button>
+  <button type="button" ui-sref="activity-detail.edit({id:vm.activity.id})" class="btn btn-primary">
+    <span class="glyphicon glyphicon-pencil"></span>
+    <span class="hidden-sm-down"> Edit</span>
+  </button>
 </div>

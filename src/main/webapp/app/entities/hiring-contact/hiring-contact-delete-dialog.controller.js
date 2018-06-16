@@ -1,28 +1,28 @@
-(function() {
-    'use strict';
+(function () {
+  'use strict';
 
-    angular
-        .module('recruitsmartApp')
-        .controller('HiringContactDeleteController',HiringContactDeleteController);
+  angular
+    .module('recruitsmartApp')
+    .controller('HiringContactDeleteController', HiringContactDeleteController);
 
-    HiringContactDeleteController.$inject = ['$uibModalInstance', 'entity', 'HiringContact'];
+  HiringContactDeleteController.$inject = ['$uibModalInstance', 'entity', 'HiringContact'];
 
-    function HiringContactDeleteController($uibModalInstance, entity, HiringContact) {
-        var vm = this;
+  function HiringContactDeleteController($uibModalInstance, entity, HiringContact) {
+    var vm = this;
 
-        vm.hiringContact = entity;
-        vm.clear = clear;
-        vm.confirmDelete = confirmDelete;
+    vm.hiringContact = entity;
+    vm.clear = clear;
+    vm.confirmDelete = confirmDelete;
 
-        function clear () {
-            $uibModalInstance.dismiss('cancel');
-        }
-
-        function confirmDelete (id) {
-            HiringContact.delete({id: id},
-                function () {
-                    $uibModalInstance.close(true);
-                });
-        }
+    function clear() {
+      $uibModalInstance.dismiss('cancel');
     }
+
+    function confirmDelete(id) {
+      HiringContact.delete({id: id},
+        function () {
+          $uibModalInstance.close(true);
+        });
+    }
+  }
 })();

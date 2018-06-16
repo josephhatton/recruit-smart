@@ -1,17 +1,17 @@
-(function() {
-    'use strict';
+(function () {
+  'use strict';
 
-    angular
-        .module('recruitsmartApp')
-        .factory('JobOrderInternalCommentSearch', JobOrderInternalCommentSearch);
+  angular
+    .module('recruitsmartApp')
+    .factory('JobOrderInternalCommentSearch', JobOrderInternalCommentSearch);
 
-    JobOrderInternalCommentSearch.$inject = ['$resource'];
+  JobOrderInternalCommentSearch.$inject = ['$resource'];
 
-    function JobOrderInternalCommentSearch($resource) {
-        var resourceUrl =  'api/_search/job-order-internal-comments/:id';
+  function JobOrderInternalCommentSearch($resource) {
+    var resourceUrl = 'api/_search/job-order-internal-comments/:id';
 
-        return $resource(resourceUrl, {}, {
-            'query': { method: 'GET', isArray: true}
-        });
-    }
+    return $resource(resourceUrl, {}, {
+      'query': {method: 'GET', isArray: true}
+    });
+  }
 })();

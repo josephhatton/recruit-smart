@@ -1,28 +1,28 @@
-(function() {
-    'use strict';
+(function () {
+  'use strict';
 
-    angular
-        .module('recruitsmartApp')
-        .controller('ActivityDeleteController',ActivityDeleteController);
+  angular
+    .module('recruitsmartApp')
+    .controller('ActivityDeleteController', ActivityDeleteController);
 
-    ActivityDeleteController.$inject = ['$uibModalInstance', 'entity', 'Activity'];
+  ActivityDeleteController.$inject = ['$uibModalInstance', 'entity', 'Activity'];
 
-    function ActivityDeleteController($uibModalInstance, entity, Activity) {
-        var vm = this;
+  function ActivityDeleteController($uibModalInstance, entity, Activity) {
+    var vm = this;
 
-        vm.activity = entity;
-        vm.clear = clear;
-        vm.confirmDelete = confirmDelete;
+    vm.activity = entity;
+    vm.clear = clear;
+    vm.confirmDelete = confirmDelete;
 
-        function clear () {
-            $uibModalInstance.dismiss('cancel');
-        }
-
-        function confirmDelete (id) {
-            Activity.delete({id: id},
-                function () {
-                    $uibModalInstance.close(true);
-                });
-        }
+    function clear() {
+      $uibModalInstance.dismiss('cancel');
     }
+
+    function confirmDelete(id) {
+      Activity.delete({id: id},
+        function () {
+          $uibModalInstance.close(true);
+        });
+    }
+  }
 })();

@@ -35,40 +35,33 @@
                 </h2>
               </div>
               <div class="table-responsive">
-                <table class="jh-table table table-striped">
+                <table class="jh-table table table-striped table-condensed">
                 <thead>
                 <th><h5>Folder</h5></th>
+                <th></th>
+                <th></th>
+                <th></th>
                 <th></th>
                 </thead>
                 <tbody ng-repeat="bucketList in vm.bucket track by bucketList.id">
                 <tr class="success">
                   <td>{{bucketList.name}}</td>
                 </tr>
-                <tr>
+                <tr ng-repeat="hotList in vm.hotLists track by hotList.id"  ng-if="bucketList.name == hotList.hotListBucket.name">
                   <td></td>
-                  <td>
-                    <table class="jh-table table table-striped table-condensed table-hover">
-                      <tbody ng-repeat="applicant in vm.applicants track by applicant.id">
-                      <tr class="warning" ng-if="bucketList.name == applicant.hotListBucket.name">
-                        <th></th>
-                        <th>{{applicant.name}}</th>
-                        <td><a>{{ applicant.applicant.firstName }} {{ applicant.applicant.lastName }}</a></td>
-                        <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                        <td>{{ applicant.applicant.title }}</td>
-                      </tr>
-                      </tbody>
-                      <tbody ng-repeat="jobOrder in vm.jobOrders track by jobOrder.id">
-                      <tr class="warning" ng-if="bucketList.name == jobOrder.hotListBucket.name">
-                        <th></th>
-                        <th><a>{{jobOrder.jobOrder.title}}</a></th>
-                        <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                        <td>{{ jobOrder.jobOrder.jobType }}</td>
-                        <td>{{ jobOrder.jobOrder.jobStatus }}</td>
-                      </tr>
-                      </tbody>
-                    </table>
-                  </td>
+                  <th class="warning">{{hotList.hotListType}}</th>
+                  <td class="warning"><a>{{ hotList.applicant.firstName }} {{ hotList.applicant.lastName }}</a></td>
+                  <td class="warning">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                  <td class="warning">{{ hotList.applicant.title }}</td>
                 </tr>
+                <tr class="warning" ng-repeat="jobOrder in vm.jobOrders track by jobOrder.id" ng-if="bucketList.name == jobOrder.hotListBucket.name">
+                  <td></td>
+                  <th class="warning"><a>{{jobOrder.jobOrder.title}}</a></th>
+                  <td class="warning">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                  <td class="warning">{{ jobOrder.jobOrder.jobType }}</td>
+                  <td class="warning">{{ jobOrder.jobOrder.jobStatus }}</td>
+                </tr>
+                </tbody>
               </table>
             </div>
           </div>

@@ -1,17 +1,17 @@
-(function() {
-    'use strict';
+(function () {
+  'use strict';
 
-    angular
-        .module('recruitsmartApp')
-        .factory('HotListBucketSearch', HotListBucketSearch);
+  angular
+    .module('recruitsmartApp')
+    .factory('HotListBucketSearch', HotListBucketSearch);
 
-    HotListBucketSearch.$inject = ['$resource'];
+  HotListBucketSearch.$inject = ['$resource'];
 
-    function HotListBucketSearch($resource) {
-        var resourceUrl =  'api/_search/hot-list-buckets/:id';
+  function HotListBucketSearch($resource) {
+    var resourceUrl = 'api/_search/hot-list-buckets/:id';
 
-        return $resource(resourceUrl, {}, {
-            'query': { method: 'GET', isArray: true}
-        });
-    }
+    return $resource(resourceUrl, {}, {
+      'query': {method: 'GET', isArray: true}
+    });
+  }
 })();

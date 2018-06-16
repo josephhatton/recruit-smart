@@ -1,88 +1,92 @@
-
 <form name="editForm" role="form" novalidate ng-submit="vm.save()">
 
-    <div class="modal-header alert-info">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
-                ng-click="vm.clear()">&times;</button>
-        <h4 class="modal-title" id="myJobOrderLabel">Create Job Order</h4>
+  <div class="modal-header alert-info">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+            ng-click="vm.clear()">&times;
+    </button>
+    <h4 class="modal-title" id="myJobOrderLabel">Create Job Order</h4>
+  </div>
+  <div class="modal-body">
+    <jhi-alert-error></jhi-alert-error>
+    <div class="form-group" ng-show="vm.jobOrder.id">
+      <label for="id">ID</label>
+      <input type="text" class="form-control" id="id" name="id"
+             ng-model="vm.jobOrder.id" readonly/>
     </div>
-    <div class="modal-body">
-        <jhi-alert-error></jhi-alert-error>
-        <div class="form-group" ng-show="vm.jobOrder.id">
-            <label for="id">ID</label>
-            <input type="text" class="form-control" id="id" name="id"
-                    ng-model="vm.jobOrder.id" readonly />
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_title">Title</label>
-            <input type="text" class="form-control" name="title" id="field_title"
-                    ng-model="vm.jobOrder.title"
-                    />
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_duration">Duration</label>
-            <input type="text" class="form-control" name="duration" id="field_duration"
-                    ng-model="vm.jobOrder.duration"
-                    />
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_description">Description</label>
-            <input type="text" class="form-control" name="description" id="field_description"
-                    ng-model="vm.jobOrder.description"
-                    />
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_salary">Salary</label>
-            <input type="text" class="form-control" name="salary" id="field_salary"
-                    ng-model="vm.jobOrder.salary"
-                    />
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_hourly">Hourly</label>
-            <input type="text" class="form-control" name="hourly" id="field_hourly"
-                    ng-model="vm.jobOrder.hourly"
-                    />
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_jobType">Job Type</label>
-            <select class="form-control" name="jobType" ng-model="vm.jobOrder.jobType" id="field_jobType">
-                <option value="DIRECT_HIRE">DIRECT_HIRE</option>
-                <option value="CONTRACT_TO_HIRE">CONTRACT_TO_HIRE</option>
-                <option value="CONTRACT">CONTRACT</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_jobStatus">Job Status</label>
-            <select class="form-control" name="jobStatus" ng-model="vm.jobOrder.jobStatus" id="field_jobStatus">
-                <option value="OPEN">OPEN</option>
-                <option value="FILLED_BY_US">FILLED_BY_US</option>
-                <option value="ON_HOLD">ON_HOLD</option>
-                <option value="FILLED_BY_COMPETITION">FILLED_BY_COMPETITION</option>
-                <option value="CANCELLED">CANCELLED</option>
-            </select>
-        </div>
+    <div class="form-group">
+      <label class="control-label" for="field_title">Title</label>
+      <input type="text" class="form-control" name="title" id="field_title"
+             ng-model="vm.jobOrder.title"
+      />
+    </div>
+    <div class="form-group">
+      <label class="control-label" for="field_duration">Duration</label>
+      <input type="text" class="form-control" name="duration" id="field_duration"
+             ng-model="vm.jobOrder.duration"
+      />
+    </div>
+    <div class="form-group">
+      <label class="control-label" for="field_description">Description</label>
+      <input type="text" class="form-control" name="description" id="field_description"
+             ng-model="vm.jobOrder.description"
+      />
+    </div>
+    <div class="form-group">
+      <label class="control-label" for="field_salary">Salary</label>
+      <input type="text" class="form-control" name="salary" id="field_salary"
+             ng-model="vm.jobOrder.salary"
+      />
+    </div>
+    <div class="form-group">
+      <label class="control-label" for="field_hourly">Hourly</label>
+      <input type="text" class="form-control" name="hourly" id="field_hourly"
+             ng-model="vm.jobOrder.hourly"
+      />
+    </div>
+    <div class="form-group">
+      <label class="control-label" for="field_jobType">Job Type</label>
+      <select class="form-control" name="jobType" ng-model="vm.jobOrder.jobType" id="field_jobType">
+        <option value="DIRECT_HIRE">DIRECT_HIRE</option>
+        <option value="CONTRACT_TO_HIRE">CONTRACT_TO_HIRE</option>
+        <option value="CONTRACT">CONTRACT</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="control-label" for="field_jobStatus">Job Status</label>
+      <select class="form-control" name="jobStatus" ng-model="vm.jobOrder.jobStatus" id="field_jobStatus">
+        <option value="OPEN">OPEN</option>
+        <option value="FILLED_BY_US">FILLED_BY_US</option>
+        <option value="ON_HOLD">ON_HOLD</option>
+        <option value="FILLED_BY_COMPETITION">FILLED_BY_COMPETITION</option>
+        <option value="CANCELLED">CANCELLED</option>
+      </select>
+    </div>
 
-        <div class="form-group">
-            <label for="field_skill">Skill</label>
-            <select class="form-control" id="field_skill" multiple name="skill" ng-model="vm.jobOrder.skills" ng-options="skill as skill.name for skill in vm.skills track by skill.id"></select>
-        </div>
-        <div class="form-group">
-            <label for="field_company">Company</label>
-            <select class="form-control" id="field_company" name="company" ng-model="vm.jobOrder.company" ng-options="company as company.name for company in vm.companies track by company.id">
-                <option value=""></option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="field_hiringContact">Hiring Contact</label>
-            <select class="form-control" id="field_hiringContact" multiple name="hiringContact" ng-model="vm.jobOrder.hiringContacts" ng-options="hiringContact as hiringContact.id for hiringContact in vm.hiringcontacts track by hiringContact.id"></select>
-        </div>
+    <div class="form-group">
+      <label for="field_skill">Skill</label>
+      <select class="form-control" id="field_skill" multiple name="skill" ng-model="vm.jobOrder.skills"
+              ng-options="skill as skill.name for skill in vm.skills track by skill.id"></select>
     </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="vm.clear()">
-            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
-        </button>
-        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-success">
-            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
-        </button>
+    <div class="form-group">
+      <label for="field_company">Company</label>
+      <select class="form-control" id="field_company" name="company" ng-model="vm.jobOrder.company"
+              ng-options="company as company.name for company in vm.companies track by company.id">
+        <option value=""></option>
+      </select>
     </div>
+    <div class="form-group">
+      <label for="field_hiringContact">Hiring Contact</label>
+      <select class="form-control" id="field_hiringContact" multiple name="hiringContact"
+              ng-model="vm.jobOrder.hiringContacts"
+              ng-options="hiringContact as hiringContact.id for hiringContact in vm.hiringcontacts track by hiringContact.id"></select>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="vm.clear()">
+      <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+    </button>
+    <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-success">
+      <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+    </button>
+  </div>
 </form>

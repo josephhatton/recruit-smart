@@ -1,26 +1,26 @@
-(function() {
-    'use strict';
-    angular
-        .module('recruitsmartApp')
-        .factory('Company', Company);
+(function () {
+  'use strict';
+  angular
+    .module('recruitsmartApp')
+    .factory('Company', Company);
 
-    Company.$inject = ['$resource'];
+  Company.$inject = ['$resource'];
 
-    function Company ($resource) {
-        var resourceUrl =  'api/companies/:id';
+  function Company($resource) {
+    var resourceUrl = 'api/companies/:id';
 
-        return $resource(resourceUrl, {}, {
-            'query': { method: 'GET', isArray: true},
-            'get': {
-                method: 'GET',
-                transformResponse: function (data) {
-                    if (data) {
-                        data = angular.fromJson(data);
-                    }
-                    return data;
-                }
-            },
-            'update': { method:'PUT' }
-        });
-    }
+    return $resource(resourceUrl, {}, {
+      'query': {method: 'GET', isArray: true},
+      'get': {
+        method: 'GET',
+        transformResponse: function (data) {
+          if (data) {
+            data = angular.fromJson(data);
+          }
+          return data;
+        }
+      },
+      'update': {method: 'PUT'}
+    });
+  }
 })();

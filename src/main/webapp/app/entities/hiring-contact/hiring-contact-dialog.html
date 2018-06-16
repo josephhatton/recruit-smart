@@ -1,98 +1,99 @@
-
 <form name="editForm" role="form" novalidate ng-submit="vm.save()">
 
-    <div class="modal-header alert-info">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
-                ng-click="vm.clear()">&times;</button>
-        <h4 class="modal-title" id="myHiringContactLabel">Create Hiring Contact</h4>
+  <div class="modal-header alert-info">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+            ng-click="vm.clear()">&times;
+    </button>
+    <h4 class="modal-title" id="myHiringContactLabel">Create Hiring Contact</h4>
+  </div>
+  <div class="modal-body">
+    <jhi-alert-error></jhi-alert-error>
+    <div class="form-group" ng-show="vm.hiringContact.id">
+      <label for="id">ID</label>
+      <input type="text" class="form-control" id="id" name="id"
+             ng-model="vm.hiringContact.id" readonly/>
     </div>
-    <div class="modal-body">
-        <jhi-alert-error></jhi-alert-error>
-        <div class="form-group" ng-show="vm.hiringContact.id">
-            <label for="id">ID</label>
-            <input type="text" class="form-control" id="id" name="id"
-                    ng-model="vm.hiringContact.id" readonly />
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_firstName">First Name</label>
-            <input type="text" class="form-control" name="firstName" id="field_firstName"
-                    ng-model="vm.hiringContact.firstName"
-                    />
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_lastName">Last Name</label>
-            <input type="text" class="form-control" name="lastName" id="field_lastName"
-                    ng-model="vm.hiringContact.lastName"
-                    />
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_phone1">Phone 1</label>
-            <input type="text" class="form-control" name="phone1" id="field_phone1"
-                    ng-model="vm.hiringContact.phone1"
-                    />
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_phone2">Phone 2</label>
-            <input type="text" class="form-control" name="phone2" id="field_phone2"
-                    ng-model="vm.hiringContact.phone2"
-                    />
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_email1">Email 1</label>
-            <input type="text" class="form-control" name="email1" id="field_email1"
-                    ng-model="vm.hiringContact.email1"
-                    />
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_jobTitle">Job Title</label>
-            <input type="text" class="form-control" name="jobTitle" id="field_jobTitle"
-                    ng-model="vm.hiringContact.jobTitle"
-                    />
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_referralSource">Referral Source</label>
-            <input type="text" class="form-control" name="referralSource" id="field_referralSource"
-                    ng-model="vm.hiringContact.referralSource"
-                    />
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_contactType">Contact Type</label>
-            <input type="text" class="form-control" name="contactType" id="field_contactType"
-                    ng-model="vm.hiringContact.contactType"
-                    />
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_email2">Email 2</label>
-            <input type="text" class="form-control" name="email2" id="field_email2"
-                    ng-model="vm.hiringContact.email2"
-                    />
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_middleName">Middle Name</label>
-            <input type="text" class="form-control" name="middleName" id="field_middleName"
-                    ng-model="vm.hiringContact.middleName"
-                    />
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_lastModifiedBy">Last Modified By</label>
-            <input type="text" class="form-control" name="lastModifiedBy" id="field_lastModifiedBy"
-                    ng-model="vm.hiringContact.lastModifiedBy"
-                    />
-        </div>
+    <div class="form-group">
+      <label class="control-label" for="field_firstName">First Name</label>
+      <input type="text" class="form-control" name="firstName" id="field_firstName"
+             ng-model="vm.hiringContact.firstName"
+      />
+    </div>
+    <div class="form-group">
+      <label class="control-label" for="field_lastName">Last Name</label>
+      <input type="text" class="form-control" name="lastName" id="field_lastName"
+             ng-model="vm.hiringContact.lastName"
+      />
+    </div>
+    <div class="form-group">
+      <label class="control-label" for="field_phone1">Phone 1</label>
+      <input type="text" class="form-control" name="phone1" id="field_phone1"
+             ng-model="vm.hiringContact.phone1"
+      />
+    </div>
+    <div class="form-group">
+      <label class="control-label" for="field_phone2">Phone 2</label>
+      <input type="text" class="form-control" name="phone2" id="field_phone2"
+             ng-model="vm.hiringContact.phone2"
+      />
+    </div>
+    <div class="form-group">
+      <label class="control-label" for="field_email1">Email 1</label>
+      <input type="text" class="form-control" name="email1" id="field_email1"
+             ng-model="vm.hiringContact.email1"
+      />
+    </div>
+    <div class="form-group">
+      <label class="control-label" for="field_jobTitle">Job Title</label>
+      <input type="text" class="form-control" name="jobTitle" id="field_jobTitle"
+             ng-model="vm.hiringContact.jobTitle"
+      />
+    </div>
+    <div class="form-group">
+      <label class="control-label" for="field_referralSource">Referral Source</label>
+      <input type="text" class="form-control" name="referralSource" id="field_referralSource"
+             ng-model="vm.hiringContact.referralSource"
+      />
+    </div>
+    <div class="form-group">
+      <label class="control-label" for="field_contactType">Contact Type</label>
+      <input type="text" class="form-control" name="contactType" id="field_contactType"
+             ng-model="vm.hiringContact.contactType"
+      />
+    </div>
+    <div class="form-group">
+      <label class="control-label" for="field_email2">Email 2</label>
+      <input type="text" class="form-control" name="email2" id="field_email2"
+             ng-model="vm.hiringContact.email2"
+      />
+    </div>
+    <div class="form-group">
+      <label class="control-label" for="field_middleName">Middle Name</label>
+      <input type="text" class="form-control" name="middleName" id="field_middleName"
+             ng-model="vm.hiringContact.middleName"
+      />
+    </div>
+    <div class="form-group">
+      <label class="control-label" for="field_lastModifiedBy">Last Modified By</label>
+      <input type="text" class="form-control" name="lastModifiedBy" id="field_lastModifiedBy"
+             ng-model="vm.hiringContact.lastModifiedBy"
+      />
+    </div>
 
-        <div class="form-group">
-            <label for="field_company">Company</label>
-            <select class="form-control" id="field_company" name="company" ng-model="vm.hiringContact.company" ng-options="company as company.id for company in vm.companies track by company.id">
-                <option value=""></option>
-            </select>
-        </div>
+    <div class="form-group">
+      <label for="field_company">Company</label>
+      <select class="form-control" id="field_company" name="company" ng-model="vm.hiringContact.company"
+              ng-options="company as company.id for company in vm.companies track by company.id">
+        <option value=""></option>
+      </select>
     </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="vm.clear()">
-            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
-        </button>
-        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-success">
-            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
-        </button>
-    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="vm.clear()">
+      <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+    </button>
+    <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-success">
+      <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+    </button>
+  </div>
 </form>

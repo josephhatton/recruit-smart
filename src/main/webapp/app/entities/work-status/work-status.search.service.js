@@ -1,17 +1,17 @@
-(function() {
-    'use strict';
+(function () {
+  'use strict';
 
-    angular
-        .module('recruitsmartApp')
-        .factory('WorkStatusSearch', WorkStatusSearch);
+  angular
+    .module('recruitsmartApp')
+    .factory('WorkStatusSearch', WorkStatusSearch);
 
-    WorkStatusSearch.$inject = ['$resource'];
+  WorkStatusSearch.$inject = ['$resource'];
 
-    function WorkStatusSearch($resource) {
-        var resourceUrl =  'api/_search/work-statuses/:id';
+  function WorkStatusSearch($resource) {
+    var resourceUrl = 'api/_search/work-statuses/:id';
 
-        return $resource(resourceUrl, {}, {
-            'query': { method: 'GET', isArray: true}
-        });
-    }
+    return $resource(resourceUrl, {}, {
+      'query': {method: 'GET', isArray: true}
+    });
+  }
 })();

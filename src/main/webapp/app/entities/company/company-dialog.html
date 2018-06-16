@@ -1,82 +1,83 @@
-
 <form name="editForm" role="form" novalidate ng-submit="vm.save()">
 
-    <div class="modal-header alert-info">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
-                ng-click="vm.clear()">&times;</button>
-        <h4 class="modal-title" id="myCompanyLabel">Create Company</h4>
+  <div class="modal-header alert-info">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+            ng-click="vm.clear()">&times;
+    </button>
+    <h4 class="modal-title" id="myCompanyLabel">Create Company</h4>
+  </div>
+  <div class="modal-body">
+    <jhi-alert-error></jhi-alert-error>
+    <div class="form-group" ng-show="vm.company.id">
+      <label for="id">ID</label>
+      <input type="text" class="form-control" id="id" name="id"
+             ng-model="vm.company.id" readonly/>
     </div>
-    <div class="modal-body">
-        <jhi-alert-error></jhi-alert-error>
-        <div class="form-group" ng-show="vm.company.id">
-            <label for="id">ID</label>
-            <input type="text" class="form-control" id="id" name="id"
-                    ng-model="vm.company.id" readonly />
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_name">Name</label>
-            <input type="text" class="form-control" name="name" id="field_name"
-                    ng-model="vm.company.name"
-                    />
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_website">Website</label>
-            <input type="text" class="form-control" name="website" id="field_website"
-                    ng-model="vm.company.website"
-                    />
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_industry">Industry</label>
-            <input type="text" class="form-control" name="industry" id="field_industry"
-                    ng-model="vm.company.industry"
-                    />
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_revenue">Revenue</label>
-            <input type="text" class="form-control" name="revenue" id="field_revenue"
-                    ng-model="vm.company.revenue"
-                    />
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_employee">Employee</label>
-            <input type="text" class="form-control" name="employee" id="field_employee"
-                    ng-model="vm.company.employee"
-                    />
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_isDeleted">Is Deleted</label>
-                <input type="checkbox" name="isDeleted" id="field_isDeleted"
-                          ng-model="vm.company.isDeleted"/>
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_companyType">Company Type</label>
-            <select class="form-control" name="companyType" ng-model="vm.company.companyType" id="field_companyType">
-                <option value="CLIENT">CLIENT</option>
-                <option value="POSPECT">POSPECT</option>
-                <option value="VENDOR">VENDOR</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_companyStatus">Company Status</label>
-            <select class="form-control" name="companyStatus" ng-model="vm.company.companyStatus" id="field_companyStatus">
-                <option value="NO_CONTRACT">NO_CONTRACT</option>
-                <option value="MSA">MSA</option>
-                <option value="SA">SA</option>
-                <option value="SOW">SOW</option>
-            </select>
-        </div>
+    <div class="form-group">
+      <label class="control-label" for="field_name">Name</label>
+      <input type="text" class="form-control" name="name" id="field_name"
+             ng-model="vm.company.name"
+      />
+    </div>
+    <div class="form-group">
+      <label class="control-label" for="field_website">Website</label>
+      <input type="text" class="form-control" name="website" id="field_website"
+             ng-model="vm.company.website"
+      />
+    </div>
+    <div class="form-group">
+      <label class="control-label" for="field_industry">Industry</label>
+      <input type="text" class="form-control" name="industry" id="field_industry"
+             ng-model="vm.company.industry"
+      />
+    </div>
+    <div class="form-group">
+      <label class="control-label" for="field_revenue">Revenue</label>
+      <input type="text" class="form-control" name="revenue" id="field_revenue"
+             ng-model="vm.company.revenue"
+      />
+    </div>
+    <div class="form-group">
+      <label class="control-label" for="field_employee">Employee</label>
+      <input type="text" class="form-control" name="employee" id="field_employee"
+             ng-model="vm.company.employee"
+      />
+    </div>
+    <div class="form-group">
+      <label class="control-label" for="field_isDeleted">Is Deleted</label>
+      <input type="checkbox" name="isDeleted" id="field_isDeleted"
+             ng-model="vm.company.isDeleted"/>
+    </div>
+    <div class="form-group">
+      <label class="control-label" for="field_companyType">Company Type</label>
+      <select class="form-control" name="companyType" ng-model="vm.company.companyType" id="field_companyType">
+        <option value="CLIENT">CLIENT</option>
+        <option value="POSPECT">POSPECT</option>
+        <option value="VENDOR">VENDOR</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="control-label" for="field_companyStatus">Company Status</label>
+      <select class="form-control" name="companyStatus" ng-model="vm.company.companyStatus" id="field_companyStatus">
+        <option value="NO_CONTRACT">NO_CONTRACT</option>
+        <option value="MSA">MSA</option>
+        <option value="SA">SA</option>
+        <option value="SOW">SOW</option>
+      </select>
+    </div>
 
-        <div class="form-group">
-            <label for="field_skill">Skill</label>
-            <select class="form-control" id="field_skill" multiple name="skill" ng-model="vm.company.skills" ng-options="skill as skill.name for skill in vm.skills track by skill.id"></select>
-        </div>
+    <div class="form-group">
+      <label for="field_skill">Skill</label>
+      <select class="form-control" id="field_skill" multiple name="skill" ng-model="vm.company.skills"
+              ng-options="skill as skill.name for skill in vm.skills track by skill.id"></select>
     </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="vm.clear()">
-            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
-        </button>
-        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-success">
-            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
-        </button>
-    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="vm.clear()">
+      <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+    </button>
+    <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-success">
+      <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+    </button>
+  </div>
 </form>

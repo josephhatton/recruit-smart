@@ -1,45 +1,46 @@
-
 <form name="editForm" role="form" novalidate ng-submit="vm.save()">
 
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
-                ng-click="vm.clear()">&times;</button>
-        <h4 class="modal-title" id="myHiringContactLabel">Job Order Listings</h4>
-    </div>
-    <div class="modal-body">
-        <jhi-alert-error></jhi-alert-error>
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+            ng-click="vm.clear()">&times;
+    </button>
+    <h4 class="modal-title" id="myHiringContactLabel">Job Order Listings</h4>
+  </div>
+  <div class="modal-body">
+    <jhi-alert-error></jhi-alert-error>
 
-        <div class="table-responsive">
-            <table class="jh-table table table-striped">
-                <thead>
-                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
-                    <th></th>
-                    <th jh-sort-by="title"><span>Title</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="company.addresses.city"><span>Location</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="jobType"><span>Job Type</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="jobStatus"><span>Job Status</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="duration"><span>Skills</span> <span class="glyphicon glyphicon-sort"></span></th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr ng-repeat="jobOrder in vm.jobOrders track by jobOrder.id">
-                    <td><input type="checkbox" ng-model="jobOrder.checked"/></td>
-                    <td>{{jobOrder.title}}</td>
-                    <td>{{jobOrder.company.addresses.city || "No Location"}}, {{jobOrder.company.addresses.state}}</td>
-                    <td>{{jobOrder.jobType}}</td>
-                    <td>{{jobOrder.jobStatus}}</td>
-                    <td>Skills</td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
+    <div class="table-responsive">
+      <table class="jh-table table table-striped">
+        <thead>
+        <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+          <th></th>
+          <th jh-sort-by="title"><span>Title</span> <span class="glyphicon glyphicon-sort"></span></th>
+          <th jh-sort-by="company.addresses.city"><span>Location</span> <span class="glyphicon glyphicon-sort"></span>
+          </th>
+          <th jh-sort-by="jobType"><span>Job Type</span> <span class="glyphicon glyphicon-sort"></span></th>
+          <th jh-sort-by="jobStatus"><span>Job Status</span> <span class="glyphicon glyphicon-sort"></span></th>
+          <th jh-sort-by="duration"><span>Skills</span> <span class="glyphicon glyphicon-sort"></span></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="jobOrder in vm.jobOrders track by jobOrder.id">
+          <td><input type="checkbox" ng-model="jobOrder.checked"/></td>
+          <td>{{jobOrder.title}}</td>
+          <td>{{jobOrder.company.addresses.city || "No Location"}}, {{jobOrder.company.addresses.state}}</td>
+          <td>{{jobOrder.jobType}}</td>
+          <td>{{jobOrder.jobStatus}}</td>
+          <td>Skills</td>
+        </tr>
+        </tbody>
+      </table>
     </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="vm.clear()">
-            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
-        </button>
-        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-success">
-            <span class="glyphicon glyphicon-plus"></span>&nbsp;<span>Add</span>
-        </button>
-    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="vm.clear()">
+      <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+    </button>
+    <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-success">
+      <span class="glyphicon glyphicon-plus"></span>&nbsp;<span>Add</span>
+    </button>
+  </div>
 </form>

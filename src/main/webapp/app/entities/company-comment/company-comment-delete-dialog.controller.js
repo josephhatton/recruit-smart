@@ -1,28 +1,28 @@
-(function() {
-    'use strict';
+(function () {
+  'use strict';
 
-    angular
-        .module('recruitsmartApp')
-        .controller('CompanyCommentDeleteController',CompanyCommentDeleteController);
+  angular
+    .module('recruitsmartApp')
+    .controller('CompanyCommentDeleteController', CompanyCommentDeleteController);
 
-    CompanyCommentDeleteController.$inject = ['$uibModalInstance', 'entity', 'CompanyComment'];
+  CompanyCommentDeleteController.$inject = ['$uibModalInstance', 'entity', 'CompanyComment'];
 
-    function CompanyCommentDeleteController($uibModalInstance, entity, CompanyComment) {
-        var vm = this;
+  function CompanyCommentDeleteController($uibModalInstance, entity, CompanyComment) {
+    var vm = this;
 
-        vm.companyComment = entity;
-        vm.clear = clear;
-        vm.confirmDelete = confirmDelete;
+    vm.companyComment = entity;
+    vm.clear = clear;
+    vm.confirmDelete = confirmDelete;
 
-        function clear () {
-            $uibModalInstance.dismiss('cancel');
-        }
-
-        function confirmDelete (id) {
-            CompanyComment.delete({id: id},
-                function () {
-                    $uibModalInstance.close(true);
-                });
-        }
+    function clear() {
+      $uibModalInstance.dismiss('cancel');
     }
+
+    function confirmDelete(id) {
+      CompanyComment.delete({id: id},
+        function () {
+          $uibModalInstance.close(true);
+        });
+    }
+  }
 })();

@@ -1,17 +1,17 @@
-(function() {
-    'use strict';
+(function () {
+  'use strict';
 
-    angular
-        .module('recruitsmartApp')
-        .factory('ActivityActionSearch', ActivityActionSearch);
+  angular
+    .module('recruitsmartApp')
+    .factory('ActivityActionSearch', ActivityActionSearch);
 
-    ActivityActionSearch.$inject = ['$resource'];
+  ActivityActionSearch.$inject = ['$resource'];
 
-    function ActivityActionSearch($resource) {
-        var resourceUrl =  'api/_search/activity-actions/:id';
+  function ActivityActionSearch($resource) {
+    var resourceUrl = 'api/_search/activity-actions/:id';
 
-        return $resource(resourceUrl, {}, {
-            'query': { method: 'GET', isArray: true}
-        });
-    }
+    return $resource(resourceUrl, {}, {
+      'query': {method: 'GET', isArray: true}
+    });
+  }
 })();

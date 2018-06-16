@@ -1,42 +1,43 @@
-(function() {
-    'use strict';
+(function () {
+  'use strict';
 
-    angular
-        .module('recruitsmartApp')
-        .controller('WorkHistoryController', WorkHistoryController);
+  angular
+    .module('recruitsmartApp')
+    .controller('WorkHistoryController', WorkHistoryController);
 
-    WorkHistoryController.$inject = ['WorkHistory', 'WorkHistorySearch'];
+  WorkHistoryController.$inject = ['WorkHistory', 'WorkHistorySearch'];
 
-    function WorkHistoryController(WorkHistory, WorkHistorySearch) {
+  function WorkHistoryController(WorkHistory, WorkHistorySearch) {
 
-        var vm = this;
+    var vm = this;
 
-        vm.workHistories = [];
-        vm.clear = clear;
-        vm.search = search;
-        vm.loadAll = loadAll;
+    vm.workHistories = [];
+    vm.clear = clear;
+    vm.search = search;
+    vm.loadAll = loadAll;
 
-        loadAll();
+    loadAll();
 
-        function loadAll() {
-            WorkHistory.query(function(result) {
-                vm.workHistories = result;
-                vm.searchQuery = null;
-            });
-        }
+    function loadAll() {
+      WorkHistory.query(function (result) {
+        vm.workHistories = result;
+        vm.searchQuery = null;
+      });
+    }
 
-        function search() {
-            if (!vm.searchQuery) {
-                return vm.loadAll();
-            }
-            WorkHistorySearch.query({query: vm.searchQuery}, function(result) {
-                vm.workHistories = result;
-                vm.currentSearch = vm.searchQuery;
-            });
-        }
+    function search() {
+      if (!vm.searchQuery) {
+        return vm.loadAll();
+      }
+      WorkHistorySearch.query({query: vm.searchQuery}, function (result) {
+        vm.workHistories = result;
+        vm.currentSearch = vm.searchQuery;
+      });
+    }
 
-        function clear() {
-            vm.searchQuery = null;
-            loadAll();
-        }    }
+    function clear() {
+      vm.searchQuery = null;
+      loadAll();
+    }
+  }
 })();

@@ -1,28 +1,28 @@
-(function() {
-    'use strict';
+(function () {
+  'use strict';
 
-    angular
-        .module('recruitsmartApp')
-        .controller('SkillDeleteController',SkillDeleteController);
+  angular
+    .module('recruitsmartApp')
+    .controller('SkillDeleteController', SkillDeleteController);
 
-    SkillDeleteController.$inject = ['$uibModalInstance', 'entity', 'Skill'];
+  SkillDeleteController.$inject = ['$uibModalInstance', 'entity', 'Skill'];
 
-    function SkillDeleteController($uibModalInstance, entity, Skill) {
-        var vm = this;
+  function SkillDeleteController($uibModalInstance, entity, Skill) {
+    var vm = this;
 
-        vm.skill = entity;
-        vm.clear = clear;
-        vm.confirmDelete = confirmDelete;
+    vm.skill = entity;
+    vm.clear = clear;
+    vm.confirmDelete = confirmDelete;
 
-        function clear () {
-            $uibModalInstance.dismiss('cancel');
-        }
-
-        function confirmDelete (id) {
-            Skill.delete({id: id},
-                function () {
-                    $uibModalInstance.close(true);
-                });
-        }
+    function clear() {
+      $uibModalInstance.dismiss('cancel');
     }
+
+    function confirmDelete(id) {
+      Skill.delete({id: id},
+        function () {
+          $uibModalInstance.close(true);
+        });
+    }
+  }
 })();

@@ -1,21 +1,21 @@
-(function() {
-    'use strict';
+(function () {
+  'use strict';
 
-    angular
-        .module('recruitsmartApp')
-        .controller('CompanyCommentDetailController', CompanyCommentDetailController);
+  angular
+    .module('recruitsmartApp')
+    .controller('CompanyCommentDetailController', CompanyCommentDetailController);
 
-    CompanyCommentDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'CompanyComment'];
+  CompanyCommentDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'CompanyComment'];
 
-    function CompanyCommentDetailController($scope, $rootScope, $stateParams, previousState, entity, CompanyComment) {
-        var vm = this;
+  function CompanyCommentDetailController($scope, $rootScope, $stateParams, previousState, entity, CompanyComment) {
+    var vm = this;
 
-        vm.companyComment = entity;
-        vm.previousState = previousState.name;
+    vm.companyComment = entity;
+    vm.previousState = previousState.name;
 
-        var unsubscribe = $rootScope.$on('recruitsmartApp:companyCommentUpdate', function(event, result) {
-            vm.companyComment = result;
-        });
-        $scope.$on('$destroy', unsubscribe);
-    }
+    var unsubscribe = $rootScope.$on('recruitsmartApp:companyCommentUpdate', function (event, result) {
+      vm.companyComment = result;
+    });
+    $scope.$on('$destroy', unsubscribe);
+  }
 })();

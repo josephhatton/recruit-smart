@@ -4,7 +4,7 @@
     <button type="button" class="close btn-sm" data-dismiss="modal" aria-hidden="true"
             ng-click="vm.clear()">&times;
     </button>
-    <h5 class="modal-title text-warning"> Hot List
+    <h5 class="modal-title text-warning"> Job Order Hot List
       <small><span class="glyphicon glyphicon-flash text-danger"></span></small>
     </h5>
   </div>
@@ -19,7 +19,7 @@
         </div>
       </uib-tab>
       <uib-tab heading="Add to Existing" ng-click="vm.tabChange(false)" active="!vm.new">
-        <label class="control-label" for="field_name">Applicant Hot Lists</label>
+        <label class="control-label" for="field_name">Hot Lists</label>
         <select class="form-control" ng-model="vm.exitingBucket" ng-change="vm.addToExisting('{{vm.exitingBucket}}')"
                 ng-options="hotList as hotList.name for hotList in vm.bucket track by hotList.id"></select>
       </uib-tab>

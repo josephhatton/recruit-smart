@@ -1,16 +1,16 @@
-(function() {
-    'use strict';
+(function () {
+  'use strict';
 
-    angular
-        .module('recruitsmartApp')
-        .config(stateConfig);
+  angular
+    .module('recruitsmartApp')
+    .config(stateConfig);
 
-    stateConfig.$inject = ['$stateProvider'];
+  stateConfig.$inject = ['$stateProvider'];
 
-    function stateConfig($stateProvider) {
-        $stateProvider.state('entity', {
-            abstract: true,
-            parent: 'app'
-        });
-    }
+  function stateConfig($stateProvider) {
+    $stateProvider.state('entity', {
+      abstract: true,
+      parent: 'app'
+    });
+  }
 })();

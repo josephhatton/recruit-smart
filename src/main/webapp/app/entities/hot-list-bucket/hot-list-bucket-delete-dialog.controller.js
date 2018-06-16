@@ -1,28 +1,28 @@
-(function() {
-    'use strict';
+(function () {
+  'use strict';
 
-    angular
-        .module('recruitsmartApp')
-        .controller('HotListBucketDeleteController',HotListBucketDeleteController);
+  angular
+    .module('recruitsmartApp')
+    .controller('HotListBucketDeleteController', HotListBucketDeleteController);
 
-    HotListBucketDeleteController.$inject = ['$uibModalInstance', 'entity', 'HotListBucket'];
+  HotListBucketDeleteController.$inject = ['$uibModalInstance', 'entity', 'HotListBucket'];
 
-    function HotListBucketDeleteController($uibModalInstance, entity, HotListBucket) {
-        var vm = this;
+  function HotListBucketDeleteController($uibModalInstance, entity, HotListBucket) {
+    var vm = this;
 
-        vm.hotListBucket = entity;
-        vm.clear = clear;
-        vm.confirmDelete = confirmDelete;
+    vm.hotListBucket = entity;
+    vm.clear = clear;
+    vm.confirmDelete = confirmDelete;
 
-        function clear () {
-            $uibModalInstance.dismiss('cancel');
-        }
-
-        function confirmDelete (id) {
-            HotListBucket.delete({id: id},
-                function () {
-                    $uibModalInstance.close(true);
-                });
-        }
+    function clear() {
+      $uibModalInstance.dismiss('cancel');
     }
+
+    function confirmDelete(id) {
+      HotListBucket.delete({id: id},
+        function () {
+          $uibModalInstance.close(true);
+        });
+    }
+  }
 })();

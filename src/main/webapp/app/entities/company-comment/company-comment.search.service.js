@@ -1,17 +1,17 @@
-(function() {
-    'use strict';
+(function () {
+  'use strict';
 
-    angular
-        .module('recruitsmartApp')
-        .factory('CompanyCommentSearch', CompanyCommentSearch);
+  angular
+    .module('recruitsmartApp')
+    .factory('CompanyCommentSearch', CompanyCommentSearch);
 
-    CompanyCommentSearch.$inject = ['$resource'];
+  CompanyCommentSearch.$inject = ['$resource'];
 
-    function CompanyCommentSearch($resource) {
-        var resourceUrl =  'api/_search/company-comments/:id';
+  function CompanyCommentSearch($resource) {
+    var resourceUrl = 'api/_search/company-comments/:id';
 
-        return $resource(resourceUrl, {}, {
-            'query': { method: 'GET', isArray: true}
-        });
-    }
+    return $resource(resourceUrl, {}, {
+      'query': {method: 'GET', isArray: true}
+    });
+  }
 })();

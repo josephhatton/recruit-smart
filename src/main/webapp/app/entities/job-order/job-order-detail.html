@@ -1,62 +1,64 @@
 <div class="page-container">
-    <div class="row">
-        <div class="col-xs-6">
-            <h2>
-                <span ng-hide="vm.infoEditable">{{vm.jobOrder.title}}</span>
-                <span ng-show="vm.infoEditable" class="form-inline">
+  <div class="row">
+    <div class="col-xs-6">
+      <h2>
+        <span ng-hide="vm.infoEditable">{{vm.jobOrder.title}}</span>
+        <span ng-show="vm.infoEditable" class="form-inline">
       	<input type="text" ng-model="vm.jobOrder.title" class="form-control">
       </span>
-                <small>({{vm.jobOrder.id}})</small>
-            </h2>
-        </div>
+        <small>({{vm.jobOrder.id}})</small>
+      </h2>
     </div>
+  </div>
 
-    <!--Notes, Activities, and Duplicate buttons need to add functionality  -->
-    <div class="row" ng-hide="vm.infoEditable">
-        <div class="col-xs-6">
-            <add-to-hotlist list="{ type: 'JOB_ORDER'}" entity="vm.jobOrder"></add-to-hotlist>
-            <span class="text-warning" ng-click="vm.clone()">Duplicate <span
-                class="glyphicon glyphicon-copy text-danger"></span></span>
-        </div>
-    </div><p></p>
+  <!--Notes, Activities, and Duplicate buttons need to add functionality  -->
+  <div class="row" ng-hide="vm.infoEditable">
+    <div class="col-xs-6">
+      <span class="text-warning" ng-click="vm.clone()">Duplicate <span
+        class="glyphicon glyphicon-copy text-danger"></span></span>
+      <a class="text-warning" ui-sref="job-order-detail.hot-list({})">Add to Hot List <span
+        class="glyphicon glyphicon-flash text-danger"></span></a>
+    </div>
+  </div>
+  <p></p>
 
-    <div class="job-info well">
-        <h3>General Info
-            <button ng-hide="vm.infoEditable" ng-click="vm.infoEditable = !vm.infoEditable" type="submit"
-                    class="btn btn-success btn-sm"><span class="glyphicon glyphicon-pencil"></span></button>
-            <button ng-show="vm.infoEditable" class="btn btn-success btn-sm" ng-click="vm.infoSave()">
-                save
-            </button>
-            <button ng-show="vm.infoEditable" class="btn btn-danger btn-sm" ng-click="vm.cancelInfo();">
-                cancel
-            </button>
-        </h3>
-        <div class="row">
-            <div class="col-xs-6">
-                <div class="genInfo">
-                    <div ng-hide="vm.infoEditable">
-                        <table class="table-condensed" style="width: 100%">
-                            <tr>
-                                <td>
-                                    <span>Company: <a ui-sref="company-detail({ id: vm.jobOrder.company.id })">{{ vm.jobOrder.company.name }}</a></span>
-                                </td>
-                                <td>
+  <div class="job-info well">
+    <h3>General Info
+      <button ng-hide="vm.infoEditable" ng-click="vm.infoEditable = !vm.infoEditable" type="submit"
+              class="btn btn-success btn-sm"><span class="glyphicon glyphicon-pencil"></span></button>
+      <button ng-show="vm.infoEditable" class="btn btn-success btn-sm" ng-click="vm.infoSave()">
+        save
+      </button>
+      <button ng-show="vm.infoEditable" class="btn btn-danger btn-sm" ng-click="vm.cancelInfo();">
+        cancel
+      </button>
+    </h3>
+    <div class="row">
+      <div class="col-xs-6">
+        <div class="genInfo">
+          <div ng-hide="vm.infoEditable">
+            <table class="table-condensed" style="width: 100%">
+              <tr>
+                <td>
+                  <span>Company: <a ui-sref="company-detail({ id: vm.jobOrder.company.id })">{{ vm.jobOrder.company.name }}</a></span>
+                </td>
+                <td>
                     <span>Contact: <a ng-repeat="contact in vm.jobOrder.hiringContacts track by $index"
                                       ui-sref="hiring-contact-detail({id:contact.id})">{{contact.firstName}} {{contact.lastName}}{{$last ? '' : ', '}}</a></span><br>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div ng-show="vm.infoEditable">
-                        <span>Company: <br><input type="text" class="form-control" ng-model="vm.jobOrder.company.name"></span><br>
-                        <span>Contact: <br>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div ng-show="vm.infoEditable">
+            <span>Company: <br><input type="text" class="form-control" ng-model="vm.jobOrder.company.name"></span><br>
+            <span>Contact: <br>
                 <div>
                 <ui-select multiple="true" tagging ng-model="vm.jobOrder.hiringContacts"
                            id="field_hiringContacts" name="hiringContacts">
                     <ui-select-match
-                        placeholder="Select person...">{{$item.firstName}} {{$item.lastName}}</ui-select-match>
+                      placeholder="Select person...">{{$item.firstName}} {{$item.lastName}}</ui-select-match>
                     <ui-select-choices
-                        repeat="person in vm.jobOrder.company.hiringContacts | propsFilter: {firstName: $select.search, lastName: $select.search } track by person.id">
+                      repeat="person in vm.jobOrder.company.hiringContacts | propsFilter: {firstName: $select.search, lastName: $select.search } track by person.id">
                       <span ng-bind-html="person.firstName | highlight: $select.search"></span>
                       <span ng-bind-html="person.lastName | highlight: $select.search"></span>
                       <div>
@@ -64,7 +66,7 @@
                             company: {{ person.company.name }}<br>
                             contact type: {{person.contactType}}<br>
                                   email1: <span
-                              ng-bind-html="''+ person.email1 | highlight: $select.search"></span>
+                            ng-bind-html="''+ person.email1 | highlight: $select.search"></span>
                           </small>
                         </div>
                     </ui-select-choices>
@@ -72,123 +74,124 @@
                 </div>
 
               </span>
-                    </div>
-                    <div class="jobCompensation">
-                        <span><strong>Compensation</strong></span>
-                        <div ng-hide="vm.infoEditable">Salary: &nbsp&nbsp{{vm.jobOrder.salary}}&nbsp</div>
-                        <div ng-hide="vm.infoEditable">Hourly: &nbsp&nbsp{{vm.jobOrder.hourly}}&nbsp</div>
-                        <div ng-show="vm.infoEditable">
-                            <div>Salary: <input type="text" class="form-control" ng-model="vm.jobOrder.salary"></div>
-                            <div>Hourly: <input type="text" class="form-control" ng-model="vm.jobOrder.hourly"></div>
-                        </div>
-                    </div>
-                    <div>
-                        <button ng-show="vm.infoEditable" ng-click="vm.addAddress();" class="addAddressbtn btn btn-success btn-xs">
-                            <span ng-hide="vm.addingAddress" class="glyphicon glyphicon-plus">&nbsp;address</span>
-                            <span ng-show="vm.addingAddress" class="glyphicon glyphicon-remove"></span>
-                        </button>
-                        <select ng-show="vm.addingAddress" ng-model="vm.newJobAddress"
-                                ng-options="option.address1 for option in vm.jobOrder.company.addresss track by option.address1">
-                        </select>
-                    </div>
-                    <div class="well well-sm" ng-show="vm.addingAddress">
-                        Address:<br>
-                        {{vm.newJobAddress.address1}}<br>
-                        <span ng-show="vm.newJobAddress.address2">{{vm.newJobAddress.address2}}<br></span>
-                        {{vm.newJobAddress.city}}, {{vm.newJobAddress.state}} {{vm.newJobAddress.zipCode}}<br>
-                        {{vm.newJobAddress.country}}<br>
-                    </div>
-                    <uib-tabset class="well well-sm">
-                        <uib-tab class="address" ng-repeat="address in vm.jobOrder.addresss track by $index">
-                            <uib-tab-heading>
-                                {{ $index +1 }}
-                            </uib-tab-heading>
-                            <div>
-                                {{address.address1}}<br>
-                                <span ng-show="address.address2">{{address.address2}}<br></span>
-                                {{address.city}}, {{address.state}} {{address.zipCode}}<br>
-                                {{address.country}}<br>
-                            </div>
-                        </uib-tab>
-                    </uib-tabset>
-                    <p></p>
-                </div>
+          </div>
+          <div class="jobCompensation">
+            <span><strong>Compensation</strong></span>
+            <div ng-hide="vm.infoEditable">Salary: &nbsp&nbsp{{vm.jobOrder.salary}}&nbsp</div>
+            <div ng-hide="vm.infoEditable">Hourly: &nbsp&nbsp{{vm.jobOrder.hourly}}&nbsp</div>
+            <div ng-show="vm.infoEditable">
+              <div>Salary: <input type="text" class="form-control" ng-model="vm.jobOrder.salary"></div>
+              <div>Hourly: <input type="text" class="form-control" ng-model="vm.jobOrder.hourly"></div>
             </div>
+          </div>
+          <div>
+            <button ng-show="vm.infoEditable" ng-click="vm.addAddress();" class="addAddressbtn btn btn-success btn-xs">
+              <span ng-hide="vm.addingAddress" class="glyphicon glyphicon-plus">&nbsp;address</span>
+              <span ng-show="vm.addingAddress" class="glyphicon glyphicon-remove"></span>
+            </button>
+            <select ng-show="vm.addingAddress" ng-model="vm.newJobAddress"
+                    ng-options="option.address1 for option in vm.jobOrder.company.addresss track by option.address1">
+            </select>
+          </div>
+          <div class="well well-sm" ng-show="vm.addingAddress">
+            Address:<br>
+            {{vm.newJobAddress.address1}}<br>
+            <span ng-show="vm.newJobAddress.address2">{{vm.newJobAddress.address2}}<br></span>
+            {{vm.newJobAddress.city}}, {{vm.newJobAddress.state}} {{vm.newJobAddress.zipCode}}<br>
+            {{vm.newJobAddress.country}}<br>
+          </div>
+          <uib-tabset class="well well-sm">
+            <uib-tab class="address" ng-repeat="address in vm.jobOrder.addresss track by $index">
+              <uib-tab-heading>
+                {{ $index +1 }}
+              </uib-tab-heading>
+              <div>
+                {{address.address1}}<br>
+                <span ng-show="address.address2">{{address.address2}}<br></span>
+                {{address.city}}, {{address.state}} {{address.zipCode}}<br>
+                {{address.country}}<br>
+              </div>
+            </uib-tab>
+          </uib-tabset>
+          <p></p>
+        </div>
+      </div>
 
-            <div class="col-xs-6">
-                <div class="row">
-                    <div class="col-xs-5">
-                        <label>Status: </label>
-                        <span ng-hide="vm.infoEditable">{{ vm.jobOrder.jobStatus }}</span>
-                        <select ng-show="vm.infoEditable" class="form-control" name="jobStatus" ng-model="vm.jobOrder.jobStatus"
-                                id="field_jobStatus">
-                            <option value="OPEN">OPEN</option>
-                            <option value="FILLED_BY_US" translate="recruitSmartApp.JobStatus.FILLED_BY_US">FILLED_BY_US</option>
-                            <option value="ON_HOLD" translate="recruitSmartApp.JobStatus.ON_HOLD">ON_HOLD</option>
-                            <option value="FILLED_BY_COMPETITION" translate="recruitSmartApp.JobStatus.FILLED_BY_COMPETITION">
-                                FILLED_BY_COMPETITION
-                            </option>
-                            <option value="CANCELLED">CANCELLED</option>
-                        </select>
-                    </div>
-                </div>
+      <div class="col-xs-6">
+        <div class="row">
+          <div class="col-xs-5">
+            <label>Status: </label>
+            <span ng-hide="vm.infoEditable">{{ vm.jobOrder.jobStatus }}</span>
+            <select ng-show="vm.infoEditable" class="form-control" name="jobStatus" ng-model="vm.jobOrder.jobStatus"
+                    id="field_jobStatus">
+              <option value="OPEN">OPEN</option>
+              <option value="FILLED_BY_US" translate="recruitSmartApp.JobStatus.FILLED_BY_US">FILLED_BY_US</option>
+              <option value="ON_HOLD" translate="recruitSmartApp.JobStatus.ON_HOLD">ON_HOLD</option>
+              <option value="FILLED_BY_COMPETITION" translate="recruitSmartApp.JobStatus.FILLED_BY_COMPETITION">
+                FILLED_BY_COMPETITION
+              </option>
+              <option value="CANCELLED">CANCELLED</option>
+            </select>
+          </div>
+        </div>
 
-                <div class="row">
-                    <div class="col-xs-5">
-                        <label>Type: </label>
-                        <span ng-hide="vm.infoEditable">{{ vm.jobOrder.jobType }}</span>
-                        <select ng-show="vm.infoEditable" class="form-control" name="jobType" ng-model="vm.jobOrder.jobType"
-                                id="field_jobType">
-                            <option value="DIRECT_HIRE" translate="recruitSmartApp.JobType.DIRECT_HIRE">DIRECT HIRE</option>
-                            <option value="CONTRACT_TO_HIRE" translate="recruitSmartApp.JobType.CONTRACT_TO_HIRE">CONTRACT TO HIRE
-                            </option>
-                            <option value="CONTRACT">CONTRACT</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-5">
-                        <label>Duration: </label>
-                        <span ng-hide="vm.infoEditable">{{ vm.jobOrder.duration }}</span>
-                        <input type="text" class="form-control" ng-show="vm.infoEditable" ng-model="vm.jobOrder.duration">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-5">
-                        <label>Comments: </label>
-                        <span ng-repeat="jobComments in vm.jobOrder.jobInternalCommentss track by $index">
+        <div class="row">
+          <div class="col-xs-5">
+            <label>Type: </label>
+            <span ng-hide="vm.infoEditable">{{ vm.jobOrder.jobType }}</span>
+            <select ng-show="vm.infoEditable" class="form-control" name="jobType" ng-model="vm.jobOrder.jobType"
+                    id="field_jobType">
+              <option value="DIRECT_HIRE" translate="recruitSmartApp.JobType.DIRECT_HIRE">DIRECT HIRE</option>
+              <option value="CONTRACT_TO_HIRE" translate="recruitSmartApp.JobType.CONTRACT_TO_HIRE">CONTRACT TO HIRE
+              </option>
+              <option value="CONTRACT">CONTRACT</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-5">
+            <label>Duration: </label>
+            <span ng-hide="vm.infoEditable">{{ vm.jobOrder.duration }}</span>
+            <input type="text" class="form-control" ng-show="vm.infoEditable" ng-model="vm.jobOrder.duration">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-5">
+            <label>Comments: </label>
+            <span ng-repeat="jobComments in vm.jobOrder.jobInternalCommentss track by $index">
               {{jobComments.description}}
             </span>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
+      </div>
     </div>
-    <!---------- ACTIVITIES ------------------->
-    <activity activitys="vm.jobOrder.activitys" entity-id="{{vm.jobOrder.id}}" type="JOB_ORDER"></activity>
+  </div>
+  <!---------- ACTIVITIES ------------------->
+  <activity activitys="vm.jobOrder.activitys" entity-id="{{vm.jobOrder.id}}" type="JOB_ORDER"></activity>
 
 
-    <!---------- ASSIGNED USERS ------------------->
-    <div class="table-responsive well">
-        <div class="form-group">
-            <label for="field_users">Assign to Users</label>
-            <select class="form-control" id="field_users" multiple name="users" ng-model="vm.jobOrder.users"
-                    ng-options="user as user.firstName for user in vm.users track by user.id"></select>
-        </div>
+  <!---------- ASSIGNED USERS ------------------->
+  <div class="table-responsive well">
+    <div class="form-group">
+      <label for="field_users">Assign to Users</label>
+      <select class="form-control" id="field_users" multiple name="users" ng-model="vm.jobOrder.users"
+              ng-options="user as user.firstName for user in vm.users track by user.id"></select>
     </div>
+  </div>
 
-    <!---------- SKILLS ------------------->
-    <div class="table-responsive well">
-        <table class="table table-striped">
-            <h3>
-                <span>Required Job Skills</span>
-                <button class="btn btn-success btn-xs"  ng-hide="vm.skillsEditable" ng-click="vm.skillsEditable = !vm.skillsEditable">
-                    <span class="glyphicon glyphicon-pencil"></span>
-                </button>
-            </h3>
-            <thead>
-            <tr>
-                <th><span ng-show="vm.skillsEditable">
+  <!---------- SKILLS ------------------->
+  <div class="table-responsive well">
+    <table class="table table-striped">
+      <h3>
+        <span>Required Job Skills</span>
+        <button class="btn btn-success btn-xs" ng-hide="vm.skillsEditable"
+                ng-click="vm.skillsEditable = !vm.skillsEditable">
+          <span class="glyphicon glyphicon-pencil"></span>
+        </button>
+      </h3>
+      <thead>
+      <tr>
+        <th><span ng-show="vm.skillsEditable">
                         <input type="text" ng-model="vm.newSkill"
                                uib-typeahead="skill as skill.name for skill in vm.skills | filter:$viewValue | limitTo:8">
                         <button ng-click="vm.addSkill()" class="btn btn-success btn-xs">
@@ -198,123 +201,127 @@
                         <span>cancel</span>
                         </button>
                     </span>
-                </th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td ng-hide="vm.skillsEditable"><span ng-repeat="skill in vm.jobOrder.skills track by $index">{{ skill.name }}{{$last ? '' : ', '}}</span></td>
-                <td ng-show="vm.skillsEditable">
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td ng-hide="vm.skillsEditable"><span ng-repeat="skill in vm.jobOrder.skills track by $index">{{ skill.name }}{{$last ? '' : ', '}}</span>
+        </td>
+        <td ng-show="vm.skillsEditable">
                     <span ng-repeat="skill in vm.jobOrder.skills track by $index">
                         {{ skill.name }}
                         <button class="btn btn-danger btn-xs">
                             <span class="glyphicon glyphicon-remove-circle" ng-click="vm.deleteSkill($index);"></span>
                         </button>
                     </span>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
 
-    <div class="table-responsive well">
-        <table class="table table-striped">
-            <tr>
-                <h3>Job Description
-                <button class="btn btn-success btn-xs" ng-hide="vm.jobDescriptionEditable" ng-click="vm.jobDescriptionEditable = !vm.jobDescriptionEditable">
-                    <span class="glyphicon glyphicon-pencil"></span>
-                </button>
-                <button ng-show="vm.jobDescriptionEditable" class="btn btn-success btn-xs" ng-click="vm.commentSave()">
-                    save
-                </button>
-                <button ng-show="vm.jobDescriptionEditable" class="btn btn-danger btn-xs"
-                        ng-click="vm.jobDescriptionEditable = !vm.jobDescriptionEditable">
-                    cancel
-                </button>
-                </h3>
-            </tr>
-            <thead></thead>
-            <tbody>
-            <tr>
-            <td><textarea ng-disabled="!vm.jobDescriptionEditable" ng-model="vm.jobOrderComment" class="form-control" rows="5"></textarea></td>
-            </tr>
-            <tr ng-repeat="jobOrderComment in vm.jobOrder.jobOrderComments track by $index">
-                <td>{{jobOrderComment.comment}}</td>
-                <td>
-                    <button ng-click="vm.removeComment($index);" class="btn btn btn-danger btn-xs pull-right"></button>
-                </td>
-            </tr>
+  <div class="table-responsive well">
+    <table class="table table-striped">
+      <tr>
+        <h3>Job Description
+          <button class="btn btn-success btn-xs" ng-hide="vm.jobDescriptionEditable"
+                  ng-click="vm.jobDescriptionEditable = !vm.jobDescriptionEditable">
+            <span class="glyphicon glyphicon-pencil"></span>
+          </button>
+          <button ng-show="vm.jobDescriptionEditable" class="btn btn-success btn-xs" ng-click="vm.commentSave()">
+            save
+          </button>
+          <button ng-show="vm.jobDescriptionEditable" class="btn btn-danger btn-xs"
+                  ng-click="vm.jobDescriptionEditable = !vm.jobDescriptionEditable">
+            cancel
+          </button>
+        </h3>
+      </tr>
+      <thead></thead>
+      <tbody>
+      <tr>
+        <td><textarea ng-disabled="!vm.jobDescriptionEditable" ng-model="vm.jobOrderComment" class="form-control"
+                      rows="5"></textarea></td>
+      </tr>
+      <tr ng-repeat="jobOrderComment in vm.jobOrder.jobOrderComments track by $index">
+        <td>{{jobOrderComment.comment}}</td>
+        <td>
+          <button ng-click="vm.removeComment($index);" class="btn btn btn-danger btn-xs pull-right"></button>
+        </td>
+      </tr>
 
-            </tbody>
-        </table>
-    </div>
+      </tbody>
+    </table>
+  </div>
 
-    <!-- INTERNAL COMMENTS -->
-    <div class="table-responsive well">
-        <table class="table table-striped">
-            <h3><span>Internal Comments  </span>
-                <button ng-hide="vm.internalCommentsEditable"
-                        ng-click="vm.internalCommentsEditable = !vm.internalCommentsEditable" type="submit"
-                        class="btn btn-success btn-xs"><span class="glyphicon glyphicon-plus btn-xs"></span></button>
-                <button ng-show="vm.internalCommentsEditable" class="btn btn-success btn-xs" ng-click="vm.internalCommentSave()">
-                    save
-                </button>
-                <button ng-show="vm.internalCommentsEditable" class="btn btn-danger btn-xs"
-                        ng-click="vm.cancelInternalComment()">cancel
-                </button>
-            </h3>
-            <tbody>
-            <tr>
-                <td>
+  <!-- INTERNAL COMMENTS -->
+  <div class="table-responsive well">
+    <table class="table table-striped">
+      <h3><span>Internal Comments  </span>
+        <button ng-hide="vm.internalCommentsEditable"
+                ng-click="vm.internalCommentsEditable = !vm.internalCommentsEditable" type="submit"
+                class="btn btn-success btn-xs"><span class="glyphicon glyphicon-plus btn-xs"></span></button>
+        <button ng-show="vm.internalCommentsEditable" class="btn btn-success btn-xs"
+                ng-click="vm.internalCommentSave()">
+          save
+        </button>
+        <button ng-show="vm.internalCommentsEditable" class="btn btn-danger btn-xs"
+                ng-click="vm.cancelInternalComment()">cancel
+        </button>
+      </h3>
+      <tbody>
+      <tr>
+        <td>
           <textarea class="form-control" ng-disabled="!vm.internalCommentsEditable"
                     ng-model="vm.jobOrderInternalComment"></textarea>
-                </td>
-            </tr>
-            <tr ng-repeat="jobInternalComment in vm.jobOrder.jobOrderInternalComments track by $index">
-                <td>{{jobInternalComment.comment}}</td>
-                <td>
-                    <button ng-click="vm.removeInternalComment($index);" class="btn btn btn-danger btn-xs pull-right"></button>
-                </td>
-            </tr>
-            </tbody>
+        </td>
+      </tr>
+      <tr ng-repeat="jobInternalComment in vm.jobOrder.jobOrderInternalComments track by $index">
+        <td>{{jobInternalComment.comment}}</td>
+        <td>
+          <button ng-click="vm.removeInternalComment($index);" class="btn btn btn-danger btn-xs pull-right"></button>
+        </td>
+      </tr>
+      </tbody>
 
-        </table>
-    </div>
+    </table>
+  </div>
 
-    <!-- END INTERNAL COMMENTS -->
+  <!-- END INTERNAL COMMENTS -->
 
-    <div class="table-responsive well">
-        <table class="table table-striped">
+  <div class="table-responsive well">
+    <table class="table table-striped">
 
-            <thead>
-            <tr>
-                <th><h3>Attachments</h3></th>
-                <th>
-                    <button class="btn btn-success btn-xs pull-right">
-                        <span class="glyphicon glyphicon-plus"></span>
-                    </button>
-                </th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td><a>abc_Software_developer.pdf</a></td>
-                <td>
-                    <button type="submit"
-                            ui-sref="job.deleteAttachment({id:job.attachment})"
-                            class="btn btn-danger btn-sm">
-                        <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span
-                        translate="entity.action.delete"> Delete</span>
-                    </button>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
+      <thead>
+      <tr>
+        <th><h3>Attachments</h3></th>
+        <th>
+          <button class="btn btn-success btn-xs pull-right">
+            <span class="glyphicon glyphicon-plus"></span>
+          </button>
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><a>abc_Software_developer.pdf</a></td>
+        <td>
+          <button type="submit"
+                  ui-sref="job.deleteAttachment({id:job.attachment})"
+                  class="btn btn-danger btn-sm">
+            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span
+            translate="entity.action.delete"> Delete</span>
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
 
-    <button type="submit"
-            onclick="window.history.back()"
-            class="btn btn-success">
-        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
-    </button>
+  <button type="submit"
+          onclick="window.history.back()"
+          class="btn btn-success">
+    <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+  </button>
 </div>

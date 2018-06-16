@@ -1,42 +1,43 @@
-(function() {
-    'use strict';
+(function () {
+  'use strict';
 
-    angular
-        .module('recruitsmartApp')
-        .controller('ApplicantStatusController', ApplicantStatusController);
+  angular
+    .module('recruitsmartApp')
+    .controller('ApplicantStatusController', ApplicantStatusController);
 
-    ApplicantStatusController.$inject = ['ApplicantStatus', 'ApplicantStatusSearch'];
+  ApplicantStatusController.$inject = ['ApplicantStatus', 'ApplicantStatusSearch'];
 
-    function ApplicantStatusController(ApplicantStatus, ApplicantStatusSearch) {
+  function ApplicantStatusController(ApplicantStatus, ApplicantStatusSearch) {
 
-        var vm = this;
+    var vm = this;
 
-        vm.applicantStatuses = [];
-        vm.clear = clear;
-        vm.search = search;
-        vm.loadAll = loadAll;
+    vm.applicantStatuses = [];
+    vm.clear = clear;
+    vm.search = search;
+    vm.loadAll = loadAll;
 
-        loadAll();
+    loadAll();
 
-        function loadAll() {
-            ApplicantStatus.query(function(result) {
-                vm.applicantStatuses = result;
-                vm.searchQuery = null;
-            });
-        }
+    function loadAll() {
+      ApplicantStatus.query(function (result) {
+        vm.applicantStatuses = result;
+        vm.searchQuery = null;
+      });
+    }
 
-        function search() {
-            if (!vm.searchQuery) {
-                return vm.loadAll();
-            }
-            ApplicantStatusSearch.query({query: vm.searchQuery}, function(result) {
-                vm.applicantStatuses = result;
-                vm.currentSearch = vm.searchQuery;
-            });
-        }
+    function search() {
+      if (!vm.searchQuery) {
+        return vm.loadAll();
+      }
+      ApplicantStatusSearch.query({query: vm.searchQuery}, function (result) {
+        vm.applicantStatuses = result;
+        vm.currentSearch = vm.searchQuery;
+      });
+    }
 
-        function clear() {
-            vm.searchQuery = null;
-            loadAll();
-        }    }
+    function clear() {
+      vm.searchQuery = null;
+      loadAll();
+    }
+  }
 })();

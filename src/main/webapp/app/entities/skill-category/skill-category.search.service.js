@@ -1,17 +1,17 @@
-(function() {
-    'use strict';
+(function () {
+  'use strict';
 
-    angular
-        .module('recruitsmartApp')
-        .factory('SkillCategorySearch', SkillCategorySearch);
+  angular
+    .module('recruitsmartApp')
+    .factory('SkillCategorySearch', SkillCategorySearch);
 
-    SkillCategorySearch.$inject = ['$resource'];
+  SkillCategorySearch.$inject = ['$resource'];
 
-    function SkillCategorySearch($resource) {
-        var resourceUrl =  'api/_search/skill-categories/:id';
+  function SkillCategorySearch($resource) {
+    var resourceUrl = 'api/_search/skill-categories/:id';
 
-        return $resource(resourceUrl, {}, {
-            'query': { method: 'GET', isArray: true}
-        });
-    }
+    return $resource(resourceUrl, {}, {
+      'query': {method: 'GET', isArray: true}
+    });
+  }
 })();

@@ -3,13 +3,13 @@
 
   angular
     .module('recruitsmartApp')
-    .controller('ApplicantHotListModalController', ApplicantHotListModalController);
+    .controller('JobOrderHotListModalController', JobOrderHotListModalController);
 
-  ApplicantHotListModalController.$inject = ['$scope', '$stateParams', '$uibModalInstance', 'entity', 'Principal', 'HotList', 'HotListBucket'];
+  JobOrderHotListModalController.$inject = ['$scope', '$stateParams', '$uibModalInstance', 'entity', 'Principal', 'HotList', 'HotListBucket'];
 
-  function ApplicantHotListModalController($scope, $stateParams, $uibModalInstance, entity, Principal, HotList, HotListBucket) {
+  function JobOrderHotListModalController($scope, $stateParams, $uibModalInstance, entity, Principal, HotList, HotListBucket) {
     var vm = this;
-    vm.applicant = entity;
+    vm.jobOrder = entity;
 
     vm.userType = "Recruiter";
     vm.exitingBucket = null;
@@ -45,17 +45,17 @@
       if (vm.createdTab) {
         HotListBucket.save({name: vm.newBucket}, function (result) {
           HotList.save({
-            name: 'Applicants',
-            hotListType: 'Applicants',
-            applicant: vm.applicant,
+            name: 'Job Orders',
+            hotListType: 'Job Orders',
+            jobOrder: vm.jobOrder,
             hotListBucket: result
           }, onSaveSuccess, onSaveError);
         }, onSaveError);
       } else {
         HotList.save({
-          name: 'Applicants',
-          hotListType: 'Applicants',
-          applicant: vm.applicant,
+          name: 'Job Orders',
+          hotListType: 'Job Orders',
+          jobOrder: vm.jobOrder,
           hotListBucket: vm.exitingBucket
         }, onSaveSuccess, onSaveError);
       }

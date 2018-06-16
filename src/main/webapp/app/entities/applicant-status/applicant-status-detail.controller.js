@@ -1,21 +1,21 @@
-(function() {
-    'use strict';
+(function () {
+  'use strict';
 
-    angular
-        .module('recruitsmartApp')
-        .controller('ApplicantStatusDetailController', ApplicantStatusDetailController);
+  angular
+    .module('recruitsmartApp')
+    .controller('ApplicantStatusDetailController', ApplicantStatusDetailController);
 
-    ApplicantStatusDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'ApplicantStatus'];
+  ApplicantStatusDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'ApplicantStatus'];
 
-    function ApplicantStatusDetailController($scope, $rootScope, $stateParams, previousState, entity, ApplicantStatus) {
-        var vm = this;
+  function ApplicantStatusDetailController($scope, $rootScope, $stateParams, previousState, entity, ApplicantStatus) {
+    var vm = this;
 
-        vm.applicantStatus = entity;
-        vm.previousState = previousState.name;
+    vm.applicantStatus = entity;
+    vm.previousState = previousState.name;
 
-        var unsubscribe = $rootScope.$on('recruitsmartApp:applicantStatusUpdate', function(event, result) {
-            vm.applicantStatus = result;
-        });
-        $scope.$on('$destroy', unsubscribe);
-    }
+    var unsubscribe = $rootScope.$on('recruitsmartApp:applicantStatusUpdate', function (event, result) {
+      vm.applicantStatus = result;
+    });
+    $scope.$on('$destroy', unsubscribe);
+  }
 })();
