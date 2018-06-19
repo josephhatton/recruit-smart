@@ -118,7 +118,6 @@
           <tr>
             <th>Status</th>
             <th>Activity Date</th>
-            <th>Start Time</th>
             <th>Action/Comments</th>
             <th>Applicant</th>
             <th>Hiring Contact</th>
@@ -139,12 +138,7 @@
             </td>
             <td>
                     <span>
-                        {{ activity.startDate | date:'MM-dd-yyyy' }}
-                      </span>
-            </td>
-            <td>
-                    <span>
-                        {{ activity.startDate | date:'HH:mm a' }}
+                        {{ activity.startDate | date:'MM-dd-yyyy HH:mm a' }}
                       </span>
             </td>
             <td>
