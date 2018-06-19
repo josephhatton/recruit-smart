@@ -15,14 +15,14 @@
             <ul class="nav navbar-nav navbar-right">
                 <li ui-sref-active="active">
                     <a ui-sref="home" ng-click="vm.collapseNavbar()">
-                        <span class="glyphicon glyphicon-home"></span>
+                        <i class="fas fa-home fa-lg"></i>
                         <span class="hidden-sm">Home</span>
                     </a>
                 </li>
                 <li ng-class="{active: vm.$state.includes('people')}" ng-switch-when="true" uib-dropdown class="dropdown pointer" ui-sref-active="active">
                     <a class="dropdown-toggle" uib-dropdown-toggle href="" id="people-menu">
                       <span>
-                        <span class="glyphicon glyphicon-user"></span>
+                        <i class="fas fa-users  fa-lg"></i>
                         <span class="hidden-sm">People</span>
                         <b class="caret"></b>
                       </span>
@@ -31,18 +31,18 @@
                         <li><a ui-sref="applicant" data-toggle="collapse" data-target=".navbar-collapse.in"><i class="fas fa-address-book"></i>
                             &nbsp;<span>Applicants</span></a></li>
                         <li><a ui-sref="hiring-contact" data-toggle="collapse" data-target=".navbar-collapse.in">
-                            <i class="fas fa-users"></i>&nbsp;<span>Hiring Contacts</span></a></li>
+                            <i class="fas fa-user"></i>&nbsp;<span>Hiring Contacts</span></a></li>
                     </ul>
                 </li>
                 <li ui-sref-active="active" ng-switch-when="true">
                     <a ui-sref="company" data-toggle="collapse" data-target=".navbar-collapse.in">
-                        <i class="fas fa-building"></i>&nbsp;
+                        <i class="fas fa-building fa-lg"></i>&nbsp;
                         <span class="hidden-sm">Companies</span>
                     </a>
                 </li>
                 <li ui-sref-active="active" ng-switch-when="true">
                     <a ui-sref="job-order" data-toggle="collapse" data-target=".navbar-collapse.in">
-                        <i class="fas fa-briefcase"></i>&nbsp;
+                        <i class="fas fa-briefcase fa-lg"></i>&nbsp;
                         <span class="hidden-sm">Jobs</span>
 
                     </a>
@@ -89,7 +89,7 @@
                 <li ng-class="{active: vm.$state.includes('account')}" uib-dropdown class="dropdown pointer">
                     <a class="dropdown-toggle" uib-dropdown-toggle href="" id="account-menu">
                         <span>
-                            <span class="glyphicon glyphicon-cog"></span>
+                            <i class="fas fa-cogs fa-lg"></i>
                             <span class="hidden-sm">
                                 Account
                             </span>

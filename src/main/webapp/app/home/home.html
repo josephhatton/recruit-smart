@@ -37,7 +37,7 @@
               <div class="table-responsive">
                 <table class="jh-table table table-striped table-condensed">
                 <thead>
-                <th><h5>Folder</h5></th>
+                <th><h5>Folders </h5></th>
                 <th></th>
                 <th></th>
                 <th></th>
@@ -45,19 +45,23 @@
                 </thead>
                 <tbody ng-repeat="bucketList in vm.bucket track by bucketList.id">
                 <tr class="success">
-                  <td>{{bucketList.name}}</td>
+                  <td><i class="fas fa-folder-open"></i>&nbsp;{{bucketList.name}}</td>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
                 </tr>
-                <tr ng-repeat="hotList in vm.hotLists track by hotList.id"  ng-if="bucketList.name == hotList.hotListBucket.name">
+                <tr ng-repeat="applicant in vm.applicants track by applicant.id"  ng-if="bucketList.name == applicant.hotListBucket.name">
                   <td></td>
-                  <th class="warning">{{hotList.hotListType}}</th>
-                  <td class="warning"><a>{{ hotList.applicant.firstName }} {{ hotList.applicant.lastName }}</a></td>
-                  <td class="warning">&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                  <td class="warning">{{ hotList.applicant.title }}</td>
+                  <th class="info"><i class="fas fa-address-book"></i>&nbsp;{{applicant.hotListType}}</th>
+                  <td class="info"><a ui-sref="applicant-detail({id:applicant.applicant.id})">{{ applicant.applicant.firstName }} {{ applicant.applicant.lastName }}</a></td>
+                  <td class="info">&nbsp;&nbsp;</td>
+                  <td class="info">{{ applicant.applicant.title }}</td>
                 </tr>
-                <tr class="warning" ng-repeat="jobOrder in vm.jobOrders track by jobOrder.id" ng-if="bucketList.name == jobOrder.hotListBucket.name">
+                <tr ng-repeat="jobOrder in vm.jobOrders track by jobOrder.id" ng-if="bucketList.name == jobOrder.hotListBucket.name">
                   <td></td>
-                  <th class="warning"><a>{{jobOrder.jobOrder.title}}</a></th>
-                  <td class="warning">&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                  <th class="warning"><i class="fas fa-briefcase"></i>&nbsp;{{jobOrder.hotListType}}</th>
+                  <th class="warning"><a ui-sref="job-order-detail({id:jobOrder.id})">{{jobOrder.jobOrder.title}}</a></th>
                   <td class="warning">{{ jobOrder.jobOrder.jobType }}</td>
                   <td class="warning">{{ jobOrder.jobOrder.jobStatus }}</td>
                 </tr>

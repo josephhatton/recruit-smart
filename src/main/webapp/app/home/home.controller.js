@@ -31,8 +31,8 @@
       });
       HotList.query(function (result) {
         vm.hotLists = result;
-        vm.applicants = filterFilter(vm.hotLists, {name: 'Applicants'});
-        vm.jobOrders = filterFilter(vm.hotLists, {name: 'Job Orders'});
+        vm.applicants = filterFilter(vm.hotLists, {hotListType: 'Applicants'});
+        vm.jobOrders = filterFilter(vm.hotLists, {hotListType: 'Job Orders'});
       });
     }
 
