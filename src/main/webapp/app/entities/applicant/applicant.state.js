@@ -174,6 +174,31 @@
           });
         }]
       })
+      .state('applicant-detail.activity', {
+        parent: 'applicant-detail',
+        url: '/detail/activity/{id}',
+        data: {
+          authorities: ['ROLE_USER']
+        },
+        onEnter: ['$stateParams', '$state', '$uibModal', function ($stateParams, $state, $uibModal) {
+          $uibModal.open({
+            templateUrl: 'app/entities/applicant/applicant-activity-modal.html',
+            controller: 'ApplicantActivityModalController',
+            controllerAs: 'vm',
+            backdrop: 'static',
+            size: 'lg',
+            resolve: {
+              entity: ['Applicant', function (Applicant) {
+                return Applicant.get({id: $stateParams.id}).$promise;
+              }]
+            }
+          }).result.then(function () {
+            $state.go('applicant', null, {reload: 'applicant'});
+          }, function () {
+            $state.go('^');
+          });
+        }]
+      })
       .state('applicant.edit', {
         parent: 'applicant',
         url: '/{id}/edit',

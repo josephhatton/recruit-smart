@@ -6,14 +6,9 @@
           ng-show="vm.applicant.nickName">"{{ vm.applicant.nickName }}"</span></h2>
     </div>
   </div>
-  <a class="text-warning" ui-sref="applicant-detail.hot-list({})">Add to Hot List <span
+  <a class="text-warning" ui-sref="applicant-detail.hot-list">Add to Hot List <span
     class="glyphicon glyphicon-flash text-danger"></span></a>
   <!--Notes, Activities, and Duplicate buttons need to add functionality  -->
-  <div class="row">
-    <div class="col-xs-6">
-      <add-to-hotlist list="{ type: 'APPLICANT'}" entity="vm.applicant"></add-to-hotlist>
-    </div>
-  </div>
   <br>
   <div class="row">
     <div class="applicant-info">
@@ -191,7 +186,7 @@
     <div class="applicant-activites well">
       <h3>
         <span>Pending Activities:</span>   <!-- addActivity() -->
-        <button ng-hide="addNewActivity" class="btn btn-success btn-sm" ng-click="vm.open()">
+        <button ng-hide="addNewActivity" class="btn btn-success btn-sm" ui-sref="applicant-detail.activity">
           <span class="glyphicon glyphicon-plus"></span>
         </button>
       </h3>

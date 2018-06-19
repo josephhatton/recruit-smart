@@ -1,0 +1,194 @@
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+            ng-click="vm.clear()">&times;</button>
+    <h3 class="modal-title" id="myActivityLabel">Applicant Activity</h3>
+  </div>
+  <div class="modal-body">
+    <jh-alert-error></jh-alert-error>
+
+    <div class="row">
+      <div class="col-xs-6 col-md-offset-1 col-md-5">
+
+        <div class="form-group">
+          <label for="field_user">user</label>
+          <select class="form-control" id="field_user" name="user" ng-model="vm.activity.user"
+                  ng-options="user as user.firstName for user in vm.users track by user.id">
+            <option value=""></option>
+          </select>
+        </div>
+
+      </div>
+      <div class="col-xs-6 col-md-5">
+
+        <div class="form-group">
+          <label class="control-label" for="field_status">Status</label>
+          <select class="form-control" id="field_status" name="status" ng-model="vm.activity.status">
+            <option value="Pending">Pending</option>
+            <option value="Complete">Complete</option>
+          </select>
+        </div>
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-6 col-md-offset-1 col-md-5">
+
+        <div class="form-group">
+          <label for="field_activityAction">Action</label>
+          <select class="form-control" id="field_activityAction" name="activityAction"
+                  ng-model="vm.activity.activityAction"
+                  ng-options="activityAction as activityAction.name for activityAction in vm.activityactions track by activityAction.id">
+            <option value=""></option>
+          </select>
+        </div>
+
+      </div>
+      <div class="col-xs-6 col-md-5">
+
+        <div class="form-group">
+          <label for="field_applicant">Applicant</label>
+          <ui-select ng-model="vm.activity.applicant" id="field_applicant" name="applicant">
+            <ui-select-match allow-clear="true" placeholder="Select person...">{{$select.selected.firstName}}
+              {{$select.selected.lastName}}
+            </ui-select-match>
+            <ui-select-choices
+              repeat="person in vm.applicants | propsFilter: {firstName: $select.search, lastName: $select.search, email1: $select.search} track by person.id">
+              <span ng-bind-html="person.firstName | highlight: $select.search"></span>
+              <span ng-bind-html="person.lastName | highlight: $select.search"></span>
+              <div>
+                <small>
+                  title: {{person.title}}<br>
+                  email1: <span ng-bind-html="''+ person.email1 | highlight: $select.search"></span>
+                </small>
+              </div>
+            </ui-select-choices>
+          </ui-select>
+        </div>
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-6 col-md-offset-1 col-md-5">
+
+        <div class="form-group">
+          <label class="control-label" for="field_priority">Priority</label>
+          <select class="form-control" id="field_priority" name="priority" ng-model="vm.activity.priority">
+            <option value="High">High</option>
+            <option value="Normal">Normal</option>
+            <option value="Low">Low</option>
+          </select>
+        </div>
+
+      </div>
+      <div class="col-xs-6 col-md-5">
+
+        <div class="form-group">
+          <label for="field_jobOrder">Job Order</label>
+          <ui-select ng-model="vm.activity.jobOrder" id="field_jobOrder" name="jobOrder" ng-change="vm.jobSet()">
+            <ui-select-match allow-clear="true" placeholder="Select job...">{{$select.selected.title}} at
+              {{$select.selected.company.name}}
+            </ui-select-match>
+            <ui-select-choices
+              repeat="job in vm.jobOrders | filter: { company: {name: vm.activity.company.name }}  | propsFilter: {title: $select.search}">
+              <span ng-bind-html="job.title | highlight: $select.search"></span>
+              <div>
+                <small>
+                  company: {{job.company.name}}</span><br>
+                  location: {{job.addresss[0].address1}}
+                </small>
+              </div>
+            </ui-select-choices>
+          </ui-select>
+        </div>
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-6 col-md-offset-1 col-md-5">
+
+        <div class="form-group">
+          <label class="control-label" for="field_startDate">Start Date</label>
+          <div class="input-group">
+            <input id="field_startDate" type="text" class="form-control" name="startDate"
+                   datetime-picker="{{vm.dateformat}}" ng-model="vm.activity.startDate"
+                   is-open="vm.datePickerOpenStatus.startDate"
+            />
+            <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('startDate')"><i
+                          class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-6 col-md-5">
+
+        <div class="form-group">
+          <label for="field_company">Company</label>
+          <ui-select ng-model="vm.activity.company" ng-disabled="vm.companyDisabled" id="field_company" name="company">
+            <ui-select-match allow-clear="{{!vm.companyDisabled}}" placeholder="Select company...">
+              {{$select.selected.name}}
+            </ui-select-match>
+            <ui-select-choices repeat="company in vm.companys | propsFilter: {name: $select.search}">
+              <span ng-bind-html="company.name | highlight: $select.search"></span>
+              <div>
+                <small>
+                  location: {{company.addresss[0].address1}}<br>
+                  Hiring Contact: {{ company.hiringContacts[0].firstName }} {{ company.hiringContacts[0].lastName }}
+                </small>
+              </div>
+            </ui-select-choices>
+          </ui-select>
+        </div>
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-md-offset-2 col-md-8">
+
+        <div class="form-group">
+          <label for="field_hiringContacts">Hiring Contacts</label>
+          <ui-select class="well well-sm" multiple="true" tagging ng-model="vm.activity.hiringContacts"
+                     id="field_hiringContacts" name="hiringContacts">
+            <ui-select-match placeholder="Select person...">{{$item.firstName}} {{$item.lastName}}&lt;{{$item.email1}}&gt;</ui-select-match>
+            <ui-select-choices
+              repeat="person in vm.hiringContacts | filter: { company: {name: vm.activity.company.name }} | propsFilter: {firstName: $select.search, lastName: $select.search } track by person.id">
+              <span ng-bind-html="person.firstName | highlight: $select.search"></span>
+              <span ng-bind-html="person.lastName | highlight: $select.search"></span>
+              <div>
+                <small>
+                  company: {{ person.company.name }}<br>
+                  contact type: {{person.contactType}}<br>
+                  email1: <span ng-bind-html="''+ person.email1 | highlight: $select.search"></span>
+                </small>
+              </div>
+            </ui-select-choices>
+          </ui-select>
+        </div>
+
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-xs-12 col-md-offset-2 col-md-8">
+
+        <div class="form-group well well-sm">
+          <label class="control-label" for="field_comments">Comments</label>
+          <textarea type="text" class="form-control" name="comments" id="field_comments"
+                    ng-model="vm.activity.comments" rows="5"
+          /></textarea>
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+        <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+      </button>
+      <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+        <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+      </button>
+    </div>
+</form>
