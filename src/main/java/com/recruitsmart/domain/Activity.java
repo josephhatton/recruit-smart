@@ -38,9 +38,22 @@ public class Activity implements Serializable {
     @Column(name = "comment")
     private String comment;
 
+    @ManyToOne
+    private Applicant applicant;
+
+    @ManyToOne
+    private HiringContact hiringContact;
+
+    @ManyToOne
+    private JobOrder jobOrder;
+
     @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.EAGER)
     @JsonBackReference("hiringContactActivity")
     private HiringContact hiringContactActivity;
+
+    @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.EAGER)
+    @JsonBackReference("applicantActivity")
+    private Applicant applicantActivity;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -81,6 +94,30 @@ public class Activity implements Serializable {
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    public Applicant getApplicant() {
+      return applicant;
+    }
+
+    public void setApplicant(Applicant applicant) {
+      this.applicant = applicant;
+    }
+
+    public HiringContact getHiringContact() {
+      return hiringContact;
+    }
+
+    public void setHiringContact(HiringContact hiringContact) {
+      this.hiringContact = hiringContact;
+    }
+
+    public JobOrder getJobOrder() {
+      return jobOrder;
+    }
+
+    public void setJobOrder(JobOrder jobOrder) {
+      this.jobOrder = jobOrder;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
