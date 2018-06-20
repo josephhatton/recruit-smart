@@ -5,30 +5,41 @@
     .module('recruitsmartApp')
     .controller('ApplicantActivityModalController', ApplicantActivityModalController);
 
-  ApplicantActivityModalController.$inject = ['$scope', '$stateParams', '$uibModalInstance', 'entity', 'Account', 'User'];
+  ApplicantActivityModalController.$inject = ['$scope', '$stateParams','Principal', 'Applicant', 'entity',
+  'ActivityAction'];
 
-  function ApplicantActivityModalController($scope, $stateParams, $uibModalInstance, entity,  Account, User) {
+  function ApplicantActivityModalController($scope, $stateParams, Principal, Applicant, entity,
+                                            ActivityAction) {
     var vm = this;
 
     vm.applicant = entity;
-    vm.users = User.query();
+    vm.activityActions = null;
+    vm.activity = {};
 
-    vm.load = function () {
+    load();
+
+    function load() {
+      Principal.identity().then(function (account) {
+        vm.account = account;
+        vm.isAuthenticated = Principal.isAuthenticated;
+      });
+      vm.activityActions = ActivityAction.query();
+    };
+
+    vm.save = function () {
+      vm.applicant.applicantActivity = vm.activity
+      Applicant.save(vm.activity, onSaveSuccess, onSaveError);
+    };
+
+    vm.clear = function () {
+      $uibModalInstance.dismiss('cancel');
     };
 
     var onSaveSuccess = function (result) {
       $scope.$emit('recruitSmartApp:activityUpdate', result);
       $uibModalInstance.close(result);
     };
-
     var onSaveError = function () {
-    };
-
-    vm.save = function () {
-    };
-
-    vm.clear = function () {
-      $uibModalInstance.dismiss('cancel');
     };
 
   }

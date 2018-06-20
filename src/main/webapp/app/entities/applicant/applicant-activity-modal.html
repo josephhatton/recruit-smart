@@ -8,19 +8,7 @@
     <jh-alert-error></jh-alert-error>
 
     <div class="row">
-      <div class="col-xs-6 col-md-offset-1 col-md-5">
-
-        <div class="form-group">
-          <label for="field_user">user</label>
-          <select class="form-control" id="field_user" name="user" ng-model="vm.activity.user"
-                  ng-options="user as user.firstName for user in vm.users track by user.id">
-            <option value=""></option>
-          </select>
-        </div>
-
-      </div>
       <div class="col-xs-6 col-md-5">
-
         <div class="form-group">
           <label class="control-label" for="field_status">Status</label>
           <select class="form-control" id="field_status" name="status" ng-model="vm.activity.status">
@@ -38,7 +26,7 @@
           <label for="field_activityAction">Action</label>
           <select class="form-control" id="field_activityAction" name="activityAction"
                   ng-model="vm.activity.activityAction"
-                  ng-options="activityAction as activityAction.name for activityAction in vm.activityactions track by activityAction.id">
+                  ng-options="activityAction as activityAction.name for activityAction in vm.activityActions track by activityAction.id">
             <option value=""></option>
           </select>
         </div>
@@ -171,23 +159,19 @@
     <br>
     <div class="row">
       <div class="col-xs-12 col-md-offset-2 col-md-8">
-
         <div class="form-group well well-sm">
           <label class="control-label" for="field_comments">Comments</label>
           <textarea type="text" class="form-control" name="comments" id="field_comments"
-                    ng-model="vm.activity.comments" rows="5"
-          /></textarea>
+                    ng-model="vm.activity.comments" rows="5"/></textarea>
         </div>
-
       </div>
     </div>
 
-
     <div class="modal-footer">
-      <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+      <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="vm.clear()">
         <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
       </button>
-      <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+      <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-success">
         <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
       </button>
     </div>
