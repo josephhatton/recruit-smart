@@ -8,7 +8,7 @@
     <jh-alert-error></jh-alert-error>
 
     <div class="row">
-      <div class="col-xs-6 col-md-5">
+      <div class="col-md-4 col-md-offset-1">
         <div class="form-group">
           <label class="control-label" for="field_status">Status</label>
           <select class="form-control" id="field_status" name="status" ng-model="vm.activity.status">
@@ -16,12 +16,8 @@
             <option value="Complete">Complete</option>
           </select>
         </div>
-
       </div>
-    </div>
-    <div class="row">
-      <div class="col-xs-6 col-md-offset-1 col-md-5">
-
+      <div class="col-md-4">
         <div class="form-group">
           <label for="field_activityAction">Action</label>
           <select class="form-control" id="field_activityAction" name="activityAction"
@@ -30,30 +26,21 @@
             <option value=""></option>
           </select>
         </div>
-
       </div>
-      <div class="col-xs-6 col-md-5">
+    </div>
 
+    <div class="row">
+      <div class="col-md-4 col-md-offset-1">
         <div class="form-group">
-          <label for="field_applicant">Applicant</label>
-          <ui-select ng-model="vm.activity.applicant" id="field_applicant" name="applicant">
-            <ui-select-match allow-clear="true" placeholder="Select person...">{{$select.selected.firstName}}
-              {{$select.selected.lastName}}
-            </ui-select-match>
-            <ui-select-choices
-              repeat="person in vm.applicants | propsFilter: {firstName: $select.search, lastName: $select.search, email1: $select.search} track by person.id">
-              <span ng-bind-html="person.firstName | highlight: $select.search"></span>
-              <span ng-bind-html="person.lastName | highlight: $select.search"></span>
-              <div>
-                <small>
-                  title: {{person.title}}<br>
-                  email1: <span ng-bind-html="''+ person.email1 | highlight: $select.search"></span>
-                </small>
-              </div>
-            </ui-select-choices>
-          </ui-select>
+          <label>Applicant</label>
+          <div>
+            <small>
+              <label>Name:</label> {{vm.applicant.firstName}} {{vm.applicant.lastName}}<br>
+              <label>Title:</label> {{vm.applicant.title}}<br>
+              <label>Email: </label>{{vm.applicant.email}}
+            </small>
+          </div>
         </div>
-
       </div>
     </div>
     <div class="row">

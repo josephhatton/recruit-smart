@@ -104,6 +104,10 @@ public class Applicant implements Serializable {
     @ManyToOne
     private WorkStatus workStatus;
 
+    @OneToMany(orphanRemoval=true, fetch = FetchType.EAGER, mappedBy = "applicantobOrder", cascade = { CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE, CascadeType.REFRESH })
+    @JsonManagedReference("applicantobOrder")
+    private Set<JobOrder> jobOrders = new HashSet<>();
+
     @OneToMany(orphanRemoval=true, fetch = FetchType.EAGER, mappedBy = "applicantComment", cascade = { CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE, CascadeType.REFRESH })
     @JsonManagedReference("applicantComment")
     private Set<ApplicantComment> applicantComments = new HashSet<>();
@@ -384,6 +388,14 @@ public class Applicant implements Serializable {
 
     public void setApplicantActivities(Set<Activity> applicantActivities) {
       this.applicantActivities = applicantActivities;
+    }
+
+    public Set<JobOrder> getJobOrders() {
+      return jobOrders;
+    }
+
+    public void setJobOrders(Set<JobOrder> jobOrders) {
+      this.jobOrders = jobOrders;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

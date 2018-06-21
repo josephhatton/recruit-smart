@@ -75,6 +75,10 @@ public class JobOrder implements Serializable {
     @JsonBackReference("hiringContactJobOrder")
     private HiringContact hiringContactJobOrder;
 
+    @ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE }, fetch = FetchType.EAGER)
+    @JsonBackReference("applicantJobOrder")
+    private Applicant applicantJobOrder;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
