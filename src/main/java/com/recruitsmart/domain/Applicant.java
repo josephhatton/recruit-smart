@@ -104,8 +104,8 @@ public class Applicant implements Serializable {
     @ManyToOne
     private WorkStatus workStatus;
 
-    @OneToMany(orphanRemoval=true, fetch = FetchType.EAGER, mappedBy = "applicantobOrder", cascade = { CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE, CascadeType.REFRESH })
-    @JsonManagedReference("applicantobOrder")
+    @OneToMany(orphanRemoval=true, fetch = FetchType.EAGER, mappedBy = "applicantJobOrder", cascade = { CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE, CascadeType.REFRESH })
+    @JsonManagedReference("applicantJobOrder")
     private Set<JobOrder> jobOrders = new HashSet<>();
 
     @OneToMany(orphanRemoval=true, fetch = FetchType.EAGER, mappedBy = "applicantComment", cascade = { CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE, CascadeType.REFRESH })
