@@ -383,7 +383,6 @@
         </button>
       </h3>
       <thead>
-
       <tr>
         <td>Position Title</td>
         <td>Company Contacts</td>
@@ -394,7 +393,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr ng-repeat="job in vm.applicant.applicantJobOrders track by $index">
+      <tr ng-repeat="job in vm.applicant.jobOrders track by $index">
         <td><a ui-sref="applicant-detail({id:job.id})">{{job.title}}</a></td>
         <td>{{vm.hiringContact.firstName}}, {{vm.hiringContact.lastName}}</a></td>
         <td>{{job.jobStatus}}</td>

@@ -24,7 +24,7 @@
         </thead>
         <tbody>
         <tr ng-repeat="jobOrder in vm.jobOrders track by jobOrder.id">
-          <td><input type="checkbox" ng-model="jobOrder.checked"/></td>
+          <td><input type="checkbox" ng-model="jobOrder.checked" ng-change="vm.changedJobOrder(jobOrder.checked,jobOrder)"/></td>
           <td>{{jobOrder.title}}</td>
           <td>{{jobOrder.company.addresses.city || "No Location"}}, {{jobOrder.company.addresses.state}}</td>
           <td>{{jobOrder.jobType}}</td>
@@ -39,7 +39,7 @@
     <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="vm.clear()">
       <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
     </button>
-    <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-success">
+    <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-success" ng-click="vm.save();">
       <span class="glyphicon glyphicon-plus"></span>&nbsp;<span>Add</span>
     </button>
   </div>
