@@ -44,6 +44,12 @@
             <column name="job_order_id" type="bigint">
               <constraints nullable="true" />
             </column>
+            <column name="hiring_contact_id" type="bigint">
+              <constraints nullable="true" />
+            </column>
+            <column name="applicant_id" type="bigint">
+              <constraints nullable="true" />
+            </column>
             <column name="created_date" type="timestamp" defaultValueDate="${now}">
               <constraints nullable="false"/>
             </column>

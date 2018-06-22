@@ -217,43 +217,43 @@
               </select>
             </td>
             <td>
-                    <span>
-                        {{ activity.startDate | date:'MM-dd-yyyy HH:mm a' }}
-                      </span>
+              <span>
+                {{ activity.startDate | date:'MM-dd-yyyy HH:mm a' }}
+              </span>
             </td>
             <td>
-                    <span>
-                        {{ activity.activityAction.name }} / {{ activity.comments}}
-                      </span>
+              <span>
+                {{ activity.activityAction.name }} / {{ activity.comments}}
+              </span>
             </td>
             <td>
               <a ui-sref="applicant-detail({id: activity.applicant.id})">{{ activity.applicant.firstName }} {{
                 activity.applicant.lastName }}</a>
             </td>
             <td>
-                    <span ng-repeat="people in activity.hiringContacts">
-                        <a ui-sref="hiring-contact-detail({id:people.id})">{{ people.firstName }} {{ people.lastName }}{{$last ? '' : ', '}}</a>
-                      </span>
+              <span ng-repeat="people in activity.hiringContacts">
+                <a ui-sref="hiring-contact-detail({id:people.id})">{{ people.firstName }} {{ people.lastName }}{{$last ? '' : ', '}}</a>
+              </span>
             </td>
             <td>
-                    <span>
-                        <a ui-sref="company-detail({id: activity.company.id})">{{ activity.company.name }}</a>
-                      </span>
+              <span>
+                <a ui-sref="company-detail({id: activity.company.id})">{{ activity.company.name }}</a>
+              </span>
             </td>
             <td>
-                    <span>
-                        <a ui-sref="job-order-detail({id: activity.jobOrder.id})">{{ activity.jobOrder.title }}</a>
-                      </span>
+              <span>
+                <a ui-sref="job-order-detail({id: activity.jobOrder.id})">{{ activity.jobOrder.title }}</a>
+              </span>
             </td>
             <td>
-                    <span>
-                        {{ activity.createdDate | date:'MM-dd-yyyy HH:mm a'}}
-                      </span>
+              <span>
+                {{ activity.createdDate | date:'MM-dd-yyyy HH:mm a'}}
+              </span>
             </td>
             <td>
-                    <span>
-                        {{ activity.user.firstName }}
-                      </span>
+              <span>
+                {{ activity.user.firstName }}
+              </span>
             </td>
             <td style="white-space: nowrap">
               <form editable-form name="openactivitiesform" onbeforesave="saveUser($data, user.id)"
@@ -307,44 +307,44 @@
               </select>
             </td>
             <td>
-                    <span>
-                        {{ activity.startDate | date:'MM-dd-yyyy' }}
-                      </span>
+              <span>
+                {{ activity.startDate | date:'MM-dd-yyyy' }}
+              </span>
             </td>
             <td>
-                    <span>
-                        {{ activity.activityAction.name }} / {{ activity.comments}}
-                      </span>
+              <span>
+                {{ activity.activityAction.name }} / {{ activity.comments}}
+              </span>
             </td>
             <td>
-                    <span>
-                        <a ui-sref="applicant-detail({id: activity.applicant.id})">{{ activity.applicant.firstName }} {{ activity.applicant.lastName }}</a>
-                      </span>
+              <span>
+                <a ui-sref="applicant-detail({id: activity.applicant.id})">{{ activity.applicant.firstName }} {{ activity.applicant.lastName }}</a>
+              </span>
             </td>
             <td>
-                    <span ng-repeat="people in activity.hiringContacts">
-                        <a ui-sref="hiring-contact-detail({id:people.id})">{{ people.firstName }} {{ people.lastName }}{{$last ? '' : ', '}}</a>
-                      </span>
+              <span ng-repeat="people in activity.hiringContacts">
+                <a ui-sref="hiring-contact-detail({id:people.id})">{{ people.firstName }} {{ people.lastName }}{{$last ? '' : ', '}}</a>
+              </span>
             </td>
             <td>
-                    <span>
-                        <a ui-sref="company-detail({id: activity.company.id})">{{ activity.company.name }}</a>
-                      </span>
+              <span>
+                <a ui-sref="company-detail({id: activity.company.id})">{{ activity.company.name }}</a>
+              </span>
             </td>
             <td>
-                    <span>
-                        <a ui-sref="job-order-detail({id: activity.job.id})">{{ activity.jobOrder.title }}</a>
-                      </span>
+              <span>
+                <a ui-sref="job-order-detail({id: activity.job.id})">{{ activity.jobOrder.title }}</a>
+              </span>
             </td>
             <td>
-                    <span>
-                        {{ activity.createdDate | date:'MM-dd-yyyy HH:mm a' }}
-                      </span>
+              <span>
+                {{ activity.createdDate | date:'MM-dd-yyyy HH:mm a' }}
+              </span>
             </td>
             <td>
-                    <span>
-                        {{ activity.user.firstName }}
-                      </span>
+              <span>
+                {{ activity.user.firstName }}
+              </span>
             </td>
             <td style="white-space: nowrap">
               <form editable-form name="closedactivitiesform" onbeforesave="saveUser($data, user.id)"
@@ -371,6 +371,46 @@
         </table>
       </div>
     </div>
+  </div>
+
+  <!--------------------- JOB ORDERS   ------------------------>
+  <div class="table-responsive well">
+    <table class="table table-striped">
+      <h3>
+        <span>Job Orders</span>
+        <button class="btn btn-success btn-xs" ui-sref="applicant-detail.job-order({id:vm.applicant.id})">
+          <span class="glyphicon glyphicon-plus"></span>
+        </button>
+      </h3>
+      <thead>
+
+      <tr>
+        <td>Position Title</td>
+        <td>Company Contacts</td>
+        <td>Status</td>
+        <td>Type</td>
+        <td>Compensation</td>
+        <td>Date Created</td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="job in vm.applicant.applicantJobOrders track by $index">
+        <td><a ui-sref="applicant-detail({id:job.id})">{{job.title}}</a></td>
+        <td>{{vm.hiringContact.firstName}}, {{vm.hiringContact.lastName}}</a></td>
+        <td>{{job.jobStatus}}</td>
+        <td>{{job.jobType}}</td>
+        <td>Salary: $ {{job.salary}}<br> Hourly: $ {{job.hourly}}</td>
+        <td>{{job.createdDate}}</td>
+        <td>
+          <button type="submit"
+                  ui-sref="jobOrder.delete({id:job.id})"
+                  class="btn btn-danger btn-sm">
+            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"></span>
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
   </div>
 
   <!--------------------- ASSIGN TO USERS   ------------------------>

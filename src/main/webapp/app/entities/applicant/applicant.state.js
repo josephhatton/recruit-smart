@@ -199,6 +199,31 @@
           });
         }]
       })
+      .state('applicant-detail.job-order', {
+        parent: 'applicant-detail',
+        url: '/job/order',
+        data: {
+          authorities: ['ROLE_USER']
+        },
+        onEnter: ['$stateParams', '$state', '$uibModal', function ($stateParams, $state, $uibModal) {
+          $uibModal.open({
+            templateUrl: 'app/entities/applicant/applicant-job-order-dialog.html',
+            controller: 'ApplicantJobOrderDialogController',
+            controllerAs: 'vm',
+            backdrop: 'static',
+            size: 'lg',
+            resolve: {
+              entity: ['Applicant', function (Applicant) {
+                return Applicant.get({id: $stateParams.id}).$promise;
+              }]
+            }
+          }).result.then(function () {
+            $state.go('^', {}, {reload: false});
+          }, function () {
+            $state.go('^');
+          });
+        }]
+      })
       .state('applicant.edit', {
         parent: 'applicant',
         url: '/{id}/edit',

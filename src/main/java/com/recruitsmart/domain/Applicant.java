@@ -132,6 +132,10 @@ public class Applicant implements Serializable {
     @JsonManagedReference("applicantActivity")
     private Set<Activity> applicantActivities = new HashSet<>();
 
+    @OneToMany(orphanRemoval=true, fetch = FetchType.EAGER, mappedBy = "applicantHiringContact", cascade = { CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE, CascadeType.REFRESH })
+    @JsonManagedReference("applicantHiringContact")
+    private Set<HiringContact> applicantHiringContacts = new HashSet<>();
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -396,6 +400,14 @@ public class Applicant implements Serializable {
 
     public void setJobOrders(Set<JobOrder> jobOrders) {
       this.jobOrders = jobOrders;
+    }
+
+    public Set<HiringContact> getApplicantHiringContacts() {
+      return applicantHiringContacts;
+    }
+
+    public void setApplicantHiringContacts(Set<HiringContact> applicantHiringContacts) {
+      this.applicantHiringContacts = applicantHiringContacts;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

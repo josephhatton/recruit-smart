@@ -5,10 +5,10 @@
     .module('recruitsmartApp')
     .controller('ApplicantActivityModalController', ApplicantActivityModalController);
 
-  ApplicantActivityModalController.$inject = ['$scope', '$stateParams','Principal', 'Applicant', 'entity',
-  'ActivityAction'];
+  ApplicantActivityModalController.$inject = ['$scope', '$stateParams', 'Principal', '$uibModalInstance', 'Applicant', 'entity',
+    'ActivityAction'];
 
-  function ApplicantActivityModalController($scope, $stateParams, Principal, Applicant, entity,
+  function ApplicantActivityModalController($scope, $stateParams, Principal, $uibModalInstance, Applicant, entity,
                                             ActivityAction) {
     var vm = this;
 
@@ -24,7 +24,11 @@
         vm.isAuthenticated = Principal.isAuthenticated;
       });
       vm.activityActions = ActivityAction.query();
-    };
+    }
+
+    function clear() {
+      $uibModalInstance.dismiss('cancel');
+    }
 
     vm.save = function () {
       vm.applicant.applicantActivity = vm.activity
