@@ -130,7 +130,7 @@ public class Applicant implements Serializable {
 
     @OneToMany(orphanRemoval=true, fetch = FetchType.EAGER, mappedBy = "applicantActivity", cascade = { CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE, CascadeType.REFRESH })
     @JsonManagedReference("applicantActivity")
-    private Set<Activity> applicantActivities = new HashSet<>();
+    private Set<Activity> activities = new HashSet<>();
 
     @OneToMany(orphanRemoval=true, fetch = FetchType.EAGER, mappedBy = "applicantHiringContact", cascade = { CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE, CascadeType.REFRESH })
     @JsonManagedReference("applicantHiringContact")
@@ -386,12 +386,12 @@ public class Applicant implements Serializable {
         this.workHistories = workHistories;
     }
 
-    public Set<Activity> getApplicantActivities() {
-      return applicantActivities;
+    public Set<Activity> getActivities() {
+      return activities;
     }
 
-    public void setApplicantActivities(Set<Activity> applicantActivities) {
-      this.applicantActivities = applicantActivities;
+    public void setActivities(Set<Activity> activities) {
+      this.activities = activities;
     }
 
     public Set<JobOrder> getJobOrders() {
