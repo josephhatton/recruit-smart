@@ -193,7 +193,7 @@
               }]
             }
           }).result.then(function () {
-            $state.go('applicant', null, {reload: 'applicant'});
+            $state.go('^', {}, {reload: false});
           }, function () {
             $state.go('^');
           });

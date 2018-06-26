@@ -209,7 +209,7 @@
           </thead>
           <tbody>
           <tr class="animate-repeat"
-              ng-repeat="activity in activitys | filter:{status: 'Pending'} | orderBy:'-created' track by $index">
+              ng-repeat="activity in vm.applicant.activities | filter:{status: 'Pending'} | orderBy:'-created' track by $index">
             <td>
               <select name="status" ng-model="activity.status" ng-change="vm.statusChange(activity)">
                 <option value="Pending">Pending</option>
@@ -299,7 +299,7 @@
           </thead>
           <tbody>
           <tr class="animate-repeat"
-              ng-repeat="activity in activitys | filter:{status: 'Complete'} | orderBy:'-created' track by $index">
+              ng-repeat="activity in vm.applicant.activities | filter:{status: 'Complete'} | orderBy:'-created' track by $index">
             <td>
               <select id="field_status" name="status" ng-model="activity.status" ng-change="vm.statusChange(activity)">
                 <option value="Pending">Pending</option>

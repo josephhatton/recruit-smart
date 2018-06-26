@@ -31,8 +31,8 @@
     }
 
     vm.save = function () {
-      vm.applicant.applicantActivity = vm.activity
-      Applicant.save(vm.activity, onSaveSuccess, onSaveError);
+      vm.applicant.activities.push(vm.activity)
+      Applicant.update(vm.applicant, onSaveSuccess, onSaveError);
     };
 
     vm.clear = function () {

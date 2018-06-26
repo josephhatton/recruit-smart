@@ -85,16 +85,8 @@
     </div>
     <div class="row">
       <div class="col-xs-12 col-md-offset-2 col-md-8">
-
         <div class="form-group">
-          <label for="field_hiringContacts">Hiring Contacts</label>
-          <ui-select class="well well-sm" multiple="true" tagging ng-model="vm.activity.hiringContacts"
-                     id="field_hiringContacts" name="hiringContacts">
-            <ui-select-match placeholder="Select person...">{{$item.firstName}} {{$item.lastName}}&lt;{{$item.email1}}&gt;</ui-select-match>
-            <ui-select-choices
-              repeat="person in vm.hiringContacts | filter: { company: {name: vm.activity.company.name }} | propsFilter: {firstName: $select.search, lastName: $select.search } track by person.id">
-              <span ng-bind-html="person.firstName | highlight: $select.search"></span>
-              <span ng-bind-html="person.lastName | highlight: $select.search"></span>
+          <label>Hiring Contacts</label>
               <div>
                 <small>
                   company: {{ person.company.name }}<br>
@@ -102,8 +94,6 @@
                   email1: <span ng-bind-html="''+ person.email1 | highlight: $select.search"></span>
                 </small>
               </div>
-            </ui-select-choices>
-          </ui-select>
         </div>
 
       </div>
