@@ -20,9 +20,8 @@
       </div>
       <div class="col-md-5">
         <div class="form-group">
-          <label for="field_activityAction">Action</label>
-          <select class="form-control" id="field_activityAction" name="activityAction"
-                  ng-model="vm.activity.activityAction"
+          <label>Action</label>
+          <select class="form-control" ng-model="vm.activity.action"
                   ng-options="activityAction as activityAction.name for activityAction in vm.activityActions track by activityAction.id">
             <option value=""></option>
           </select>
@@ -68,7 +67,6 @@
         </div>
       </div>
       <div class="col-md-5">
-
         <div class="form-group">
           <label class="control-label" for="field_startDate">Start Date</label>
           <div class="input-group">
@@ -84,31 +82,26 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-xs-12 col-md-offset-2 col-md-8">
+      <div class="col-md-5 col-md-offset-1">
         <div class="form-group">
           <label>Hiring Contacts</label>
               <div>
                 <small>
                   company: {{ person.company.name }}<br>
                   contact type: {{person.contactType}}<br>
-                  email1: <span ng-bind-html="''+ person.email1 | highlight: $select.search"></span>
+                  email: <span ng-bind-html="''+ person.email1 | highlight: $select.search"></span>
                 </small>
               </div>
         </div>
-
       </div>
-    </div>
-    <br>
-    <div class="row">
-      <div class="col-xs-12 col-md-offset-2 col-md-8">
+      <div class="col-md-5">
         <div class="form-group well well-sm">
-          <label class="control-label" for="field_comments">Comments</label>
-          <textarea type="text" class="form-control" name="comments" id="field_comments"
-                    ng-model="vm.activity.comments" rows="5"/></textarea>
+          <label class="control-label">Comments</label>
+          <textarea type="text" class="form-control" ng-model="vm.activity.comment" rows="5"/></textarea>
         </div>
       </div>
     </div>
-
+  </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="vm.clear()">
         <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>

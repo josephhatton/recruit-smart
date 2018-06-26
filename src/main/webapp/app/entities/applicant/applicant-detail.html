@@ -199,7 +199,6 @@
             <th>Status</th>
             <th>Activity Date</th>
             <th>Action/Comments</th>
-            <th>Applicant</th>
             <th>Hiring Contact</th>
             <th>Company</th>
             <th>Job</th>
@@ -223,12 +222,8 @@
             </td>
             <td>
               <span>
-                {{ activity.activityAction.name }} / {{ activity.comments}}
+                {{ activity.action }} / {{ activity.comment}}
               </span>
-            </td>
-            <td>
-              <a ui-sref="applicant-detail({id: activity.applicant.id})">{{ activity.applicant.firstName }} {{
-                activity.applicant.lastName }}</a>
             </td>
             <td>
               <span ng-repeat="people in activity.hiringContacts">
@@ -276,7 +271,6 @@
           </tr>
           </tbody>
         </table>
-
       </div>
 
       <h3>
@@ -289,7 +283,6 @@
             <th>Status</th>
             <th>Activity Date</th>
             <th>Action/Comments</th>
-            <th>Applicant</th>
             <th>Hiring Contact</th>
             <th>Company</th>
             <th>Job</th>
@@ -313,12 +306,7 @@
             </td>
             <td>
               <span>
-                {{ activity.activityAction.name }} / {{ activity.comments}}
-              </span>
-            </td>
-            <td>
-              <span>
-                <a ui-sref="applicant-detail({id: activity.applicant.id})">{{ activity.applicant.firstName }} {{ activity.applicant.lastName }}</a>
+                {{ activity.action }} / {{ activity.comment}}
               </span>
             </td>
             <td>
