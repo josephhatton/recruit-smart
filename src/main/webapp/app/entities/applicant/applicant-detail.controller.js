@@ -77,6 +77,10 @@
       Applicant.update(vm.applicant, onSaveSuccess, onSaveError);
     };
 
+    $scope.$watch('vm.applicant', function (newResult, oldValue) {
+      vm.applicant = newResult;
+    });
+
     //COMMENTS
     //-------------------------- GENERAL COMMENTS -------------------------------
     vm.saveComment = function () {
@@ -86,10 +90,15 @@
       });
       Applicant.update(vm.applicant, function (result) {
         vm.applicant = result;
-      }, onSaveError);
+        }, onSaveError);
       vm.editableComment = false;
     };
 
+    $scope.$on("recruitSmartApp:updateApplicant",function(e,data){
+      // Post your code
+      console.log('TEST!!!!!!!!!!!!!!'+ data);
+      vm.applicant = data;
+    });
     vm.cancelComment = function () {
       vm.editableComment = false;
     };

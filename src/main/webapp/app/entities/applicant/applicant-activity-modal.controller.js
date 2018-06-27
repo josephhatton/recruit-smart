@@ -5,10 +5,10 @@
     .module('recruitsmartApp')
     .controller('ApplicantActivityModalController', ApplicantActivityModalController);
 
-  ApplicantActivityModalController.$inject = ['$scope', '$stateParams', 'Principal', '$uibModalInstance', 'Applicant', 'entity',
+  ApplicantActivityModalController.$inject = ['$scope','$rootScope', '$stateParams', 'Principal', '$uibModalInstance', 'Applicant', 'entity',
     'ActivityAction'];
 
-  function ApplicantActivityModalController($scope, $stateParams, Principal, $uibModalInstance, Applicant, entity,
+  function ApplicantActivityModalController($scope, $rootScope, $stateParams, Principal, $uibModalInstance, Applicant, entity,
                                             ActivityAction) {
     var vm = this;
 
@@ -40,7 +40,7 @@
     };
 
     var onSaveSuccess = function (result) {
-      $scope.$emit('recruitSmartApp:activityUpdate', result);
+      $rootScope.$broadcast('recruitSmartApp:updateApplicant',{data:result});
       $uibModalInstance.close(result);
     };
     var onSaveError = function () {

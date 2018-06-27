@@ -35,8 +35,8 @@ public class Activity implements Serializable {
     @Column(name = "status")
     private String status;
 
-    @Column(name = "action")
-    private String action;
+    @ManyToOne
+    private ActivityAction action;
 
     @Column(name = "comment")
     private String comment;
@@ -123,11 +123,11 @@ public class Activity implements Serializable {
       this.jobOrder = jobOrder;
     }
 
-    public String getAction() {
+    public ActivityAction getAction() {
       return action;
     }
 
-    public void setAction(String action) {
+    public void setAction(ActivityAction action) {
       this.action = action;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
