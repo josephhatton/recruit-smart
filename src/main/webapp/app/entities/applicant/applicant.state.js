@@ -224,6 +224,31 @@
           });
         }]
       })
+      .state('applicant-detail.hiring-contact', {
+        parent: 'applicant-detail',
+        url: '/hiring/contact',
+        data: {
+          authorities: ['ROLE_USER']
+        },
+        onEnter: ['$stateParams', '$state', '$uibModal', function ($stateParams, $state, $uibModal) {
+          $uibModal.open({
+            templateUrl: 'app/entities/applicant/applicant-hiring-contact-dialog.html',
+            controller: 'ApplicantHiringContactDialogController',
+            controllerAs: 'vm',
+            backdrop: 'static',
+            size: 'lg',
+            resolve: {
+              entity: ['Applicant', function (Applicant) {
+                return Applicant.get({id: $stateParams.id}).$promise;
+              }]
+            }
+          }).result.then(function () {
+            $state.go('^', {}, {reload: false});
+          }, function () {
+            $state.go('^');
+          });
+        }]
+      })
       .state('applicant.edit', {
         parent: 'applicant',
         url: '/{id}/edit',

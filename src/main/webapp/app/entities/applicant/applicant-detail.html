@@ -400,6 +400,39 @@
     </table>
   </div>
 
+  <!--------------------- HIRING CONTACTS   ------------------------>
+  <div class="table-responsive well">
+    <table class="table table-striped">
+      <h3>
+        <span>Hiring Contacts</span>
+        <button class="btn btn-success btn-xs" ui-sref="applicant-detail.hiring-contact({id:vm.applicant.id})">
+          <span class="glyphicon glyphicon-plus"></span>
+        </button>
+      </h3>
+      <thead>
+      <tr>
+        <td>Position Title</td>
+        <td>Name</td>
+        <td>Email</td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="contact in vm.applicant.hiringContacts track by $index">
+        <td><a ui-sref="applicant-detail({id:job.id})">{{contact.title}}</a></td>
+        <td>{{contact.firstName}}, {{contact.lastName}}</a></td>
+        <td>{{contact.email}}</td>
+        <td>
+          <button type="submit"
+                  ui-sref="jobOrder.delete({id:job.id})"
+                  class="btn btn-danger btn-sm">
+            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"></span>
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
   <!--------------------- ASSIGN TO USERS   ------------------------>
   <div class="table-responsive well">
     <div class="form-group">
