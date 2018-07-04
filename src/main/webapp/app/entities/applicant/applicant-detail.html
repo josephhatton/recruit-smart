@@ -2,8 +2,7 @@
   <div class="row">
     <div class="col-xs-6">
       <h2 ng-hide="contactEditable">{{vm.applicant.firstName}} {{vm.applicant.middleName}} {{vm.applicant.lastName}}
-        <span
-          ng-show="vm.applicant.nickName">"{{ vm.applicant.nickName }}"</span></h2>
+        <span ng-show="vm.applicant.nickName">"{{ vm.applicant.nickName }}"</span></h2>
     </div>
   </div>
   <a class="text-warning" ui-sref="applicant-detail.hot-list">Add to Hot List <span
@@ -13,59 +12,84 @@
   <div class="row">
     <div class="applicant-info">
       <div class="col-xs-6 well">
-        <h3>Contact Info
-          <button ng-hide="vm.contactEditable" ng-click="vm.contactEditable = !vm.contactEditable" type="submit"
-                  class="btn btn-success btn-sm"><span class="glyphicon glyphicon-pencil"></span></button>
-          <button ng-show="vm.contactEditable" class="btn btn-success btn-sm" ng-click="vm.contactSave()">
-            save
-          </button>
-          <button ng-show="vm.contactEditable" class="btn btn-danger btn-sm" ng-click="vm.cancelContactSave()">
-            cancel
-          </button>
-        </h3>
-
-        <div class="phone">
-          <span ng-hide="vm.contactEditable" class="glyphicon glyphicon-user"><label> First Name:</label> {{vm.applicant.firstName}}</span>
-          <span ng-hide="vm.contactEditable"><label>Middle:</label> {{vm.applicant.middleName}}</span>
-          <span ng-hide="vm.contactEditable"><label>Last Name:</label> {{vm.applicant.lastName}}</span>
-          <div ng-show="vm.contactEditable">
-            <span class="glyphicon glyphicon-user"><label>First Name:</label> <input type="text" class="form-control"
-                                                                                     ng-model="vm.applicant.firstName"></span>
-            <span><label>Middle:</label> <input type="text" class="form-control"
-                                                ng-model="vm.applicant.middleName"></span>
-            <span class="glyphicon glyphicon-user"><label>Last Name:</label> <input type="text" class="form-control"
-                                                                                    ng-model="vm.applicant.lastName"></span>
-          </div>
+        <div class="row">
+          <h3>Contact Info
+            <button ng-hide="vm.contactEditable" ng-click="vm.contactEditable = !vm.contactEditable" type="submit"
+                    class="btn btn-success btn-sm"><span class="glyphicon glyphicon-pencil"></span></button>
+            <button ng-show="vm.contactEditable" class="btn btn-success btn-sm" ng-click="vm.contactSave()">
+              save
+            </button>
+            <button ng-show="vm.contactEditable" class="btn btn-danger btn-sm" ng-click="vm.cancelContactSave()">
+              cancel
+            </button>
+          </h3>
         </div>
 
-        <div class="phone">
-          <span ng-hide="vm.contactEditable"
-                class="glyphicon glyphicon-phone"><label>Cell:</label> {{vm.applicant.cellPhone}}&nbsp</span>
-          <span ng-hide="vm.contactEditable"
-                class="glyphicon glyphicon-phone"><label>Home:</label> {{vm.applicant.homePhone}}&nbsp</span>
-          <span ng-hide="vm.contactEditable"
-                class="glyphicon glyphicon-phone"><label>Work:</label> {{vm.applicant.workPhone}}&nbsp</span>
-          <div ng-show="vm.contactEditable">
-            <span class="glyphicon glyphicon-phone"><label>Cell:</label> <input type="text"
-                                                                                ng-model="vm.applicant.cellPhone"></span>
-            <span class="glyphicon glyphicon-phone"><label>Home:</label> <input type="text"
+        <div class="row">
+          <div class="col-xs-4">
+            <div ng-hide="vm.contactEditable">
+              <span class="glyphicon glyphicon-user"><label>First Name:</label> {{vm.applicant.firstName}}</span>
+            </div>
+            <div ng-show="vm.contactEditable" class="form-group">
+              <span class="glyphicon glyphicon-user"><label>First Name:</label> <input type="text" class="form-control"
+                                                                                       ng-model="vm.applicant.firstName"></span>
+            </div>
+          </div>
+          <div class="col-xs-5">
+            <div ng-hide="vm.contactEditable"><span class="glyphicon glyphicon-user"><label>Last Name:</label> {{vm.applicant.lastName}}</span></div>
+            <div ng-show="vm.contactEditable">
+            <span class="glyphicon glyphicon-user"><label>Last Name:</label> <input type="text" class="form-control"
+                                                                                    ng-model="vm.applicant.lastName"></span>
+            </div>
+          </div>
+        </div>
+        <!-- CELL ---->
+        <div class="row">
+          <div class="col-xs-4">
+            <div class="phone">
+              <span ng-hide="vm.contactEditable"
+                    class="glyphicon glyphicon-phone"><label>Cell:</label> {{vm.applicant.cellPhone}}&nbsp</span>
+            </div>
+            <div ng-show="vm.contactEditable">
+              <span class="glyphicon glyphicon-phone"><label>Cell:</label> <input type="text" class="form-control"
+                                                                                  ng-model="vm.applicant.cellPhone"></span>
+            </div>
+          </div>
+          <div class="col-xs-5">
+            <span ng-hide="vm.contactEditable"
+                  class="glyphicon glyphicon-phone"><label>Home:</label> {{vm.applicant.homePhone}}&nbsp</span>
+            <div ng-show="vm.contactEditable">
+            <span class="glyphicon glyphicon-phone"><label>Home:</label> <input type="text" class="form-control"
                                                                                 ng-model="vm.applicant.homePhone"></span>
-            <span class="glyphicon glyphicon-phone"><label>Work:</label> <input type="text"
-                                                                                ng-model="vm.applicant.workPhone"></span>
-            <span class="glyphicon glyphicon-phone"><label>Work:</label> <input type="text"
-                                                                                ng-model="vm.applicant.workPhone"></span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-4">
+            <span ng-hide="vm.contactEditable"
+                  class="glyphicon glyphicon-phone"><label>Work:</label> {{vm.applicant.workPhone}}&nbsp</span>
+            <div ng-show="vm.contactEditable">
+              <span class="glyphicon glyphicon-phone"><label>Work:</label> <input type="text" class="form-control"
+                                                                                  ng-model="vm.applicant.workPhone"></span>
+            </div>
           </div>
         </div>
         <div class="email">
-          <span ng-hide="vm.contactEditable" class="glyphicon glyphicon-envelope"> <a
-            href='mailto:{{vm.applicant.email1}}'>{{ vm.applicant.email1 }}</a></span>
-          &nbsp&nbsp&nbsp&nbsp<span ng-hide="vm.contactEditable" class="glyphicon glyphicon-envelope"> <a
-          href='mailto:{{vm.applicant.email2}}'>{{ vm.applicant.email2 }}</a></span>
-          <span ng-show="vm.contactEditable" class="glyphicon glyphicon-envelope">
-                        <input type="text" ng-model="vm.applicant.email1"></span>
-          <span ng-show="vm.contactEditable" class="glyphicon glyphicon-envelope"> <input type="text"
-                                                                                          ng-model="vm.applicant.email2"></span>
+          <div class="row">
+            <div class="col-xs-4">
+              <span ng-hide="vm.contactEditable" class="glyphicon glyphicon-envelope">
+                <a href='mailto:{{vm.applicant.email1}}'>{{ vm.applicant.email1 }}</a></span>
+              <span ng-show="vm.contactEditable" class="glyphicon glyphicon-envelope">
+                        <input type="text" class="form-control" ng-model="vm.applicant.email1"></span>
+            </div>
+            <div class="col-xs-4">
+              <span ng-hide="vm.contactEditable" class="glyphicon glyphicon-envelope">
+                <a href='mailto:{{vm.applicant.email2}}'>{{ vm.applicant.email2 }}</a></span>
+              <span ng-show="vm.contactEditable" class="glyphicon glyphicon-envelope"> <input type="text" class="form-control" ng-model="vm.applicant.email2"></span>
+            </div>
+          </div>
         </div>
+        <div class="row">
         <div><label>Address:</label>
           <button ng-show="vm.contactEditable" ng-click="vm.addAddress();" class="addAddressbtn btn btn-success btn-xs">
             <span class="glyphicon glyphicon-plus"></span>
@@ -144,39 +168,47 @@
             </div>
           </uib-tab>
         </uib-tabset>
-        <p></p>
+        </div>
       </div>
 
-      <div class="col-xs-6 well">
-        <h3>Person Type: Candidate</h3>
+      <div class="col-md-5 well">
         <div class="row">
+          <div class="col-md-8">
+          <h3>Person Type: Candidate</h3>
           <label>Status: </label>
           <span ng-hide="vm.contactEditable">{{ vm.applicant.applicantStatus.name }}</span>
-          <select ng-show="vm.contactEditable" ng-model="vm.applicant.applicantStatus"
+          <select ng-show="vm.contactEditable" class="form-control" ng-model="vm.applicant.applicantStatus"
                   ng-options="option.name for option in vm.applicantStatuses track by option.id">
           </select>
+          </div>
         </div>
         <div class="row">
+          <div class="col-md-8">
           <label>Referral Source: </label>
           <span ng-hide="vm.contactEditable">{{ vm.applicant.referralSource }}</span>
-          <input ng-show="vm.contactEditable" type="text" ng-model="vm.applicant.referralSource">
+          <input ng-show="vm.contactEditable" class="form-control" type="text" ng-model="vm.applicant.referralSource">
+          </div>
         </div>
         <div class="row">
+          <div class="col-md-8">
           <label>Work Status: </label>
-          <select ng-show="vm.contactEditable" ng-model="vm.applicant.workStatus"
+          <select ng-show="vm.contactEditable" class="form-control" ng-model="vm.applicant.workStatus"
                   ng-options="option.name for option in vm.workStatuses track by option.id">
           </select>
           <span ng-hide="vm.contactEditable">{{ vm.applicant.workStatus.name }}</span>
-          <span><input type="text" class="form-control" ng-show="vm.contactEditable"
-                       ng-model="vm.applicant.workStatusNotes"></span>
+          <span><input type="text" class="form-control" ng-show="vm.contactEditable" ng-model="vm.applicant.workStatusNotes"></span>
+          </div>
         </div>
         <div class="row">
+          <div class="col-md-8">
           <label>Comments: </label>
           <div ng-repeat="applicantComments in vm.applicant.applicantCommentss track by $index">
             {{applicantComments.description}}
           </div>
+          </div>
         </div>
       </div>
+
     </div>
   </div>
 
@@ -438,7 +470,7 @@
     <div class="form-group">
       <label>Assign to Users</label>
       <select class="form-control" multiple name="users" ng-model="vm.applicant.users"
-              ng-options="user as (user.lastName +', '+user.firstName) for user in vm.users track by user.id"></select>
+              ng-options="user as (user.lastName +', '+user.firstName) for user in vm.users track by user.id" disabled></select>
     </div>
   </div>
 
