@@ -39,7 +39,7 @@
     }
 
     function onSaveSuccess(result) {
-      $scope.$emit('recruitsmartApp:hiringContactUpdate', result);
+      $scope.$emit('recruitsmartApp:applicantUpdate', result);
       vm.applicant = result
       $uibModalInstance.close(result);
     }

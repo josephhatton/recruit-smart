@@ -242,7 +242,7 @@
           <tr class="animate-repeat"
               ng-repeat="activity in vm.applicant.activities | filter:{status: 'Pending'} | orderBy:'-created' track by $index">
             <td>
-              <select name="status" ng-model="activity.status" ng-change="vm.statusChange(activity)">
+              <select name="status" ng-model="activity.status" class="form-control" ng-change="vm.statusChange(activity)">
                 <option value="Pending">Pending</option>
                 <option value="Complete">Complete</option>
               </select>
@@ -326,7 +326,7 @@
           <tr class="animate-repeat"
               ng-repeat="activity in vm.applicant.activities | filter:{status: 'Complete'} | orderBy:'-created' track by $index">
             <td>
-              <select id="field_status" name="status" ng-model="activity.status" ng-change="vm.statusChange(activity)">
+              <select id="field_status" name="status" class="form-control" ng-model="activity.status" ng-change="vm.statusChange(activity)">
                 <option value="Pending">Pending</option>
                 <option value="Complete">Complete</option>
               </select>
@@ -405,7 +405,7 @@
       <thead>
       <tr>
         <td>Position Title</td>
-        <td>Company Contacts</td>
+        <td>Company</td>
         <td>Status</td>
         <td>Type</td>
         <td>Compensation</td>
@@ -415,7 +415,7 @@
       <tbody>
       <tr ng-repeat="job in vm.applicant.jobOrders track by $index">
         <td><a ui-sref="applicant-detail({id:job.id})">{{job.title}}</a></td>
-        <td>{{vm.hiringContact.firstName}}, {{vm.hiringContact.lastName}}</a></td>
+        <td>{{job.company.name}}</a></td>
         <td>{{job.jobStatus}}</td>
         <td>{{job.jobType}}</td>
         <td>Salary: $ {{job.salary}}<br> Hourly: $ {{job.hourly}}</td>
@@ -450,12 +450,12 @@
       </thead>
       <tbody>
       <tr ng-repeat="contact in vm.applicant.hiringContacts track by $index">
-        <td><a ui-sref="applicant-detail({id:job.id})">{{contact.title}}</a></td>
+        <td><a ui-sref="applicant-detail({id:contact.id})">{{contact.jobTitle}}</a></td>
         <td>{{contact.firstName}}, {{contact.lastName}}</a></td>
-        <td>{{contact.email}}</td>
+        <td>{{contact.email1}}</td>
         <td>
           <button type="submit"
-                  ui-sref="jobOrder.delete({id:job.id})"
+                  ui-sref="hiring-contact.delete({id:contact.id})"
                   class="btn btn-danger btn-sm">
             <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"></span>
           </button>

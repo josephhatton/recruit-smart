@@ -22,7 +22,7 @@
         </thead>
         <tbody>
         <tr ng-repeat="hiringContact in vm.hiringContacts track by hiringContact.id">
-          <td><input type="checkbox" ng-model="hiringContact.checked" ng-change="vm.changedJobOrder(hiringContact.checked,hiringContact)"/></td>
+          <td><input type="checkbox" ng-model="hiringContact.checked" ng-change="vm.changedHiringContact(hiringContact.checked,hiringContact)"/></td>
           <td>{{hiringContact.jobTitle}}</td>
           <td>{{hiringContact.firstName}}  {{hiringContact.lastName}}</td>
           <td>{{hiringContact.email1}}</td>
