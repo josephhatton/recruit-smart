@@ -21,25 +21,30 @@
       $uibModalInstance.dismiss('cancel');
     }
 
-    function save() {
-      vm.isSaving = true;
-      if (vm.hiringContact.id !== null) {
-        HiringContact.update(vm.hiringContact, onSaveSuccess, onSaveError);
+    vm.changedJobOrder = function (checked,job) {
+      if(checked) {
+        vm.hiringContact.jobOrders.push(job)
       } else {
-        HiringContact.save(vm.hiringContact, onSaveSuccess, onSaveError);
+        for (var i = 0; i < vm.hiringContact.jobOrders.length; i++) {
+          if (vm.hiringContact.jobOrders[i].id === job.id) {
+            vm.hiringContact.jobOrders.splice(i, 1);
+            return
+          }
+        }
       }
+    }
+
+    vm.save = function () {
+      HiringContact.update(vm.hiringContact, onSaveSuccess, onSaveError);
     }
 
     function onSaveSuccess(result) {
       $scope.$emit('recruitsmartApp:hiringContactUpdate', result);
+      vm.hiringContact = result
       $uibModalInstance.close(result);
-      vm.isSaving = false;
     }
 
     function onSaveError() {
-      vm.isSaving = false;
     }
-
-
   }
 })();

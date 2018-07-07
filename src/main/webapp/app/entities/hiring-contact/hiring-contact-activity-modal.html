@@ -32,12 +32,12 @@
     <div class="row">
       <div class="col-md-5 col-md-offset-1">
         <div class="form-group">
-          <label>Applicant</label>
+          <label>Hiring Contacts</label>
           <div>
             <small>
-              <label>Name:</label> {{vm.applicant.firstName}} {{vm.applicant.lastName}}<br>
-              <label>Title:</label> {{vm.applicant.title}}<br>
-              <label>Email: </label>{{vm.applicant.email}}
+              Title: {{ vm.hiringContact.jobTitle }}<br>
+              Name: {{vm.hiringContact.firstName}} {{vm.hiringContact.lastName}}<br>
+              Email:{{vm.hiringContact.email1}}
             </small>
           </div>
         </div>
@@ -84,14 +84,14 @@
     <div class="row">
       <div class="col-md-5 col-md-offset-1">
         <div class="form-group">
-          <label>Hiring Contacts</label>
-              <div>
-                <small>
-                  company: {{ person.company.name }}<br>
-                  contact type: {{person.contactType}}<br>
-                  email: <span ng-bind-html="''+ person.email1 | highlight: $select.search"></span>
-                </small>
-              </div>
+          <label>Applicant</label>
+          <div>
+            <small>
+              <label>Name:</label> {{vm.applicant.firstName}} {{vm.applicant.lastName}}<br>
+              <label>Title:</label> {{vm.applicant.title}}<br>
+              <label>Email: </label>{{vm.applicant.email}}
+            </small>
+          </div>
         </div>
       </div>
       <div class="col-md-5">

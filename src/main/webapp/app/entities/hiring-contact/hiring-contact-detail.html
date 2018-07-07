@@ -106,7 +106,7 @@
     <div class="applicant-activites well">
       <h3>
         <span>Pending Activities:</span>   <!-- addActivity() -->
-        <button ng-hide="addNewActivity" class="btn btn-success btn-sm" ui-sref="hiring-contact-detail.activity">
+        <button ng-hide="addNewActivity" class="btn btn-success btn-sm" ui-sref="hiring-contact-detail.activity({id: vm.hiringContact.id })">
           <span class="glyphicon glyphicon-plus"></span>
         </button>
       </h3>
@@ -119,7 +119,6 @@
             <th>Status</th>
             <th>Activity Date</th>
             <th>Action/Comments</th>
-            <th>Hiring Contact</th>
             <th>Company</th>
             <th>Job</th>
             <th>Created</th>
@@ -128,7 +127,7 @@
           </thead>
           <tbody>
           <tr class="animate-repeat"
-              ng-repeat="activity in vm.applicant.activities | filter:{status: 'Pending'} | orderBy:'-created' track by $index">
+              ng-repeat="activity in vm.hiringContact.activities | filter:{status: 'Pending'} | orderBy:'-created' track by $index">
             <td>
               <select name="status" ng-model="activity.status" class="form-control" ng-change="vm.statusChange(activity)">
                 <option value="Pending">Pending</option>
@@ -143,11 +142,6 @@
             <td>
               <span>
                 {{ activity.action.name }} / {{ activity.comment}}
-              </span>
-            </td>
-            <td>
-              <span ng-repeat="people in activity.hiringContacts">
-                <a ui-sref="hiring-contact-detail({id:people.id})">{{ people.firstName }} {{ people.lastName }}{{$last ? '' : ', '}}</a>
               </span>
             </td>
             <td>
@@ -203,7 +197,6 @@
             <th>Status</th>
             <th>Activity Date</th>
             <th>Action/Comments</th>
-            <th>Hiring Contact</th>
             <th>Company</th>
             <th>Job</th>
             <th>Created</th>
@@ -212,7 +205,7 @@
           </thead>
           <tbody>
           <tr class="animate-repeat"
-              ng-repeat="activity in vm.applicant.activities | filter:{status: 'Complete'} | orderBy:'-created' track by $index">
+              ng-repeat="activity in vm.hiringContact.activities | filter:{status: 'Complete'} | orderBy:'-created' track by $index">
             <td>
               <select id="field_status" name="status" class="form-control" ng-model="activity.status" ng-change="vm.statusChange(activity)">
                 <option value="Pending">Pending</option>
@@ -227,11 +220,6 @@
             <td>
               <span>
                 {{ activity.action.name }} / {{ activity.comment}}
-              </span>
-            </td>
-            <td>
-              <span ng-repeat="people in activity.hiringContacts">
-                <a ui-sref="hiring-contact-detail({id:people.id})">{{ people.firstName }} {{ people.lastName }}{{$last ? '' : ', '}}</a>
               </span>
             </td>
             <td>
@@ -307,7 +295,6 @@
         </button>
       </h3>
       <thead>
-
       <tr>
         <td>Position Title</td>
         <td>Company Contacts</td>
@@ -318,16 +305,16 @@
       </tr>
       </thead>
       <tbody>
-      <tr ng-repeat="job in vm.hiringContact.company.jobOrders track by $index">
+      <tr ng-repeat="job in vm.hiringContact.jobOrders track by $index">
         <td><a ui-sref="job-order-detail({id:job.id})">{{job.title}}</a></td>
-        <td>{{vm.hiringContact.firstName}}, {{vm.hiringContact.lastName}}</a></td>
+        <td>{{job.company.name}}</a></td>
         <td>{{job.jobStatus}}</td>
         <td>{{job.jobType}}</td>
         <td>Salary: $ {{job.salary}}<br> Hourly: $ {{job.hourly}}</td>
         <td>{{job.createdDate}}</td>
         <td>
           <button type="submit"
-                  ui-sref="jobOrder.delete({id:job.id})"
+                  ui-sref="job-order.delete({id:job.id})"
                   class="btn btn-danger btn-sm">
             <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"></span>
           </button>

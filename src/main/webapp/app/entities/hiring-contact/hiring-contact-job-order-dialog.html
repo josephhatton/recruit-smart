@@ -24,7 +24,7 @@
         </thead>
         <tbody>
         <tr ng-repeat="jobOrder in vm.jobOrders track by jobOrder.id">
-          <td><input type="checkbox" ng-model="jobOrder.checked"/></td>
+          <td><input type="checkbox" ng-model="jobOrder.checked" ng-change="vm.changedJobOrder(jobOrder.checked,jobOrder)"/></td>
           <td>{{jobOrder.title}}</td>
           <td>{{jobOrder.company.addresses.city || "No Location"}}, {{jobOrder.company.addresses.state}}</td>
           <td>{{jobOrder.jobType}}</td>
