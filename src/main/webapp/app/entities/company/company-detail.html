@@ -274,41 +274,39 @@
 
   <!-------------- SKILLS ----------------->
   <div class="table-responsive well">
-    <table class="table table-striped">
-      <h3>
-        <span>Preferred Skills</span>
-        <button class="btn btn-success btn-xs" ng-hide="vm.skillsEditable"
-                ng-click="vm.skillsEditable = !vm.skillsEditable">
-          <span class="glyphicon glyphicon-pencil"></span>
+    <h3>
+      <span>Preferred Skills</span>
+      <button class="btn btn-success btn-xs" ng-hide="vm.skillsEditable"
+              ng-click="vm.skillsEditable = !vm.skillsEditable">
+        <span class="glyphicon glyphicon-pencil"></span>
+      </button>
+    </h3>
+      <span ng-show="vm.skillsEditable">
+        <div class="col-sm-3">
+          <input type="text" ng-model="vm.newSkill" class="form-control"
+               uib-typeahead="skill as skill.name for skill in vm.skills | filter:$viewValue | limitTo:8">
+        </div>
+        <div class="col-sm-3">
+        <button ng-click="vm.addSkill(vm.newSkill)" class="btn btn-success btn-xs">
+          <span class="glyphicon glyphicon-plus"></span> add skill
         </button>
-      </h3>
-      <thead>
-      <tr>
-        <th>
-                  <span ng-show="vm.skillsEditable">
-                      <input type="text" ng-model="vm.newSkill"
-                             uib-typeahead="skill as skill.name for skill in vm.skills | filter:$viewValue | limitTo:8">
-                      <button ng-click="vm.addSkill(vm.newSkill)" class="btn btn-success btn-xs">
-                      <span class="glyphicon glyphicon-plus"></span> add skill
-                      </button>
-                        <button ng-click="vm.cancelSkill()" class="btn btn-danger btn-xs">
-                            <span>cancel</span>
-                        </button>
-                  </span>
-        </th>
-      </tr>
-      </thead>
+        <button ng-click="vm.cancelSkill()" class="btn btn-danger btn-xs">
+          <span>cancel</span>
+        </button>
+      </div>
+      </span>
+    <table class="table table-striped">
       <tbody>
       <tr>
         <td ng-hide="vm.skillsEditable"><span ng-repeat="skill in vm.company.companySkills track by $index">{{ skill.name }}{{$last ? '' : ', '}}</span>
         </td>
         <td ng-show="vm.skillsEditable">
-                    <span ng-repeat="skill in vm.company.companySkills track by $index">
-                        {{ skill.name }}
-                        <button class="btn btn-danger btn-xs">
-                            <span class="glyphicon glyphicon-remove-circle" ng-click="vm.deleteSkill($index);"></span>
-                        </button>
-                    </span>
+          <span ng-repeat="skill in vm.company.companySkills track by $index">
+            {{ skill.name }}
+            <button class="btn btn-danger btn-xs">
+                <span class="glyphicon glyphicon-remove-circle" ng-click="vm.deleteSkill($index);"></span>
+            </button>
+          </span>
         </td>
       </tr>
       </tbody>
