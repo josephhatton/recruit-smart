@@ -210,6 +210,31 @@
             $state.go('^');
           });
         }]
+      })
+      .state('hiring-contact-detail.activity', {
+        parent: 'hiring-contact-detail',
+        url: '/detail/activity/{id}',
+        data: {
+          authorities: ['ROLE_USER']
+        },
+        onEnter: ['$stateParams', '$state', '$uibModal', function ($stateParams, $state, $uibModal) {
+          $uibModal.open({
+            templateUrl: 'app/entities/hiring-contact/hiring-contact-activity-modal.html',
+            controller: 'HiringContactActivityModalController',
+            controllerAs: 'vm',
+            backdrop: 'static',
+            size: 'lg',
+            resolve: {
+              entity: ['HiringContact', function (HiringContact) {
+                return HiringContact.get({id: $stateParams.id}).$promise;
+              }]
+            }
+          }).result.then(function () {
+            $state.go('^', {}, {reload: false});
+          }, function () {
+            $state.go('^');
+          });
+        }]
       });
   }
 

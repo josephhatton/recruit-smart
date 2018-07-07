@@ -106,7 +106,7 @@
     <div class="applicant-activites well">
       <h3>
         <span>Pending Activities:</span>   <!-- addActivity() -->
-        <button ng-hide="addNewActivity" class="btn btn-success btn-sm" ng-click="vm.open()">
+        <button ng-hide="addNewActivity" class="btn btn-success btn-sm" ui-sref="hiring-contact-detail.activity">
           <span class="glyphicon glyphicon-plus"></span>
         </button>
       </h3>
@@ -119,7 +119,6 @@
             <th>Status</th>
             <th>Activity Date</th>
             <th>Action/Comments</th>
-            <th>Applicant</th>
             <th>Hiring Contact</th>
             <th>Company</th>
             <th>Job</th>
@@ -129,51 +128,47 @@
           </thead>
           <tbody>
           <tr class="animate-repeat"
-              ng-repeat="activity in activitys | filter:{status: 'Pending'} | orderBy:'-created' track by $index">
+              ng-repeat="activity in vm.applicant.activities | filter:{status: 'Pending'} | orderBy:'-created' track by $index">
             <td>
-              <select name="status" ng-model="activity.status" ng-change="vm.statusChange(activity)">
+              <select name="status" ng-model="activity.status" class="form-control" ng-change="vm.statusChange(activity)">
                 <option value="Pending">Pending</option>
                 <option value="Complete">Complete</option>
               </select>
             </td>
             <td>
-                    <span>
-                        {{ activity.startDate | date:'MM-dd-yyyy HH:mm a' }}
-                      </span>
+              <span>
+                {{ activity.startDate | date:'MM-dd-yyyy HH:mm a' }}
+              </span>
             </td>
             <td>
-                    <span>
-                        {{ activity.activityAction.name }} / {{ activity.comments}}
-                      </span>
+              <span>
+                {{ activity.action.name }} / {{ activity.comment}}
+              </span>
             </td>
             <td>
-              <a ui-sref="applicant-detail({id: activity.applicant.id})">{{ activity.applicant.firstName }} {{
-                activity.applicant.lastName }}</a>
+              <span ng-repeat="people in activity.hiringContacts">
+                <a ui-sref="hiring-contact-detail({id:people.id})">{{ people.firstName }} {{ people.lastName }}{{$last ? '' : ', '}}</a>
+              </span>
             </td>
             <td>
-                    <span ng-repeat="people in activity.hiringContacts">
-                        <a ui-sref="hiring-contact-detail({id:people.id})">{{ people.firstName }} {{ people.lastName }}{{$last ? '' : ', '}}</a>
-                      </span>
+              <span>
+                <a ui-sref="company-detail({id: activity.company.id})">{{ activity.company.name }}</a>
+              </span>
             </td>
             <td>
-                    <span>
-                        <a ui-sref="company-detail({id: activity.company.id})">{{ activity.company.name }}</a>
-                      </span>
+              <span>
+                <a ui-sref="job-order-detail({id: activity.jobOrder.id})">{{ activity.jobOrder.title }}</a>
+              </span>
             </td>
             <td>
-                    <span>
-                        <a ui-sref="job-order-detail({id: activity.jobOrder.id})">{{ activity.jobOrder.title }}</a>
-                      </span>
+              <span>
+                {{ activity.createdDate | date:'MM-dd-yyyy HH:mm a'}}
+              </span>
             </td>
             <td>
-                    <span>
-                        {{ activity.createdDate | date:'MM-dd-yyyy HH:mm a'}}
-                      </span>
-            </td>
-            <td>
-                    <span>
-                        {{ activity.user.firstName }}
-                      </span>
+              <span>
+                {{ activity.user.firstName }}
+              </span>
             </td>
             <td style="white-space: nowrap">
               <form editable-form name="openactivitiesform" onbeforesave="saveUser($data, user.id)"
@@ -196,7 +191,6 @@
           </tr>
           </tbody>
         </table>
-
       </div>
 
       <h3>
@@ -209,7 +203,6 @@
             <th>Status</th>
             <th>Activity Date</th>
             <th>Action/Comments</th>
-            <th>Applicant</th>
             <th>Hiring Contact</th>
             <th>Company</th>
             <th>Job</th>
@@ -219,52 +212,47 @@
           </thead>
           <tbody>
           <tr class="animate-repeat"
-              ng-repeat="activity in activitys | filter:{status: 'Complete'} | orderBy:'-created' track by $index">
+              ng-repeat="activity in vm.applicant.activities | filter:{status: 'Complete'} | orderBy:'-created' track by $index">
             <td>
-              <select id="field_status" name="status" ng-model="activity.status" ng-change="vm.statusChange(activity)">
+              <select id="field_status" name="status" class="form-control" ng-model="activity.status" ng-change="vm.statusChange(activity)">
                 <option value="Pending">Pending</option>
                 <option value="Complete">Complete</option>
               </select>
             </td>
             <td>
-                    <span>
-                        {{ activity.startDate | date:'MM-dd-yyyy' }}
-                      </span>
+              <span>
+                {{ activity.startDate | date:'MM-dd-yyyy' }}
+              </span>
             </td>
             <td>
-                    <span>
-                        {{ activity.activityAction.name }} / {{ activity.comments}}
-                      </span>
+              <span>
+                {{ activity.action.name }} / {{ activity.comment}}
+              </span>
             </td>
             <td>
-                    <span>
-                        <a ui-sref="applicant-detail({id: activity.applicant.id})">{{ activity.applicant.firstName }} {{ activity.applicant.lastName }}</a>
-                      </span>
+              <span ng-repeat="people in activity.hiringContacts">
+                <a ui-sref="hiring-contact-detail({id:people.id})">{{ people.firstName }} {{ people.lastName }}{{$last ? '' : ', '}}</a>
+              </span>
             </td>
             <td>
-                    <span ng-repeat="people in activity.hiringContacts">
-                        <a ui-sref="hiring-contact-detail({id:people.id})">{{ people.firstName }} {{ people.lastName }}{{$last ? '' : ', '}}</a>
-                      </span>
+              <span>
+                <a ui-sref="company-detail({id: activity.company.id})">{{ activity.company.name }}</a>
+              </span>
             </td>
             <td>
-                    <span>
-                        <a ui-sref="company-detail({id: activity.company.id})">{{ activity.company.name }}</a>
-                      </span>
+              <span>
+                <a ui-sref="job-order-detail({id: activity.job.id})">{{ activity.jobOrder.title }}</a>
+              </span>
             </td>
             <td>
-                    <span>
-                        <a ui-sref="job-order-detail({id: activity.job.id})">{{ activity.jobOrder.title }}</a>
-                      </span>
+              <span>
+                {{ activity.createdDate | date:'MM-dd-yyyy HH:mm a' }}
+              </span>
             </td>
             <td>
-                    <span>
-                        {{ activity.createdDate | date:'MM-dd-yyyy HH:mm a' }}
-                      </span>
-            </td>
-            <td>
-                    <span>
-                        {{ activity.user.firstName }}
-                      </span>
+              <span>
+                {{ activity.user.firstName }}
+              </span>
             </td>
             <td style="white-space: nowrap">
               <form editable-form name="closedactivitiesform" onbeforesave="saveUser($data, user.id)"
