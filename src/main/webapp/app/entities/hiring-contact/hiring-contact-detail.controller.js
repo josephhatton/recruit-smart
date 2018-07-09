@@ -15,6 +15,11 @@
     vm.hiringContact = entity;
     vm.previousState = previousState.name;
 
+    var unsubscribe = $rootScope.$on('recruitsmartApp:hiringContactUpdate', function (event, result) {
+      vm.hiringContact = result;
+    });
+    $scope.$on('$destroy', unsubscribe);
+
     getAccount();
 
     function getAccount() {
@@ -23,11 +28,6 @@
         vm.isAuthenticated = Principal.isAuthenticated;
       });
     }
-
-    var unsubscribe = $rootScope.$on('recruitsmartApp:hiringContactUpdate', function (event, result) {
-      vm.hiringContact = result;
-    });
-    $scope.$on('$destroy', unsubscribe);
 
     vm.cancelContactSave = function () {
       vm.contactEditable = false;

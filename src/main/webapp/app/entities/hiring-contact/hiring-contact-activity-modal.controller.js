@@ -40,7 +40,7 @@
     };
 
     var onSaveSuccess = function (result) {
-      $rootScope.$broadcast('recruitSmartApp:updateHiringContact',{data:result});
+      $rootScope.$broadcast('recruitSmartApp:hiringContactUpdate',{data:result});
       $uibModalInstance.close(result);
     };
     var onSaveError = function () {
