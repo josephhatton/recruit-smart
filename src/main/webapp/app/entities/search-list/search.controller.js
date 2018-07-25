@@ -6,9 +6,9 @@
     .controller('SearchController', SearchController)
 
 
-  SearchController.$inject = ['$scope', '$state', '$uibModal', '$filter', 'TypeCheck', 'SearchList', 'Account', 'User'];
+  SearchController.$inject = ['$scope', '$state', '$uibModal', '$filter', 'SearchList', 'Account', 'User'];
 
-  function SearchController($scope, $state, $uibModal, $filter, TypeCheck, SearchList, Account, User) {
+  function SearchController($scope, $state, $uibModal, $filter, SearchList, Account, User) {
     var vm = this;
 
     //query boxes
@@ -48,9 +48,6 @@
     'WY').split(' ').map(function (state) {
       return {abbrev: state};
     });
-
-    //object mapping entity type (avoid having to constantly check if your dealing with applicants, companys, jobOrders and hiringContacts)
-    vm.typeCheck = TypeCheck;
 
     //load Entity
     vm.loadAll = function () {

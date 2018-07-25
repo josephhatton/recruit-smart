@@ -29,17 +29,17 @@
       <div class="col-xs-12 col-sm-3">
 
         <div class="form-group">
-          <label class="control-label label label-primary" for="field_search_list">Searches</label>
+          <label class="control-label label label-primary">Searches</label>
           <ui-select ng-model="vm.searchList" ng-change="vm.searchListChange()" id="field_search_list"
                      name="search_list">
-            <ui-select-match allow-clear="false" placeholder="Select search...">{{$select.selected.name}}
+            <ui-select-match allow-clear="false" placeholder="Select search...">
             </ui-select-match>
             <ui-select-choices
-              repeat="search in vm.searchLists | propsFilter: {name: $select.search, type: $select.search} track by search.id">
-              <span ng-bind-html="search.name | highlight: $select.search"></span>
+              repeat="search in vm.searchLists  track by search.id">
+              <span ng-bind-html="search.name"></span>
               <div>
                 <small>
-                  type: <span ng-bind-html="search.type | highlight: $select.search"></span>
+                  type: <span ng-bind-html="search.type"></span>
                 </small>
               </div>
             </ui-select-choices>
@@ -50,7 +50,7 @@
       <div class="col-xs-12 col-sm-3">
 
         <div class="form-group">
-          <label class="control-label label label-primary" for="field_searchType">Search Type</label>
+          <label class="control-label label label-primary">Search Type</label>
           <select class="form-control" name="searchType" ng-model="vm.searchList.type" ng-change="vm.typeChange()"
                   id="field_searchListType">
             <option value="APPLICANT">Applicant</option>
@@ -67,7 +67,7 @@
         <ul class="nav nav-pills nav-stacked nav-pills search-list" role="tablist">
           <li ng-class="{'active': vm.view_tab == 'searchTab'}">
             <a class="btn-sm search-tab" ng-click="vm.changeTab('searchTab')" href=""><b><span
-              class="glyphicon glyphicon-arrow-left"></span> Modify Search</b></a>
+              class="glyphicon glyphicon-arrow-left"></span> Home</b></a>
           </li>
           <li ng-repeat="applicant in vm.applicants track by $index"
               ng-class="{'active': vm.view_tab == 'entityContent' + $index}">
