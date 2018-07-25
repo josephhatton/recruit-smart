@@ -25,12 +25,9 @@
               <div class="crescendo-well">
                 <div class="row">
                   <div class="col-md-4">
-                    <button class="btn btn-sm btn-primary" ng-click="vm.openGP()"><span class="glyphicon glyphicon-th-list"></span> GP Calculator</button>
-&nbsp;&nbsp;
+                    <button class="btn btn-sm btn-primary" ng-click="vm.openGP()"><span class="glyphicon glyphicon-th-list"></span> GP Calculator</button>&nbsp;&nbsp;
                     <button class="btn btn-sm btn-primary" ui-sref="search"><span class="glyphicon glyphicon-search"></span> Search</button>
                   </div>
-                </div>
-                <h2><span>Dashboard</span>
                   <span class="pull-right">
                 <button uib-popover-template="dynamicPopover.templateUrl"
                         popover-title="{{dynamicPopover.title}}"
@@ -38,7 +35,8 @@
                         popover-trigger="outsideClick" type="button"
                         class="btn btn-sm btn-primary">Total assigned Jobs:
                   <span class="badge text-danger">{{ vm.account.jobOrders.length }}</span></button></span>
-                </h2>
+                </div>
+                <h2><span>Dashboard</span></h2>
               </div>
               <div class="table-responsive">
                 <table class="jh-table table table-striped table-condensed">
