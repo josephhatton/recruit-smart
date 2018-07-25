@@ -1,0 +1,88 @@
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+          ng-click="clear()">&times;</button>
+  <h3 class="modal-title">Recruit Smart Calculator</h3>
+</div>
+<div class="modal-body">
+  <div class="row">
+    <div class="col-xs-6">
+      <label class="label label-primary form">Burden</label>
+      <div class="form-control"> {{ vm.burden * 100 + '%' }}</div>
+    </div>
+    <div class="col-xs-6">
+      <label class="label label-primary form">Burden Pay Rate</label>
+      <div class="input-group">
+        <span class="input-group-addon">$</span>
+        <input class="form-control" type="text" ng-disabled="true" ng-model="vm.burdenPayRate"></input>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-6">
+      <label class="label label-primary form">Pay Rate</label>
+      <div class="input-group">
+        <span class="input-group-addon">$</span>
+        <input class="form-control" type="text" ng-model="vm.payRate"></input>
+      </div>
+    </div>
+    <div class="col-xs-6">
+      <label class="label label-primary form">Loaded Cost</label>
+      <div class="input-group">
+        <span class="input-group-addon">$</span>
+        <input class="form-control" type="text" ng-disabled="true" ng-model="vm.loadedCost"></input>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-6">
+      <label class="label label-primary form">Bill Rate</label>
+      <div class="input-group">
+        <span class="input-group-addon">$</span>
+        <input class="form-control" type="text" ng-model="vm.billRate"></input>
+      </div>
+    </div>
+    <div class="col-xs-6">
+      <label class="label label-primary form">GP</label>
+      <div class="input-group">
+        <span class="input-group-addon">$</span>
+        <input class="form-control" type="text" ng-disabled="true" ng-model="vm.gp"></input>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-6">
+      <label class="label label-primary form">Per Diem</label><input class="form-control" type="text" ng-disabled="true"
+                                                                     ng-model="vm.perDiem"></input>
+    </div>
+    <div class="col-xs-6">
+      <label class="label label-primary form">PTO Cost</label>
+      <div class="input-group">
+            <span class="input-group-addon">
+              <input type="checkbox" aria-label="PTO" ng-model="vm.ptoChecked">
+            </span>
+        <span class="input-group-addon">$</span>
+        <input class="form-control" type="text" ng-disabled="true" ng-model="vm.pto"></input>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-6">
+      <label class="label label-primary form">Discount</label><input class="form-control" type="text" ng-disabled="true"
+                                                                     ng-model="vm.discount"></input>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-6">
+      <label class="label label-primary form">Other</label><input class="form-control" type="text" ng-disabled="true"
+                                                                  ng-model="vm.other"></input>
+    </div>
+    <div class="col-xs-6">
+      <button type="button" class="btn btn-success" ng-click="vm.calculate()">Calculate</button>
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+    <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+  </button>
+</div>

@@ -23,8 +23,19 @@
           <div class="dashboard">
             <div class="table-responsive well">
               <div class="crescendo-well">
-                <h2>
-                  <span>Dashboard</span>
+                <div class="row">
+                  <div class="col-md-4">
+                    <a ng-click="vm.openGP()">
+                      <span class="glyphicon glyphicon-th-list"></span>
+                      <span class="hidden-sm">GP Calculator</span>
+                    </a>&nbsp;&nbsp;
+                    <a ui-sref="search">
+                      <span class="glyphicon glyphicon-search"></span>
+                      <span class="hidden-sm">Search</span>
+                    </a>
+                  </div>
+                </div>
+                <h2><span>Dashboard</span>
                   <span class="pull-right">
                 <button uib-popover-template="dynamicPopover.templateUrl"
                         popover-title="{{dynamicPopover.title}}"

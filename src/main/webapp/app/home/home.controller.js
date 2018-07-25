@@ -5,9 +5,9 @@
     .module('recruitsmartApp')
     .controller('HomeController', HomeController);
 
-  HomeController.$inject = ['$scope', 'Principal', 'LoginService','filterFilter', '$state', 'HotListBucket', 'HotList'];
+  HomeController.$inject = ['$scope', '$uibModal', 'Principal', 'LoginService','filterFilter', '$state', 'HotListBucket', 'HotList'];
 
-  function HomeController($scope, Principal, LoginService, filterFilter, $state, HotListBucket, HotList) {
+  function HomeController($scope, $uibModal, Principal, LoginService, filterFilter, $state, HotListBucket, HotList) {
     var vm = this;
 
     vm.account = null;
@@ -39,5 +39,16 @@
     function register() {
       $state.go('register');
     }
+
+    vm.openGP = function (activity) {
+      var modalInstance = $uibModal.open({
+        animation: true,
+        templateUrl: 'app/home/calculator-modal.html',
+        controller: 'CalculatorModalController',
+        controllerAs: 'vm',
+        size: 'lg'
+      });
+    };
+
   }
 })();
