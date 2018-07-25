@@ -1,0 +1,290 @@
+<div>
+
+  <div class="container-fluid">
+    <h2 class="text-center"><span class="glyphicon glyphicon-search"></span>Search</h2>
+    <hr>
+    <div class="row">
+      <div class="col-xs-12 col-sm-3">
+
+        <action-dropdown list="vm.searchList"
+                         entitys="vm[ vm.typeCheck.whatToChange[ vm.searchList.type ] + 's']"></action-dropdown>
+
+      </div>
+      <div class="col-xs-12 col-sm-3">
+
+        <div class="form-group">
+          <label class="control-label label label-primary" for="field_name">Search Name</label>
+          <input type="text" class="form-control" name="name" id="field_name" placeholder="Untitled"
+                 ng-model="vm.searchList.name"
+                 required/>
+          <div ng-show="editForm.name.$invalid">
+            <p class="help-block"
+               ng-show="editForm.name.$error.required">
+              This field is required.
+            </p>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-xs-12 col-sm-3">
+
+        <div class="form-group">
+          <label class="control-label label label-primary" for="field_search_list">Searches</label>
+          <ui-select ng-model="vm.searchList" ng-change="vm.searchListChange()" id="field_search_list"
+                     name="search_list">
+            <ui-select-match allow-clear="false" placeholder="Select search...">{{$select.selected.name}}
+            </ui-select-match>
+            <ui-select-choices
+              repeat="search in vm.searchLists | propsFilter: {name: $select.search, type: $select.search} track by search.id">
+              <span ng-bind-html="search.name | highlight: $select.search"></span>
+              <div>
+                <small>
+                  type: <span ng-bind-html="search.type | highlight: $select.search"></span>
+                </small>
+              </div>
+            </ui-select-choices>
+          </ui-select>
+        </div>
+
+      </div>
+      <div class="col-xs-12 col-sm-3">
+
+        <div class="form-group">
+          <label class="control-label label label-primary" for="field_searchType">Search Type</label>
+          <select class="form-control" name="searchType" ng-model="vm.searchList.type" ng-change="vm.typeChange()"
+                  id="field_searchListType">
+            <option value="APPLICANT">Applicant</option>
+            <option value="COMPANY">Company</option>
+            <option value="JOB_ORDER">Job Order</option>
+            <option value="HIRING_CONTACT">Hiring Contact</option>
+          </select>
+        </div>
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-3 no-padding-left">
+        <ul class="nav nav-pills nav-stacked nav-pills search-list" role="tablist">
+          <li ng-class="{'active': vm.view_tab == 'searchTab'}">
+            <a class="btn-sm search-tab" ng-click="vm.changeTab('searchTab')" href=""><b><span
+              class="glyphicon glyphicon-arrow-left"></span> Modify Search</b></a>
+          </li>
+          <li ng-repeat="applicant in vm.applicants track by $index"
+              ng-class="{'active': vm.view_tab == 'entityContent' + $index}">
+            <input type="checkbox" class="search-list-checkbox" ng-model="applicant.checked">
+            <a class="btn-sm search-list-results" ng-click="vm.changeTab('entityContent' + $index, $index )" href="">{{
+              applicant.firstName }} {{ applicant.lastName }}<br>
+              <small>{{ applicant.title }}</small>
+            </a>
+          </li>
+          <li ng-repeat="company in vm.companys track by $index"
+              ng-class="{'active': vm.view_tab == 'entityContent' + $index}">
+            <input type="checkbox" class="search-list-checkbox" ng-model="company.checked">
+            <a class="btn-sm search-list-results" ng-click="vm.changeTab('entityContent' + $index, $index )" href="">{{company.name}}
+              <small>{{ company.addresss[0].city }}, {{ company.addresss[0].state }}</small>
+            </a>
+          </li>
+          <li ng-repeat="job in vm.jobOrders track by $index"
+              ng-class="{'active': vm.view_tab == 'entityContent' + $index}">
+            <input type="checkbox" class="search-list-checkbox" ng-model="job.checked">
+            <a class="btn-sm search-list-results" ng-click="vm.changeTab('entityContent' + $index, $index )" href="">{{job.title}}
+              <small>at {{ job.company.name }}</small>
+            </a>
+          </li>
+          <li ng-repeat="hc in vm.hiringContacts track by $index"
+              ng-class="{'active': vm.view_tab == 'entityContent' + $index}">
+            <input type="checkbox" class="search-list-checkbox" ng-model="hc.checked">
+            <a class="btn-sm search-list-results" ng-click="vm.changeTab('entityContent' + $index, $index )" href="">{{
+              hc.firstName }} {{ hc.lastName }}<br>
+              <small>{{ hc.jobTitle }} at {{ hc.company.name }}</small>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-sm-9 no-padding-right">
+        <div class="tab-content">
+          <div ng-show="vm.view_tab === 'searchTab'">
+
+            <div class="row">
+              <div class="col-xs-12">
+                <form name="searchForm" class="form-inline row well">
+                  <div class="input-group">
+                    <input type="text" class="form-control" ng-model="vm.searchList.query" id="searchQuery"
+                           placeholder="Search">
+                    <span class="input-group-btn width-min">
+			                          <button class="btn btn-primary" ng-click="vm.search()">
+			                              <span class="glyphicon glyphicon-search"></span>
+			                          </button>
+			                      </span>
+                    <span class="input-group-btn width-min" ng-if="vm.currentSearch">
+			                          <button class="btn btn-info" ng-click="vm.clear()">
+			                              <span class="glyphicon glyphicon-trash"></span>
+			                          </button>
+			                      </span>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+                <label class="control-label label label-primary">Search from</label>
+
+                <span>All</span>
+                <input type="checkbox" class="search-from-checkbox" ng-model="selectedAll"
+                       ng-click="vm.toggleSearchFromAll()">
+
+                <span ng-repeat="item in vm.searchFrom">
+                			<span>{{ item.name }}</span>
+                			<input type="checkbox" class="search-from-checkbox" ng-model="item.Selected">
+                		</span>
+
+              </div>
+            </div>
+            <br>
+
+            <span ng-click="vm.advancedSearch = !vm.advancedSearch"><span class="glyphicon glyphicon-plus text-primary"
+                                                                          ng-show="vm.advancedSearch"></span><span
+              class="glyphicon glyphicon-minus text-primary" ng-hide="vm.advancedSearch"></span>  <span
+              class="text-muted"> Advanced Search</span></span>
+            <div class="row" uib-collapse="vm.advancedSearch">
+
+              <div class="col-xs-12 col-sm-4">
+                <span class="label label-success">All of These: </span>&nbsp;
+                <button class="btn btn-success btn-xs" ng-click="vm.allQs.push('')">
+                  <span class="glyphicon glyphicon-plus"></span>
+                </button>
+                <br>
+                <br>
+                <span ng-repeat="allQ in vm.allQs track by $index"><input type="text" class="form-control input-sm"
+                                                                          ng-model="vm.allQs[$index]"
+                                                                          placeholder="Query">&nbsp;</span>
+              </div>
+
+              <div class="col-xs-12 col-sm-4">
+                <span class="label label-success">Some of These: </span>&nbsp;
+                <button class="btn btn-success btn-xs" ng-click="vm.someQs.push('')">
+                  <span class="glyphicon glyphicon-plus"></span>
+                </button>
+                <br>
+                <br>
+                <span ng-repeat="someQ in vm.someQs track by $index"><input type="text" class="form-control input-sm"
+                                                                            ng-model="vm.someQs[$index]"
+                                                                            placeholder="Query">&nbsp;</span>
+              </div>
+
+              <div class="col-xs-12 col-sm-4">
+                <span class="label label-success">None of These: </span>&nbsp;
+                <button class="btn btn-success btn-xs" ng-click="vm.noneQs.push('')">
+                  <span class="glyphicon glyphicon-plus"></span>
+                </button>
+                <br>
+                <br>
+                <span ng-repeat="noneQ in vm.noneQs track by $index"><input type="text" class="form-control input-sm"
+                                                                            ng-model="vm.noneQs[$index]"
+                                                                            placeholder="Query">&nbsp;</span>
+              </div>
+
+            </div>
+            <div class="row">
+              <span class="label label-success">Job Title: </span>&nbsp;
+              <input type="text" class="form-control input-sm" placeholder="Job Title">&nbsp;
+            </div>
+            <h5>Geo Loaction</h5>
+            <span ng-click="vm.toggleGeoCollapse('cityRadius')"><span class="glyphicon glyphicon-plus text-primary"
+                                                                      ng-show="vm.geoCollapse !== 'cityRadius'"></span><span
+              class="glyphicon glyphicon-minus text-primary" ng-show="vm.geoCollapse === 'cityRadius'"></span>  <span
+              class="text-muted"> Home City Radius</span></span>
+            <div uib-collapse="vm.geoCollapse !== 'cityRadius'" class="row">
+              <div class="col-xs-12">
+                <form class="form-inline">
+                  <div class="form-group">
+                    <label class="label label-success">within</label>
+                    <select class="form-control" ng-model="vm.geo.selectedRadius">
+                      <option value="5">5</option>
+                      <option value="10">10</option>
+                      <option value="20">20</option>
+                      <option value="50">50</option>
+                      <option value="100">100</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label class="label label-success">mile radius of city</label>
+                    <input type="text" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label class="label label-success">state</label>
+                    <select class="form-control" ng-model="vm.geo.state"
+                            ng-options="state as state.abbrev for state in vm.states"></select>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <br>
+            <span ng-click="vm.toggleGeoCollapse('zipRadius')"><span class="glyphicon glyphicon-plus text-primary"
+                                                                     ng-show="vm.geoCollapse !== 'zipRadius'"></span><span
+              class="glyphicon glyphicon-minus text-primary" ng-show="vm.geoCollapse === 'zipRadius'"></span>  <span
+              class="text-muted"> Home Postal Code</span></span>
+            <div uib-collapse="vm.geoCollapse !== 'zipRadius'" class="row">
+              <div class="col-xs-12">
+                <form class="form-inline">
+                  <div class="form-group">
+                    <label class="label label-success">within</label>
+                    <select class="form-control" ng-model="vm.geo.selectedRadius">
+                      <option value="5">5</option>
+                      <option value="10">10</option>
+                      <option value="20">20</option>
+                      <option value="50">50</option>
+                      <option value="100">100</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label class="label label-success" for="geo-zip">mile radius of zip</label>
+                    <input type="text" class="form-control" id="geo-zip">
+                  </div>
+                </form>
+              </div>
+            </div>
+            <br>
+            <span ng-click="vm.toggleGeoCollapse('workStates')"><span class="glyphicon glyphicon-plus text-primary"
+                                                                      ng-show="vm.geoCollapse !== 'workStates'"></span><span
+              class="glyphicon glyphicon-minus text-primary" ng-show="vm.geoCollapse === 'workStates'"></span>  <span
+              class="text-muted"> Work States</span></span>
+            <div uib-collapse="vm.geoCollapse !== 'workStates'" class="row">
+              <div class="col-xs-12">
+                <form class="form-inline">
+                  <div class="form-group">
+                    <select class="form-control" ng-model="vm.geo.states[0]"
+                            ng-options="state as state.abbrev for state in vm.states"></select>
+                    &nbsp;
+                    <select class="form-control" ng-model="vm.geo.states[1]"
+                            ng-options="state as state.abbrev for state in vm.states"></select>
+                    &nbsp;
+                    <select class="form-control" ng-model="vm.geo.states[2]"
+                            ng-options="state as state.abbrev for state in vm.states"></select>
+                    &nbsp;
+                    <select class="form-control" ng-model="vm.geo.states[3]"
+                            ng-options="state as state.abbrev for state in vm.states"></select>
+                    &nbsp;
+                    <select class="form-control" ng-model="vm.geo.states[4]"
+                            ng-options="state as state.abbrev for state in vm.states"></select>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+          </div>
+          <div ng-show="vm.view_tab[0] === 'e'">
+            <applicant-detail ng-if="vm.searchList.type==='APPLICANT'" applicant="vm.applicant"></applicant-detail>
+            <company-detail ng-if="vm.searchList.type==='COMPANY'" company="vm.company"></company-detail>
+            <job-order-detail ng-if="vm.searchList.type==='JOB_ORDER'" job-order="vm.jobOrder"></job-order-detail>
+            <hiring-contact-detail ng-if="vm.searchList.type==='HIRING_CONTACT'"
+                                   hiring-contact="vm.hiringContact"></hiring-contact-detail>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>
